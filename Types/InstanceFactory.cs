@@ -101,6 +101,9 @@ public record struct InstanceFactory(Type TargetType, string ClassName, Func<Man
         return factory.Value.Create<T>(managementObject);
     }
 
+    public static IEnumerable<T> CreateInstances<T>(ManagementObjectCollection managementObjectCollection)
+        => managementObjectCollection.Cast<ManagementObject>().Select(CreateInstance<T>);
+
     private readonly T Create<T>(ManagementObject managementObject)
     {
         if (!TargetType.IsAssignableTo(typeof(T)))
