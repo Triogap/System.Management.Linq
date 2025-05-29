@@ -9,6 +9,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    # Only depend on generate-and-commit if this is a PR event
+    needs: ${{ github.event_name == 'pull_request' && 'generate-and-commit' || '' }}
+    if: ${{ github.event_name != 'pull_request' || always() }}
     steps:
       - uses: actions/checkout@v4
 
