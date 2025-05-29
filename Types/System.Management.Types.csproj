@@ -7,8 +7,32 @@
     <LangVersion>latest</LangVersion>
   </PropertyGroup>
 
+  <!--NuGet package metadata-->
+  <PropertyGroup>
+    <PackageId>Triogap.System.Management.Types</PackageId>
+    <PackageTags>System.Management;WMI</PackageTags>
+    <Version>0.1.0</Version>
+    <PackageReleaseNotes>
+      Initial release.
+      Includes 225 strongly-typed WMI types in the Win32 namespace like Win32_Process.
+      Only properties can be read in this version; write operations and methods are not supported.
+    </PackageReleaseNotes>
+    <Authors>Triogap</Authors>
+    <Description>Types and helpers for WMI and System.Management extensions.</Description>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/Triogap/System.Management.Linq</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/Triogap/System.Management.Linq</RepositoryUrl>
+    <Copyright>Copyright © 2025 Triogap</Copyright>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+  </PropertyGroup>
+
   <ItemGroup>
-    <PackageReference Include="System.Management" Version="9.0.5" />
+    <None Include="README.md" Pack="true" PackagePath="\" />
+    <None Include="Types.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Management" Version="9.*" />
   </ItemGroup>
 
 </Project>
