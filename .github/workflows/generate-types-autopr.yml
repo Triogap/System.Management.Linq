@@ -1,0 +1,51 @@
+name: Weekly Type Generation and Auto PR
+
+on:
+  schedule:
+    - cron: '0 3 * * 1' # Every Monday at 03:00 UTC
+  workflow_dispatch:
+
+jobs:
+  generate-and-pr:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup .NET 9
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '9.0.x'
+
+      - name: Restore dependencies
+        run: dotnet restore
+
+      - name: Run generator
+        run: dotnet run --project Generator/System.Management.Generator.csproj
+
+      - name: Check for changes
+        id: git-check
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add Types/**/*.g.cs
+          if git diff --cached --quiet; then
+            echo "no_changes=true" >> $GITHUB_OUTPUT
+          else
+            echo "no_changes=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Create Pull Request
+        if: steps.git-check.outputs.no_changes == 'false'
+        uses: peter-evans/create-pull-request@v6
+        with:
+          commit-message: "chore(types): update generated types"
+          branch: "auto/generated-types-update"
+          title: "chore(types): update generated types"
+          body: |
+            Automated update of generated types from learn.microsoft.com.
+            This PR was created by a scheduled GitHub Action.
+          delete-branch: true
