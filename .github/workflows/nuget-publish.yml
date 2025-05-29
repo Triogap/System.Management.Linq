@@ -1,0 +1,37 @@
+name: Build and Publish NuGet Packages
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'Linq/*.csproj'
+      - 'Types/*.csproj'
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Restore dependencies
+        run: dotnet restore
+
+      - name: Build
+        run: dotnet build --configuration Release --no-restore
+
+      - name: Pack System.Management.Types
+        run: dotnet pack Types/System.Management.Types.csproj --configuration Release --output ./nupkgs
+
+      - name: Pack System.Management.Linq
+        run: dotnet pack Linq/System.Management.Linq.csproj --configuration Release --output ./nupkgs
+
+      - name: Publish to NuGet
+        if: github.event_name == 'push'
+        run: dotnet nuget push ./nupkgs/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
