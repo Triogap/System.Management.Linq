@@ -1,12 +1,13 @@
-# System.Management.Linq
+# System.Management.Types
 
-Exposes WMI and system/network management objects as strongly-typed C# classes, enabling LINQ-to-WQL queries for expressive, type-safe access to management data.
+Provides strongly-typed C# representations of WMI and system/network management objects for use in .NET applications. This project supplies type definitions and code generation utilities to enable type-safe access to management data.
 
 ## Features
 
 - Strongly-typed C# classes for WMI and system/network management objects
-- LINQ-to-WQL support for expressive and type-safe queries
-- Easy access to management data for .NET developers
+- Auto-generated types for common WMI classes (e.g., Win32_Process, Win32_OperatingSystem)
+- Designed for use with management APIs and LINQ providers
+- Simplifies working with management data by providing compile-time type checking
 
 ## Getting Started
 
@@ -18,23 +19,20 @@ Exposes WMI and system/network management objects as strongly-typed C# classes, 
 ### Installation
 
 Clone the repository:
-
-```shell
 git clone https://github.com/Triogap/System.Management.Linq.git
-```
-
 ## Usage
 
 **Note:** Running WMI queries may require elevated permissions.
 
-Here’s an example of how to check if an explorer process is running on the system:
+Here's an example of how to check if an explorer process is running on the system:
 
 ```csharp
-using System.Management.Linq;
+using System.Management;
 using System.Management.Types.Win32;
+using System.Management.Types;
 
-var process = ManagementObjects.Get<Process>()
-    .FirstOrDefault(p => p.Name.StartsWith("Explorer"));
+var searcher = new ManagementObjectSearcher("SELECT * FROM Win32_Process WHERE Name LIKE 'Explorer%'");
+var process = InstanceFactory.CreateInstances<Process>(searcher.Get()).FirstOrDefault();
 
 if (process != null)
 {
