@@ -2,7 +2,7 @@
 
 namespace System.Management.Linq;
 
-public class ParameterReplacer : ExpressionVisitor
+internal class ParameterReplacer : ExpressionVisitor
 {
     private readonly ParameterExpression _oldParameter;
     private readonly ParameterExpression _newParameter;
