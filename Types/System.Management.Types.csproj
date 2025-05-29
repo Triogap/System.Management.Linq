@@ -28,7 +28,6 @@
 
   <ItemGroup>
     <None Include="README.md" Pack="true" PackagePath="\" />
-    <None Include="Types.csproj" />
   </ItemGroup>
 
   <ItemGroup>
