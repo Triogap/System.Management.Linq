@@ -11,11 +11,9 @@
   <PropertyGroup>
     <PackageId>Triogap.System.Management.Linq</PackageId>
     <PackageTags>System.Management;WMI;WQL;LinqToWql</PackageTags>
-    <Version>0.1.0</Version>
+    <Version>0.1.1</Version>
     <PackageReleaseNotes>
-      Initial release of LINQ extensions for System.Management.
-      Enables LINQ-to-WQL queries for WMI and system management data.
-      Depends on Triogap.System.Management.Types which includes support for 200+ strongly-typed WMI types in the Win32 namespace (e.g., Win32_Process).
+      Added documntation comments for all public types and members.
     </PackageReleaseNotes>
     <Authors>Triogap</Authors>
     <Description>LINQ extensions and query helpers for System.Management, depends on System.Management.Types.</Description>
