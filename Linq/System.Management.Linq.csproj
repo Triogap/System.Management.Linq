@@ -7,8 +7,31 @@
     <LangVersion>latest</LangVersion>
   </PropertyGroup>
 
+  <!--NuGet package metadata-->
+  <PropertyGroup>
+    <PackageId>Triogap.System.Management.Linq</PackageId>
+    <PackageTags>System.Management;WMI;WQL;LinqToWql</PackageTags>
+    <Version>0.1.0</Version>
+    <PackageReleaseNotes>
+      Initial release of LINQ extensions for System.Management.
+      Enables LINQ-to-WQL queries for WMI and system management data.
+      Depends on Triogap.System.Management.Types which includes support for 200+ strongly-typed WMI types in the Win32 namespace (e.g., Win32_Process).
+    </PackageReleaseNotes>
+    <Authors>Triogap</Authors>
+    <Description>LINQ extensions and query helpers for System.Management, depends on System.Management.Types.</Description>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/Triogap/System.Management.Linq</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/Triogap/System.Management.Linq</RepositoryUrl>
+    <Copyright>Copyright © 2025 Triogap</Copyright>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+  </PropertyGroup>
+
   <ItemGroup>
-    <PackageReference Include="System.Management" Version="9.0.5" />
+    <None Include="..\README.md" Pack="true" PackagePath="\"/>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Management" Version="9.*" />
   </ItemGroup>
 
   <ItemGroup>
