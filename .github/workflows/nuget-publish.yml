@@ -34,4 +34,18 @@ jobs:
 
       - name: Publish to NuGet
         if: github.event_name == 'push'
-        run: dotnet nuget push ./nupkgs/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
+        run: |
+          set -e
+          for pkg in ./nupkgs/*.nupkg; do
+            echo "Pushing $pkg"
+            output=$(dotnet nuget push "$pkg" --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json 2>&1) && status=0 || status=$?
+            if [ $status -eq 0 ]; then
+              echo "Successfully pushed $pkg"
+            elif echo "$output" | grep -q "Response status code does not indicate success: 409"; then
+              echo "Package $pkg already exists on NuGet. Skipping."
+            else
+              echo "$output"
+              echo "Failed to push $pkg for an unexpected reason."
+              exit 1
+            fi
+          done
