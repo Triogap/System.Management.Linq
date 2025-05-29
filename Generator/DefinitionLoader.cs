@@ -365,7 +365,7 @@ internal partial class DefinitionLoader(IEnumerable<string> classNames)
         var tBodyIndex = methodBlock.IndexOf("<tbody");
         foreach (Match methodRow in TableRowRegex.Matches(methodBlock[tBodyIndex..]))
         {
-            List<string> cells = [..TableCellRegex.Matches(methodRow.Groups[1].Value).Select(c => c.Groups[1].Value)];
+            List<string> cells = [.. TableCellRegex.Matches(methodRow.Groups[1].Value).Select(c => c.Groups[1].Value)];
             if (cells.Count != 2)
             {
                 ErrorReporter.Report($"Found unexpected number({cells.Count}) of cells in method Row.");

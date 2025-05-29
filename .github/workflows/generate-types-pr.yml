@@ -18,18 +18,28 @@ jobs:
           fetch-depth: 0
           ref: ${{ github.head_ref }}
 
+      - name: Check last commit author
+        id: last-commit
+        run: |
+          AUTHOR=$(git log -1 --pretty=format:'%an')
+          echo "author=$AUTHOR" >> $GITHUB_OUTPUT
+
       - name: Setup .NET 9
+        if: steps.last-commit.outputs.author != 'github-actions[bot]'
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '9.0.x'
 
       - name: Restore dependencies
+        if: steps.last-commit.outputs.author != 'github-actions[bot]'
         run: dotnet restore
 
       - name: Run generator
+        if: steps.last-commit.outputs.author != 'github-actions[bot]'
         run: dotnet run --project Generator/System.Management.Generator.csproj
 
       - name: Check for changes
+        if: steps.last-commit.outputs.author != 'github-actions[bot]'
         id: git-check
         run: |
           git config --global user.name "github-actions[bot]"
@@ -42,7 +52,7 @@ jobs:
           fi
 
       - name: Commit and push changes to PR branch
-        if: steps.git-check.outputs.no_changes == 'false'
+        if: steps.last-commit.outputs.author != 'github-actions[bot]' && steps.git-check.outputs.no_changes == 'false'
         run: |
           git commit -m "chore(types): update generated types (PR auto-update)"
           git push
