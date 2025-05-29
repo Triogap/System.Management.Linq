@@ -3,9 +3,6 @@ name: Build and Publish NuGet Packages
 on:
   push:
     branches: [ master ]
-    paths:
-      - 'Linq/*.csproj'
-      - 'Types/*.csproj'
   pull_request:
     branches: [ master ]
 
