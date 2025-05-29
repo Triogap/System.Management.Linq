@@ -16,10 +16,6 @@ Provides strongly-typed C# representations of WMI and system/network management 
 - .NET 8.0 or .NET 9.0 SDK
 - Windows OS with Windows Management Instrumentation (WMI) enabled
 
-### Installation
-
-Clone the repository:
-git clone https://github.com/Triogap/System.Management.Linq.git
 ## Usage
 
 **Note:** Running WMI queries may require elevated permissions.

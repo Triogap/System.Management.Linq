@@ -17,7 +17,19 @@ Exposes WMI and system/network management objects as strongly-typed C# classes, 
 
 ### Installation
 
-Clone the repository:
+Install the NuGet package:
+
+```shell
+dotnet add package Triogap.System.Management.Linq
+```
+
+Or using the Package Manager Console:
+
+```shell
+Install-Package Triogap.System.Management.Linq
+```
+
+Clone the repository (optional, for development)
 
 ```shell
 git clone https://github.com/Triogap/System.Management.Linq.git
