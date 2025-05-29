@@ -1,5 +1,8 @@
 ﻿namespace System.Management.Types.Base;
 
+/// <summary>
+/// Base wrapper for all <see cref="Management.ManagementObject"/> instances implementing the <see cref="ISystemProperties"/> interface explicitly.
+/// </summary>
 public record class _Object(ManagementObject ManagementObject) : ISystemProperties
 {
     string ISystemProperties.ClassName => (string)ManagementObject["__Class"];

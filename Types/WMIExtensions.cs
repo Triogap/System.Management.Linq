@@ -4,13 +4,61 @@ using System.Text.RegularExpressions;
 
 namespace System.Management.Types;
 
+/// <summary>
+/// Provides extension methods for working with WMI <see cref="ManagementObject"/> instances,
+/// including property access, system property retrieval, SQL-like pattern matching, and type conversions.
+/// These helpers simplify common WMI data manipulation and querying scenarios.
+/// </summary>
 public static class WMIExtensions
 {
+    /// <summary>
+    /// The datetime format used for parsing and formatting WMI date and time strings.
+    /// </summary>
     public const string DateTimeFormat = "yyyyMMddHHmmss.ffffff";
+
+    /// <summary>
+    /// Determines whether the specified string matches the given SQL-like pattern.
+    /// </summary>
+    /// <param name="value">The string to test for a match.</param>
+    /// <param name="pattern">
+    /// The SQL-like pattern to match against. Supports '%' as a wildcard for any sequence of characters and '_' for any single character.
+    /// </param>
+    /// <returns>
+    /// <c>true</c> if the string matches the pattern; otherwise, <c>false</c>.
+    /// </returns>
+    public static bool Like(this string? value, string pattern)
+        => value != null && GetRegularExpressionFromLikeExpression(pattern).IsMatch(value);
+
+    /// <summary>
+    /// Gets the system properties of the specified <see cref="ManagementObject"/>.
+    /// </summary>
+    /// <param name="object">The <see cref="ManagementObject"/> instance.</param>
+    /// <returns>
+    /// An <see cref="ISystemProperties"/> implementation for accessing system properties.
+    /// </returns>
+    public static ISystemProperties GetSystemProperties(this ManagementObject @object)
+        => new Base._Object(@object);
+
+    /// <summary>
+    /// Gets a specific system property value from the specified <see cref="ManagementObject"/>.
+    /// </summary>
+    /// <typeparam name="T">The type of the property value to return.</typeparam>
+    /// <param name="object">The <see cref="ManagementObject"/> instance.</param>
+    /// <param name="propertyGetter">
+    /// A function that retrieves the desired property from an <see cref="ISystemProperties"/> instance.
+    /// </param>
+    /// <returns>
+    /// The value of the specified system property.
+    /// </returns>
+    public static T GetSystemProperty<T>(this ManagementObject @object, Func<ISystemProperties, T> propertyGetter)
+        => propertyGetter(new Base._Object(@object));
+
     internal static DateTimeOffset[]? GetDateTimePropertyValues(this ManagementObject managementObject, string propertyName)
         => managementObject[propertyName] is string[] s ? s.Select(ParseDateTime).ToArray() : null;
+
     internal static DateTimeOffset? GetDateTimePropertyValue(this ManagementObject managementObject, string propertyName)
         => managementObject[propertyName] is string s ? ParseDateTime(s) : null;
+
     private static DateTimeOffset ParseDateTime(string value)
         => new(DateTime.ParseExact(value[0..21], DateTimeFormat, CultureInfo.InvariantCulture), TimeSpan.FromMinutes(double.Parse(value[22..])));
 
@@ -30,9 +78,6 @@ public static class WMIExtensions
         }
         return (TEnum)Convert.ChangeType(flaggedValue, typeof(TEnum));
     }
-
-    public static bool Like(this string? value, string pattern)
-        => value != null && GetRegularExpressionFromLikeExpression(pattern).IsMatch(value);
 
     private static Regex GetRegularExpressionFromLikeExpression(string pattern)
     {
@@ -95,11 +140,5 @@ public static class WMIExtensions
 
         return new(expressionBuilder.ToString());
     }
-
-    public static ISystemProperties GetSystemProperties(this ManagementObject @object)
-        => new Base._Object(@object);
-
-    public static T GetSystemProperty<T>(this ManagementObject @object, Func<ISystemProperties, T> propertyGetter)
-        => propertyGetter(new Base._Object(@object));
 }
 
