@@ -11,11 +11,9 @@
   <PropertyGroup>
     <PackageId>Triogap.System.Management.Types</PackageId>
     <PackageTags>System.Management;WMI</PackageTags>
-    <Version>0.1.0</Version>
+    <Version>0.1.1</Version>
     <PackageReleaseNotes>
-      Initial release.
-      Includes 225 strongly-typed WMI types in the Win32 namespace like Win32_Process.
-      Only properties can be read in this version; write operations and methods are not supported.
+      Added documntation comments for all public types and members.
     </PackageReleaseNotes>
     <Authors>Triogap</Authors>
     <Description>Types and helpers for WMI and System.Management extensions.</Description>
