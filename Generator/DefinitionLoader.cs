@@ -362,26 +362,26 @@ internal partial class DefinitionLoader(IEnumerable<string> classNames)
     private static async Task<List<MethodDefinition>> ParseMethods(Uri classUri, string methodBlock)
     {
         List<MethodDefinition> result = [];
-        var tBodyIndex = methodBlock.IndexOf("<tbody");
-        foreach (Match methodRow in TableRowRegex.Matches(methodBlock[tBodyIndex..]))
-        {
-            List<string> cells = [.. TableCellRegex.Matches(methodRow.Groups[1].Value).Select(c => c.Groups[1].Value)];
-            if (cells.Count != 2)
-            {
-                ErrorReporter.Report($"Found unexpected number({cells.Count}) of cells in method Row.");
-            }
+        //var tBodyIndex = methodBlock.IndexOf("<tbody");
+        //foreach (Match methodRow in TableRowRegex.Matches(methodBlock[tBodyIndex..]))
+        //{
+        //    List<string> cells = [..TableCellRegex.Matches(methodRow.Groups[1].Value).Select(c => c.Groups[1].Value)];
+        //    if (cells.Count != 2)
+        //    {
+        //        ErrorReporter.Report($"Found unexpected number({cells.Count}) of cells in method Row.");
+        //    }
 
-            var nameCell = cells[0];
-            var linkMatch = LinkRegex.Match(nameCell);
-            if (!linkMatch.Success)
-            {
-                continue;
-            }
+        //    var nameCell = cells[0];
+        //    var linkMatch = LinkRegex.Match(nameCell);
+        //    if (!linkMatch.Success)
+        //    {
+        //        continue;
+        //    }
 
-            var name = TrimHTML(nameCell);
-            var description = TrimHTML(cells[1]);
-            var methodPageContent = await GetPageContentsAsync(new Uri(classUri, linkMatch.Groups[1].Value));
-        }
+        //    var name = TrimHTML(nameCell);
+        //    var description = TrimHTML(cells[1]);
+        //    var methodPageContent = await GetPageContentsAsync(new Uri(classUri, linkMatch.Groups[1].Value));
+        //}
 
         return result;
     }
