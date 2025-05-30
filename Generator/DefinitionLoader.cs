@@ -1,8 +1,9 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using System.Text.RegularExpressions;
+using System.Threading.Channels;
 namespace System.Management.Generator;
 
-internal partial class DefinitionLoader(IEnumerable<string> classNames)
+internal partial class DefinitionLoader(ChannelWriter<ClassDefinition> channel)
 {
 
     [GeneratedRegex(@"<code class=""lang-syntax"">([^<]*)</code>")]
@@ -33,68 +34,56 @@ internal partial class DefinitionLoader(IEnumerable<string> classNames)
     private static partial Regex GetLinkRegex();
     private static readonly Regex LinkRegex = GetLinkRegex();
 
-    private readonly Dictionary<string, ClassDefinition> _classDefinitions = classNames.ToDictionary(n => n, n => default(ClassDefinition), StringComparer.OrdinalIgnoreCase);
-    public IEnumerable<ClassDefinition> LoadedClassDefinitions => _classDefinitions.Values;
+    private readonly Dictionary<string, string> _typeMismatches = new() { ["Win32_LogicalElement"] = "CIM_LogicalElement" };
+    private readonly HashSet<string> _loadedClassDefinitions = new(StringComparer.OrdinalIgnoreCase);
 
-    private string? CheckClass(string? className)
+    public async Task Load(IEnumerable<string> classesToLoad)
+    {
+        foreach (var className in classesToLoad)
+        {
+            await TryLoadClass(className);
+        }
+
+        channel.Complete();
+    }
+
+    private async Task<string?> TryLoadClass(string? className)
     {
         if (className == null)
         {
             return null;
         }
 
-        if ("Win32_LogicalElement".Equals(className))
+        if (_typeMismatches.TryGetValue(className, out var correctClassName))
         {
-            return CheckClass("CIM_LogicalElement");
+            return await TryLoadClass(correctClassName);
         }
 
-        if (!_classDefinitions.ContainsKey(className))
-        {
-            if (className.IndexOf('_') == -1)
-            {
-                return CheckClass($"__{className}");
-            }
-
-            _classDefinitions.Add(className, default);
-            Console.WriteLine($"Met new class {className}.");
-        }
-        return className;
-    }
-
-    public async Task Load()
-    {
-        foreach (var className in GetUnloadedClassNames())
+        if (_loadedClassDefinitions.Add(className))
         {
             if (await LoadClassDefinition(className) is ClassDefinition classDefinition)
             {
-                _classDefinitions[className] = classDefinition;
+                Console.WriteLine($"Loaded info for {className}:");
+                await channel.WriteAsync(classDefinition);
+                return className;
             }
-            else
+            else if (className.IndexOf('_') == -1)
             {
-                _classDefinitions.Remove(className);
+                var prefixedClassName = $"__{className}";
+                _typeMismatches[className] = prefixedClassName;
+                return await TryLoadClass(prefixedClassName);
             }
         }
-    }
 
-    private IEnumerable<string> GetUnloadedClassNames()
-    {
-        var classNames = _classDefinitions.Where(kvp => kvp.Value.ClassName == null).Select(kvp => kvp.Key).ToArray();
-        while (classNames.Length > 0)
-        {
-            foreach (var className in classNames)
-            {
-                yield return className;
-            }
-            classNames = _classDefinitions.Where(kvp => kvp.Value.ClassName == null).Select(kvp => kvp.Key).ToArray();
-        }
+        return null;
     }
 
     private async Task<ClassDefinition?> LoadClassDefinition(string className)
     {
-        Console.WriteLine($"Getting info for {className}:");
+        Console.WriteLine($"Loading info for {className}:");
         Uri? classUri = null;
         Uri[] uris = className[0] == '_'
-            ? [new Uri($"https://learn.microsoft.com/en-gb/windows/win32/wmisdk/{className.Replace('_', '-')}")]
+            ? [new Uri($"https://learn.microsoft.com/en-us/windows/win32/wmisdk/{className.Replace('_', '-')}")]
             : [new Uri($"https://learn.microsoft.com/en-us/windows/win32/cimwin32prov/{className.Replace('_', '-')}"),
                new Uri($"https://learn.microsoft.com/en-us/previous-versions/windows/desktop/secrcw32prov//{className.Replace('_', '-')}")];
 
@@ -111,7 +100,7 @@ internal partial class DefinitionLoader(IEnumerable<string> classNames)
             {
                 if (i + 1 == uris.Length)
                 {
-                    ErrorReporter.Report($"Unable to find Microsoft Learn page to parse for {className}: {ex.Message}", ex);
+                    ErrorReporter.Report($"Unable to find Microsoft Learn page to parse for {className}: {ex.Message}", ex, throwOrBreak: false);
                     break;
                 }
             }
@@ -119,7 +108,6 @@ internal partial class DefinitionLoader(IEnumerable<string> classNames)
 
         if (classUri == null || pageContents == null)
         {
-            ErrorReporter.Report($"Failed to load {className}.");
             return null;
         }
 
@@ -151,14 +139,14 @@ internal partial class DefinitionLoader(IEnumerable<string> classNames)
                 ErrorReporter.Report($"Encounterd different type {classDef[1]} when parsing data for {className}.");
             }
 
-            superClass = CheckClass(classDef.Length > 2 ? classDef[^1] : null);
+            superClass = await TryLoadClass(classDef.Length > 2 ? classDef[^1] : null);
 
             break;
         }
 
         var propertyBlock = pageContents.IndexOf("<h3 id=\"properties\"");
         var endBlock = pageContents.IndexOf("<h3", propertyBlock + 1);
-        var properties = propertyBlock == -1 ? [] : ParseProperties(codeLines[(lineIndex + 2)..^1], pageContents[propertyBlock..endBlock]).ToList();
+        var properties = propertyBlock == -1 ? [] : await ParseProperties(codeLines[(lineIndex + 2)..^1], pageContents[propertyBlock..endBlock]);
 
         var methodBlock = pageContents.IndexOf("<h3 id=\"methods\"");
         endBlock = pageContents.IndexOf("<h3", methodBlock + 1);
@@ -177,31 +165,37 @@ internal partial class DefinitionLoader(IEnumerable<string> classNames)
         return await response.Content.ReadAsStringAsync();
     }
 
-    private IEnumerable<PropertyDefinition> ParseProperties(string[] propertyLines, string propertiesBlock)
+    private async Task<List<PropertyDefinition>> ParseProperties(string[] propertyLines, string propertiesBlock)
     {
-        foreach (var property in propertyLines.Select(ParsePropertyLine).OfType<PropertyDefinition>())
+        var result = new List<PropertyDefinition>(propertyLines.Length);
+        foreach (var propertyLine in propertyLines)
         {
-            if (TryGetPropertyV1(property.Name, propertiesBlock, out var propertyBlock))
+            if (await ParsePropertyLine(propertyLine) is PropertyDefinition property)
             {
-                if (PropertyIsInherited(propertyBlock))
+                if (TryGetPropertyV1(property.Name, propertiesBlock, out var propertyBlock))
                 {
-                    continue;
+                    if (PropertyIsInherited(propertyBlock))
+                    {
+                        continue;
+                    }
+                    result.Add(await UpdatePropertyV1(property, propertyBlock));
                 }
-                yield return UpdatePropertyV1(property, propertyBlock);
-            }
-            else if (TryGetPropertyV2(property.Name, propertiesBlock, out propertyBlock))
-            {
-                if (PropertyIsInherited(propertyBlock))
+                else if (TryGetPropertyV2(property.Name, propertiesBlock, out propertyBlock))
                 {
-                    continue;
+                    if (PropertyIsInherited(propertyBlock))
+                    {
+                        continue;
+                    }
+                    result.Add(await UpdatePropertyV2(property, propertyBlock));
                 }
-                yield return UpdatePropertyV2(property, propertyBlock);
-            }
-            else
-            {
-                ErrorReporter.Report($"No description found for property {property.Name}.", throwOrBreak: false);
+                else
+                {
+                    ErrorReporter.Report($"No description found for property {property.Name}.", throwOrBreak: false);
+                }
             }
         }
+
+        return result;
     }
 
     private static bool TryGetPropertyV1(string propertyName, string propertiesBlock, [MaybeNullWhen(false)]out string propertyBlock)
@@ -235,11 +229,12 @@ internal partial class DefinitionLoader(IEnumerable<string> classNames)
     private static bool PropertyIsInherited(string propertyBlock)
         => propertyBlock.Contains("This property is inherited from");
 
-    private PropertyDefinition UpdatePropertyV1(PropertyDefinition property, string propertyBlock)
+    private async Task<PropertyDefinition> UpdatePropertyV1(PropertyDefinition property, string propertyBlock)
     {
         foreach (var paragraph in ParagraphRegex.Matches(propertyBlock).Select(TrimHTML))
         {
-            if (!ParseSubProperty(ref property, paragraph))
+            (var parsed, property) = await ParseSubProperty(property, paragraph);
+            if (!parsed)
             {
                 property = property with { Description = paragraph };
                 break;
@@ -249,11 +244,11 @@ internal partial class DefinitionLoader(IEnumerable<string> classNames)
         return property;
     }
 
-    private PropertyDefinition UpdatePropertyV2(PropertyDefinition property, string propertyBlock)
+    private async Task<PropertyDefinition> UpdatePropertyV2(PropertyDefinition property, string propertyBlock)
     {
         foreach (var propertyDescription in PropertyRegex.Matches(propertyBlock).Select(TrimHTML))
         {
-            ParseSubProperty(ref property, propertyDescription);
+            (_, property) = await ParseSubProperty(property, propertyDescription);
         }
 
         if (TrimHTML(DescriptionRegex.Match(propertyBlock)) is string description && description.Length > 0)
@@ -264,12 +259,12 @@ internal partial class DefinitionLoader(IEnumerable<string> classNames)
         return property;
     }
 
-    private bool ParseSubProperty(ref PropertyDefinition property, string paragraph)
+    private async Task<(bool, PropertyDefinition)> ParseSubProperty(PropertyDefinition property, string paragraph)
     {
         var colonIndex = paragraph.IndexOf(':');
         if (colonIndex == -1)
         {
-            return false;
+            return (false, property);
         }
 
         switch (paragraph[..colonIndex])
@@ -289,7 +284,7 @@ internal partial class DefinitionLoader(IEnumerable<string> classNames)
                     }
                     else if (typeName.Contains('_'))
                     {
-                        property = property with { Type = CimType.Reference, ReferencedClass = CheckClass(typeName) };
+                        property = property with { Type = CimType.Reference, ReferencedClass = await TryLoadClass(typeName) };
                     }
                     else
                     {
@@ -314,7 +309,7 @@ internal partial class DefinitionLoader(IEnumerable<string> classNames)
                 property = property with { Qualifiers = ParseQualifiers(paragraph[(colonIndex + 2)..]) };
                 break;
         }
-        return true;
+        return (true, property);
     }
 
     private static List<QualifierDefinition> ParseQualifiers(string qualifiers)
@@ -334,7 +329,7 @@ internal partial class DefinitionLoader(IEnumerable<string> classNames)
             .Replace("&nbsp;", " ")
             .Trim();
 
-    private PropertyDefinition? ParsePropertyLine(string propertyLine)
+    private async Task<PropertyDefinition?> ParsePropertyLine(string propertyLine)
     {
         var parts = TrimHTML(propertyLine).Split(' ', options: StringSplitOptions.RemoveEmptyEntries);
 
@@ -347,7 +342,7 @@ internal partial class DefinitionLoader(IEnumerable<string> classNames)
         if (!Enum.TryParse(parts[0], ignoreCase: true, out CimType type) && parts[0].Contains('_'))
         {
             type = CimType.Reference;
-            referenceType = CheckClass(parts[0]);
+            referenceType = await TryLoadClass(parts[0]);
         }
 
         var name = parts[^2][0] == '=' ? parts[^3] : parts[^1];

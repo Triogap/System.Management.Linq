@@ -1,5 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using System.Management.Generator;
+using System.Threading.Channels;
 
 List<string> classes = 
     [ 
@@ -80,7 +81,8 @@ List<string> classes =
     "Win32_MethodParameterClass", "Win32_WMIElementSetting", "Win32_WMISetting",
 ];
 
-var loader = new DefinitionLoader(classes);
-await loader.Load();
-var generator = new CodeGenerator(loader.LoadedClassDefinitions);
-generator.GenerateCode();
+var channel = Channel.CreateUnbounded<ClassDefinition>();
+
+var loader = new DefinitionLoader(channel.Writer);
+var generator = new CodeGenerator(channel.Reader);
+await Task.WhenAll(loader.Load(classes), generator.GenerateCode());
