@@ -11,6 +11,9 @@ jobs:
   generate-and-commit:
     runs-on: ubuntu-latest
 
+    permissions:
+      contents: write  # Needed to allow push with GITHUB_TOKEN
+
     steps:
       - name: Checkout PR branch
         uses: actions/checkout@v4
@@ -44,15 +47,24 @@ jobs:
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add Types/**/*.g.cs
+          git add Types/**/*.g.cs || true
           if git diff --cached --quiet; then
             echo "no_changes=true" >> $GITHUB_OUTPUT
           else
             echo "no_changes=false" >> $GITHUB_OUTPUT
           fi
 
+      - name: Set up authentication for push
+        if: steps.last-commit.outputs.author != 'github-actions[bot]' && steps.git-check.outputs.no_changes == 'false'
+        run: |
+          git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Commit and push changes to PR branch
         if: steps.last-commit.outputs.author != 'github-actions[bot]' && steps.git-check.outputs.no_changes == 'false'
         run: |
           git commit -m "chore(types): update generated types (PR auto-update)"
           git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
