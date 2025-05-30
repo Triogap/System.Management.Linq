@@ -5,9 +5,10 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class PageFile(ManagementObject ManagementObject) : CIM.DataFile(ManagementObject)
+public partial record class PageFile(ManagementObject ManagementObject) : Base._Object(ManagementObject)
 {
     /// <summary>
     /// Space available in the paging file. The operating system can enlarge the paging file as necessary, up to the limit imposed by the user. This property shows the difference between the size of current committed memory and the current size of the paging file; it does not show the largest possible size of the paging file.
@@ -24,5 +25,5 @@ public partial record class PageFile(ManagementObject ManagementObject) : CIM.Da
     /// <summary>
     /// Name of the page file.
     /// </summary>
-    public new string? Name => (string)ManagementObject[nameof(Name)];
+    public string? Name => (string)ManagementObject[nameof(Name)];
 }

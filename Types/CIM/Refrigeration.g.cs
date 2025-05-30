@@ -5,8 +5,9 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.CIM;
 
-public partial record class Refrigeration(ManagementObject ManagementObject) : CoolingDevice(ManagementObject)
+public partial record class Refrigeration(ManagementObject ManagementObject) : Base._Object(ManagementObject)
 {
 }

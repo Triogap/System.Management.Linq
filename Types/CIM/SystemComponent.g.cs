@@ -5,6 +5,7 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.CIM;
 
 public partial record class SystemComponent(ManagementObject ManagementObject) : Component(ManagementObject)
@@ -12,7 +13,7 @@ public partial record class SystemComponent(ManagementObject ManagementObject) :
     /// <summary>
     /// A CIM_ManagedSystemElement that describes the child element that is a component of a system.
     /// </summary>
-    public new ManagedSystemElement? PartComponent => (ManagedSystemElement)ManagementObject[nameof(PartComponent)];
+    public new Base._Object? PartComponent => (Base._Object)ManagementObject[nameof(PartComponent)];
     /// <summary>
     /// A CIM_System that describes the parent system in the association.
     /// </summary>

@@ -5,9 +5,10 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.CIM;
 
-public partial record class DiskPartition(ManagementObject ManagementObject) : StorageExtent(ManagementObject)
+public partial record class DiskPartition(ManagementObject ManagementObject) : Base._Object(ManagementObject)
 {
     /// <summary>
     /// If TRUE, the disk partition is labeled as bootable. This does not mean that an operating system is loaded on the partition.

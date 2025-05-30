@@ -5,6 +5,7 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.Win32;
 
 public partial record class SessionProcess(ManagementObject ManagementObject) : SessionResource(ManagementObject)
@@ -12,9 +13,9 @@ public partial record class SessionProcess(ManagementObject ManagementObject) : 
     /// <summary>
     /// A Win32_LogonSession that represents the session which is related to the process.
     /// </summary>
-    public new LogonSession? Antecedent => (LogonSession)ManagementObject[nameof(Antecedent)];
+    public new Base._Object? Antecedent => (Base._Object)ManagementObject[nameof(Antecedent)];
     /// <summary>
     /// A Win32_Process that represents the process associated with the session.
     /// </summary>
-    public new Process? Dependent => (Process)ManagementObject[nameof(Dependent)];
+    public new Base._Object? Dependent => (Base._Object)ManagementObject[nameof(Dependent)];
 }

@@ -5,6 +5,7 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.Win32;
 
 public partial record class DiskPartition(ManagementObject ManagementObject) : CIM.DiskPartition(ManagementObject)
@@ -16,7 +17,7 @@ public partial record class DiskPartition(ManagementObject ManagementObject) : C
     /// <summary>
     /// Unique identifier of the disk drive and partition, from the rest of the system.
     /// </summary>
-    public new string? DeviceID => (string)ManagementObject[nameof(DeviceID)];
+    public string? DeviceID => (string)ManagementObject[nameof(DeviceID)];
     /// <summary>
     /// Index number of the disk containing this partition.
     /// </summary>

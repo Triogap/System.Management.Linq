@@ -5,6 +5,7 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.Win32;
 
 public partial record class Refrigeration(ManagementObject ManagementObject) : CIM.Refrigeration(ManagementObject)

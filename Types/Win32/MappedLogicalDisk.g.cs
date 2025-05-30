@@ -5,9 +5,10 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class MappedLogicalDisk(ManagementObject ManagementObject) : CIM.LogicalDisk(ManagementObject)
+public partial record class MappedLogicalDisk(ManagementObject ManagementObject) : Base._Object(ManagementObject)
 {
     /// <summary>
     /// If True, the file is compressed.

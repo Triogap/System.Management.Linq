@@ -5,9 +5,10 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.Base;
 
-public partial record class _NTLMUser9X(ManagementObject ManagementObject) : _SecurityRelatedClass(ManagementObject)
+public partial record class _NTLMUser9X(ManagementObject ManagementObject) : _Object(ManagementObject)
 {
     /// <summary>
     /// Domain to which a user name applies.

@@ -5,16 +5,17 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class SystemPartitions(ManagementObject ManagementObject) : SystemDevices(ManagementObject)
+public partial record class SystemPartitions(ManagementObject ManagementObject) : Base._Object(ManagementObject)
 {
     /// <summary>
     /// Reference to the instance representing the properties of the computer system where the disk partition is located.
     /// </summary>
-    public new ComputerSystem? GroupComponent => (ComputerSystem)ManagementObject[nameof(GroupComponent)];
+    public Base._Object? GroupComponent => (Base._Object)ManagementObject[nameof(GroupComponent)];
     /// <summary>
     /// Reference to the instance representing the properties of a disk partition that exists on the computer system.
     /// </summary>
-    public new DiskPartition? PartComponent => (DiskPartition)ManagementObject[nameof(PartComponent)];
+    public Base._Object? PartComponent => (Base._Object)ManagementObject[nameof(PartComponent)];
 }

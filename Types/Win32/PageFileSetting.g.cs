@@ -5,9 +5,10 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class PageFileSetting(ManagementObject ManagementObject) : CIM.Setting(ManagementObject)
+public partial record class PageFileSetting(ManagementObject ManagementObject) : Base._Object(ManagementObject)
 {
     /// <summary>
     /// Initial size of the page file.

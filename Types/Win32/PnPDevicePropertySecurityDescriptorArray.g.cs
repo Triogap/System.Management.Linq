@@ -5,12 +5,13 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class PnPDevicePropertySecurityDescriptorArray(ManagementObject ManagementObject) : PnPDeviceProperty(ManagementObject)
+public partial record class PnPDevicePropertySecurityDescriptorArray(ManagementObject ManagementObject) : Base._Object(ManagementObject)
 {
     /// <summary>
     /// The property value.
     /// </summary>
-    public SecurityDescriptor[]? Data => (SecurityDescriptor[])ManagementObject[nameof(Data)];
+    public Base._Object[]? Data => (Base._Object[])ManagementObject[nameof(Data)];
 }

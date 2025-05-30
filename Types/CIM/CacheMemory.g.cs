@@ -5,9 +5,10 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.CIM;
 
-public partial record class CacheMemory(ManagementObject ManagementObject) : Memory(ManagementObject)
+public partial record class CacheMemory(ManagementObject ManagementObject) : Base._Object(ManagementObject)
 {
     /// <summary>
     /// Enumeration that defines the system cache associativity.

@@ -5,9 +5,10 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.CIM;
 
-public partial record class Printer(ManagementObject ManagementObject) : LogicalDevice(ManagementObject)
+public partial record class Printer(ManagementObject ManagementObject) : Base._Object(ManagementObject)
 {
     /// <summary>
     /// Describes all of the job sheets that are available on the printer. This can also be used to describe the banner that a printer might provide at the beginning of each job, or can describe other user specified options.

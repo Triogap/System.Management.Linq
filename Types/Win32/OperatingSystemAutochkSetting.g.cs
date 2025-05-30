@@ -5,16 +5,17 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class OperatingSystemAutochkSetting(ManagementObject ManagementObject) : CIM.ElementSetting(ManagementObject)
+public partial record class OperatingSystemAutochkSetting(ManagementObject ManagementObject) : Base._Object(ManagementObject)
 {
     /// <summary>
     /// TBD
     /// </summary>
-    public new OperatingSystem? Element => (OperatingSystem)ManagementObject[nameof(Element)];
+    public Base._Object? Element => (Base._Object)ManagementObject[nameof(Element)];
     /// <summary>
     /// TBD
     /// </summary>
-    public new AutochkSetting? Setting => (AutochkSetting)ManagementObject[nameof(Setting)];
+    public Base._Object? Setting => (Base._Object)ManagementObject[nameof(Setting)];
 }

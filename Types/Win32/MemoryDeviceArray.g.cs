@@ -5,16 +5,17 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class MemoryDeviceArray(ManagementObject ManagementObject) : CIM.Component(ManagementObject)
+public partial record class MemoryDeviceArray(ManagementObject ManagementObject) : Base._Object(ManagementObject)
 {
     /// <summary>
     /// A Win32_MemoryArray that represents the memory array part of the Win32_MemoryDeviceArray association.
     /// </summary>
-    public new MemoryArray? GroupComponent => (MemoryArray)ManagementObject[nameof(GroupComponent)];
+    public Base._Object? GroupComponent => (Base._Object)ManagementObject[nameof(GroupComponent)];
     /// <summary>
     /// A Win32_MemoryDevice that represents a memory device part of the Win32_MemoryDeviceArray association.
     /// </summary>
-    public new MemoryDevice? PartComponent => (MemoryDevice)ManagementObject[nameof(PartComponent)];
+    public Base._Object? PartComponent => (Base._Object)ManagementObject[nameof(PartComponent)];
 }

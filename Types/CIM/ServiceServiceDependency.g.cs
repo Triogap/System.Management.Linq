@@ -5,18 +5,19 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.CIM;
 
-public partial record class ServiceServiceDependency(ManagementObject ManagementObject) : Dependency(ManagementObject)
+public partial record class ServiceServiceDependency(ManagementObject ManagementObject) : Base._Object(ManagementObject)
 {
     /// <summary>
     /// A CIM_Service that describes the service that is dependent on an underlying service.
     /// </summary>
-    public new Service? Dependent => (Service)ManagementObject[nameof(Dependent)];
+    public Base._Object? Dependent => (Base._Object)ManagementObject[nameof(Dependent)];
     /// <summary>
     /// A CIM_Service that describes the required service.
     /// </summary>
-    public new Service? Antecedent => (Service)ManagementObject[nameof(Antecedent)];
+    public Base._Object? Antecedent => (Base._Object)ManagementObject[nameof(Antecedent)];
     /// <summary>
     /// Nature of the service-to-service dependency. This property indicates that the associated service must have completed, must be started, or must not be started for the service to function.
     /// </summary>

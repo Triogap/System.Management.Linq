@@ -5,16 +5,17 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class NetworkAdapterSetting(ManagementObject ManagementObject) : DeviceSettings(ManagementObject)
+public partial record class NetworkAdapterSetting(ManagementObject ManagementObject) : Base._Object(ManagementObject)
 {
     /// <summary>
     /// A Win32_NetworkAdapterConfiguration that describes the configuration settings used on the network adapter.
     /// </summary>
-    public new NetworkAdapterConfiguration? Setting => (NetworkAdapterConfiguration)ManagementObject[nameof(Setting)];
+    public Base._Object? Setting => (Base._Object)ManagementObject[nameof(Setting)];
     /// <summary>
     /// A Win32_NetworkAdapter that describes the properties of the network adapter that is using a particular network adapter setting.
     /// </summary>
-    public new NetworkAdapter? Element => (NetworkAdapter)ManagementObject[nameof(Element)];
+    public Base._Object? Element => (Base._Object)ManagementObject[nameof(Element)];
 }

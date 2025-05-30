@@ -5,9 +5,10 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class SMBIOSMemory(ManagementObject ManagementObject) : CIM.StorageExtent(ManagementObject)
+public partial record class SMBIOSMemory(ManagementObject ManagementObject) : Base._Object(ManagementObject)
 {
     /// <summary>
     /// Array of octets that hold additional error information. An example is Error Checking and Correcting (ECC) Syndrome, or the return of the check bits if a CRC-based error methodology is used. In the latter case, if a single bit error is recognized and the cyclical redundancy check (CRC) algorithm is known, it is possible to determine the exact bit that failed. This type of data (ECC Syndrome, Check Bit or Parity Bit data, or other vendor supplied information) is included in this field. If the ErrorInfo property is equal to 3 (OK), then this property has no meaning.

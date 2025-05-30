@@ -5,9 +5,10 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class PnPDevicePropertyUint8(ManagementObject ManagementObject) : PnPDeviceProperty(ManagementObject)
+public partial record class PnPDevicePropertyUint8(ManagementObject ManagementObject) : Base._Object(ManagementObject)
 {
     /// <summary>
     /// The property value.

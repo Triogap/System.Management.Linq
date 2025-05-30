@@ -5,16 +5,17 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class WMIElementSetting(ManagementObject ManagementObject) : CIM.ElementSetting(ManagementObject)
+public partial record class WMIElementSetting(ManagementObject ManagementObject) : Base._Object(ManagementObject)
 {
     /// <summary>
     /// Reference to the instance representing the Windows service using or surfacing WMI properties.
     /// </summary>
-    public new Service? Element => (Service)ManagementObject[nameof(Element)];
+    public Base._Object? Element => (Base._Object)ManagementObject[nameof(Element)];
     /// <summary>
     /// Reference to the instance representing the WMI settings available to the Windows service.
     /// </summary>
-    public new WMISetting? Setting => (WMISetting)ManagementObject[nameof(Setting)];
+    public WMISetting? Setting => (WMISetting)ManagementObject[nameof(Setting)];
 }

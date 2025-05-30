@@ -5,9 +5,10 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class BootConfiguration(ManagementObject ManagementObject) : CIM.Setting(ManagementObject)
+public partial record class BootConfiguration(ManagementObject ManagementObject) : Base._Object(ManagementObject)
 {
     /// <summary>
     /// Path to the system files required for booting the system.

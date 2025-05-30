@@ -5,9 +5,10 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.CIM;
 
-public partial record class Thread(ManagementObject ManagementObject) : LogicalElement(ManagementObject)
+public partial record class Thread(ManagementObject ManagementObject) : Base._Object(ManagementObject)
 {
     /// <summary>
     /// Name of the class or subclass used in the creation of an instance. When used with other key properties of the class, this property allow all instances of the class and its subclasses to be uniquely identified.

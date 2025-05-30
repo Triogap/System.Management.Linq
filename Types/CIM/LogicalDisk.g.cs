@@ -5,9 +5,10 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.CIM;
 
-public partial record class LogicalDisk(ManagementObject ManagementObject) : StorageExtent(ManagementObject)
+public partial record class LogicalDisk(ManagementObject ManagementObject) : Base._Object(ManagementObject)
 {
     /// <summary>
     /// Available free space, in bytes, on the logical disk.

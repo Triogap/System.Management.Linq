@@ -5,6 +5,7 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.Win32;
 
 public partial record class SystemDevices(ManagementObject ManagementObject) : CIM.SystemDevice(ManagementObject)
@@ -16,5 +17,5 @@ public partial record class SystemDevices(ManagementObject ManagementObject) : C
     /// <summary>
     /// Reference to the instance representing the properties of a logical device that exists on the computer system.
     /// </summary>
-    public new CIM.LogicalDevice? PartComponent => (CIM.LogicalDevice)ManagementObject[nameof(PartComponent)];
+    public new Base._Object? PartComponent => (Base._Object)ManagementObject[nameof(PartComponent)];
 }

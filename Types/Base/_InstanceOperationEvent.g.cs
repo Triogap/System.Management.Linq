@@ -5,9 +5,10 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.Base;
 
-public partial record class _InstanceOperationEvent(ManagementObject ManagementObject) : _Event(ManagementObject)
+public partial record class _InstanceOperationEvent(ManagementObject ManagementObject) : _Object(ManagementObject)
 {
     /// <summary>
     /// Instance affected by the event. For creation events, this is the newly created instance. For modification events, this is the new version of the changed instance. For deletion events, this is the deleted instance.

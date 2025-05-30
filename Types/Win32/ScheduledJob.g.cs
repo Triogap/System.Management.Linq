@@ -5,9 +5,10 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class ScheduledJob(ManagementObject ManagementObject) : CIM.Job(ManagementObject)
+public partial record class ScheduledJob(ManagementObject ManagementObject) : Base._Object(ManagementObject)
 {
     /// <summary>
     /// Name of the command, batch program, or binary file (and command-line arguments) that the schedule service uses to invoke the job.
@@ -32,7 +33,7 @@ public partial record class ScheduledJob(ManagementObject ManagementObject) : CI
     /// <summary>
     /// Status of execution the last time this job was scheduled to run.
     /// </summary>
-    public new string? JobStatus => (string)ManagementObject[nameof(JobStatus)];
+    public string? JobStatus => (string)ManagementObject[nameof(JobStatus)];
     /// <summary>
     /// Scheduled job runs repeatedly on the days that the job is scheduled. If False, then the job is run one time.
     /// </summary>
@@ -40,5 +41,5 @@ public partial record class ScheduledJob(ManagementObject ManagementObject) : CI
     /// <summary>
     /// UTC time to run the job, in the form of "YYYYMMDDHHMMSS.MMMMMM(+-)OOO", where "YYYYMMDD" must be replaced by "********". The replacement is necessary because the scheduling service only allows jobs to be configured to run one time, or run on a day of the month or week. A job cannot be run on a specific date.
     /// </summary>
-    public new DateTimeOffset? StartTime => ManagementObject.GetDateTimePropertyValue(nameof(StartTime));
+    public DateTimeOffset? StartTime => ManagementObject.GetDateTimePropertyValue(nameof(StartTime));
 }

@@ -5,6 +5,7 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.CIM;
 
 public partial record class ElementSetting(ManagementObject ManagementObject) : Base._Object(ManagementObject)
@@ -12,9 +13,9 @@ public partial record class ElementSetting(ManagementObject ManagementObject) : 
     /// <summary>
     /// Reference to the role of the CIM_ManagedSystemElement object of the CIM_ElementSetting association. The associated managed system element provides the element that implements the element setting.
     /// </summary>
-    public ManagedSystemElement? Element => (ManagedSystemElement)ManagementObject[nameof(Element)];
+    public Base._Object? Element => (Base._Object)ManagementObject[nameof(Element)];
     /// <summary>
     /// Reference to the role of the CIM_Setting object of the CIM_ElementSetting association. The associated setting provides the setting that implements the element setting.
     /// </summary>
-    public Setting? Setting => (Setting)ManagementObject[nameof(Setting)];
+    public Base._Object? Setting => (Base._Object)ManagementObject[nameof(Setting)];
 }

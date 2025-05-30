@@ -5,9 +5,10 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class VideoConfiguration(ManagementObject ManagementObject) : CIM.Setting(ManagementObject)
+public partial record class VideoConfiguration(ManagementObject ManagementObject) : Base._Object(ManagementObject)
 {
     /// <summary>
     /// Indicates the current color depth of the video display.

@@ -5,8 +5,9 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class DriverForDevice(ManagementObject ManagementObject) : CIM.Dependency(ManagementObject)
+public partial record class DriverForDevice(ManagementObject ManagementObject) : Base._Object(ManagementObject)
 {
 }

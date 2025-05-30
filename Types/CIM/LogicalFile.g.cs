@@ -5,9 +5,10 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.CIM;
 
-public partial record class LogicalFile(ManagementObject ManagementObject) : LogicalElement(ManagementObject)
+public partial record class LogicalFile(ManagementObject ManagementObject) : Base._Object(ManagementObject)
 {
     /// <summary>
     /// Bitmask that represents the access rights required to access or perform specific operations on the file. For bit values, see File and Directory Access Rights Constants.
@@ -50,7 +51,7 @@ public partial record class LogicalFile(ManagementObject ManagementObject) : Log
     /// Free-form string that identifies the algorithm or tool used to encrypt a logical file. If the encryption scheme is not indulged (for security reasons, for example), use "Unknown". If the file is encrypted, but either its encryption scheme is unknown or not disclosed, use "Encrypted". If the logical file is not encrypted, use "Not Encrypted".
     /// </summary>
     public string? EncryptionMethod => (string)ManagementObject[nameof(EncryptionMethod)];
-    public new string? Name => (string)ManagementObject[nameof(Name)];
+    public string? Name => (string)ManagementObject[nameof(Name)];
     public string? Extension => (string)ManagementObject[nameof(Extension)];
     public string? FileName => (string)ManagementObject[nameof(FileName)];
     /// <summary>

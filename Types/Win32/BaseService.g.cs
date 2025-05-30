@@ -5,9 +5,10 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class BaseService(ManagementObject ManagementObject) : CIM.Service(ManagementObject)
+public partial record class BaseService(ManagementObject ManagementObject) : Base._Object(ManagementObject)
 {
     /// <summary>
     /// Service can be paused.

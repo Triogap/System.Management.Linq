@@ -5,9 +5,10 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.Base;
 
-public partial record class _CIMOMIdentification(ManagementObject ManagementObject) : _SystemClass(ManagementObject)
+public partial record class _CIMOMIdentification(ManagementObject ManagementObject) : _Object(ManagementObject)
 {
     /// <summary>
     /// Date and time of installation. This property is empty after the operating system is installed for the first time.

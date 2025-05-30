@@ -5,12 +5,13 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.Base;
 
-public partial record class _NamespaceModificationEvent(ManagementObject ManagementObject) : _NamespaceOperationEvent(ManagementObject)
+public partial record class _NamespaceModificationEvent(ManagementObject ManagementObject) : _Object(ManagementObject)
 {
     /// <summary>
     /// Copy of the original version of a __Namespace instance. The Name property of this instance identifies the namespace that is modified.
     /// </summary>
-    public _Namespace? PreviousNamespace => (_Namespace)ManagementObject[nameof(PreviousNamespace)];
+    public _Object? PreviousNamespace => (_Object)ManagementObject[nameof(PreviousNamespace)];
 }

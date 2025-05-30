@@ -5,9 +5,10 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class ComponentCategory(ManagementObject ManagementObject) : CIM.LogicalElement(ManagementObject)
+public partial record class ComponentCategory(ManagementObject ManagementObject) : Base._Object(ManagementObject)
 {
     /// <summary>
     /// GUID for this component category.
@@ -16,5 +17,5 @@ public partial record class ComponentCategory(ManagementObject ManagementObject)
     /// <summary>
     /// The Name property indicates a descriptive name of this component category.
     /// </summary>
-    public new string? Name => (string)ManagementObject[nameof(Name)];
+    public string? Name => (string)ManagementObject[nameof(Name)];
 }

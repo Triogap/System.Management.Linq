@@ -5,9 +5,10 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class DCOMApplicationSetting(ManagementObject ManagementObject) : COMSetting(ManagementObject)
+public partial record class DCOMApplicationSetting(ManagementObject ManagementObject) : Base._Object(ManagementObject)
 {
     /// <summary>
     /// Globally unique identifier (GUID) for this DCOM application.

@@ -5,9 +5,10 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.CIM;
 
-public partial record class System(ManagementObject ManagementObject) : LogicalElement(ManagementObject)
+public partial record class System(ManagementObject ManagementObject) : Base._Object(ManagementObject)
 {
     /// <summary>
     /// Name of the class or subclass used in the creation of an instance. When used with other key properties of the class, this property allows all instances of the class and its subclasses to be uniquely identified.
@@ -16,7 +17,7 @@ public partial record class System(ManagementObject ManagementObject) : LogicalE
     /// <summary>
     /// Defines the label by which the object is known.
     /// </summary>
-    public new string? Name => (string)ManagementObject[nameof(Name)];
+    public string? Name => (string)ManagementObject[nameof(Name)];
     /// <summary>
     /// Identifies how the system name was generated, using the subclass heuristic.
     /// </summary>

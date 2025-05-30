@@ -5,9 +5,10 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.CIM;
 
-public partial record class PhysicalConnector(ManagementObject ManagementObject) : PhysicalElement(ManagementObject)
+public partial record class PhysicalConnector(ManagementObject ManagementObject) : Base._Object(ManagementObject)
 {
     /// <summary>
     /// Free-form string that describes the pin configuration and signal use of a physical connector.

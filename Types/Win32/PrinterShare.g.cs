@@ -5,16 +5,17 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class PrinterShare(ManagementObject ManagementObject) : CIM.Dependency(ManagementObject)
+public partial record class PrinterShare(ManagementObject ManagementObject) : Base._Object(ManagementObject)
 {
     /// <summary>
     /// Reference to the instance representing the local printer shared in this association.
     /// </summary>
-    public new Printer? Antecedent => (Printer)ManagementObject[nameof(Antecedent)];
+    public Base._Object? Antecedent => (Base._Object)ManagementObject[nameof(Antecedent)];
     /// <summary>
     /// Reference to the instance representing the share of the printer in this association.
     /// </summary>
-    public new Share? Dependent => (Share)ManagementObject[nameof(Dependent)];
+    public Share? Dependent => (Share)ManagementObject[nameof(Dependent)];
 }

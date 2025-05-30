@@ -5,16 +5,17 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.CIM;
 
-public partial record class VideoSetting(ManagementObject ManagementObject) : ElementSetting(ManagementObject)
+public partial record class VideoSetting(ManagementObject ManagementObject) : Base._Object(ManagementObject)
 {
     /// <summary>
     /// A CIM_VideoControllerResolution that describes the resolutions, refresh rates, scan mode and number of colors that can be set for the Controller.
     /// </summary>
-    public new VideoControllerResolution? Setting => (VideoControllerResolution)ManagementObject[nameof(Setting)];
+    public VideoControllerResolution? Setting => (VideoControllerResolution)ManagementObject[nameof(Setting)];
     /// <summary>
     /// A CIM_VideoController that describes the video controller.
     /// </summary>
-    public new VideoController? Element => (VideoController)ManagementObject[nameof(Element)];
+    public Base._Object? Element => (Base._Object)ManagementObject[nameof(Element)];
 }

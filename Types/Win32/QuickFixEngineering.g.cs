@@ -5,9 +5,10 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class QuickFixEngineering(ManagementObject ManagementObject) : CIM.LogicalElement(ManagementObject)
+public partial record class QuickFixEngineering(ManagementObject ManagementObject) : Base._Object(ManagementObject)
 {
     /// <summary>
     /// Local name of the computer system. The value for this property comes from the CIM_ComputerSystem class.

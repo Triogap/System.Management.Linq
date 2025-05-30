@@ -5,9 +5,10 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class VolumeChangeEvent(ManagementObject ManagementObject) : DeviceChangeEvent(ManagementObject)
+public partial record class VolumeChangeEvent(ManagementObject ManagementObject) : Base._Object(ManagementObject)
 {
     /// <summary>
     /// Drive name (letter) that has been added or removed from the system.

@@ -5,12 +5,38 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.Base;
 
-public partial record class _InstanceProviderRegistration(ManagementObject ManagementObject) : _ObjectProviderRegistration(ManagementObject)
+public partial record class _InstanceProviderRegistration(ManagementObject ManagementObject) : _Object(ManagementObject)
 {
     /// <summary>
     /// Indicates that a class or instance provider supplies data, or retrieves data from WMI and the Common Information Model (CIM) repository. Pull providers support dynamic access to their data; and push providers store their data in the CIM repository, and use WMI to provide access to it. For more information, see Determining Push or Pull Status. The default value is 0 (zero).
     /// </summary>
-    public new int? InteractionType => (int?)ManagementObject[nameof(InteractionType)];
+    public int? InteractionType => (int?)ManagementObject[nameof(InteractionType)];
+    public string[]? QuerySupportLevels => (string[])ManagementObject[nameof(QuerySupportLevels)];
+    /// <summary>
+    /// Not used.
+    /// </summary>
+    public bool? SupportsBatching => (bool?)ManagementObject[nameof(SupportsBatching)];
+    /// <summary>
+    /// If True, the provider supports data deletion.
+    /// </summary>
+    public bool? SupportsDelete => (bool?)ManagementObject[nameof(SupportsDelete)];
+    /// <summary>
+    /// If True, the provider supports data enumeration.
+    /// </summary>
+    public bool? SupportsEnumeration => (bool?)ManagementObject[nameof(SupportsEnumeration)];
+    /// <summary>
+    /// If True, the class or instance provider supports data retrieval.
+    /// </summary>
+    public bool? SupportsGet => (bool?)ManagementObject[nameof(SupportsGet)];
+    /// <summary>
+    /// If True, the class or instance provider supports data modification.
+    /// </summary>
+    public bool? SupportsPut => (bool?)ManagementObject[nameof(SupportsPut)];
+    /// <summary>
+    /// Not used.
+    /// </summary>
+    public bool? SupportsTransactions => (bool?)ManagementObject[nameof(SupportsTransactions)];
 }

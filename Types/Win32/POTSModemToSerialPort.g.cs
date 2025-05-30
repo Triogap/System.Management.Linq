@@ -5,16 +5,17 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class POTSModemToSerialPort(ManagementObject ManagementObject) : CIM.ControlledBy(ManagementObject)
+public partial record class POTSModemToSerialPort(ManagementObject ManagementObject) : Base._Object(ManagementObject)
 {
     /// <summary>
     /// A Win32_POTSModem that represents the POTS modem using the serial port.
     /// </summary>
-    public new POTSModem? Dependent => (POTSModem)ManagementObject[nameof(Dependent)];
+    public Base._Object? Dependent => (Base._Object)ManagementObject[nameof(Dependent)];
     /// <summary>
     /// A Win32_SerialPort that represents the serial port used by the modem.
     /// </summary>
-    public new SerialPort? Antecedent => (SerialPort)ManagementObject[nameof(Antecedent)];
+    public SerialPort? Antecedent => (SerialPort)ManagementObject[nameof(Antecedent)];
 }

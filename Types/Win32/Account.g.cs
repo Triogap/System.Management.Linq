@@ -5,9 +5,10 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class Account(ManagementObject ManagementObject) : CIM.LogicalElement(ManagementObject)
+public partial record class Account(ManagementObject ManagementObject) : Base._Object(ManagementObject)
 {
     /// <summary>
     /// Name of the Windows domain to which a group or user belongs.
@@ -20,7 +21,7 @@ public partial record class Account(ManagementObject ManagementObject) : CIM.Log
     /// <summary>
     /// Name of the Windows system account on the domain specified by the Domain property of this class. This property overrides the Name property inherited from CIM_ManagedSystemElement.
     /// </summary>
-    public new string? Name => (string)ManagementObject[nameof(Name)];
+    public string? Name => (string)ManagementObject[nameof(Name)];
     /// <summary>
     /// Security identifier (SID) for this account. A SID is a string value of variable length used to identify a trustee. Each account has a unique SID issued by an authority (such as a Windows domain), stored in a security database. When a user logs on, the system retrieves the user's SID from the database and places it in the user's access token. The system uses the SID in the user's access token to identify the user in all subsequent interactions with Windows security. When a SID has been used as the unique identifier for a user or group, it cannot be used again to identify another user or group.
     /// </summary>

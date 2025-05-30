@@ -5,6 +5,7 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.Win32;
 
 public partial record class SystemOperatingSystem(ManagementObject ManagementObject) : CIM.InstalledOS(ManagementObject)
@@ -12,9 +13,9 @@ public partial record class SystemOperatingSystem(ManagementObject ManagementObj
     /// <summary>
     /// A Win32_ComputerSystem that describes the properties of the computer system upon which the operating system is installed.
     /// </summary>
-    public new ComputerSystem? GroupComponent => (ComputerSystem)ManagementObject[nameof(GroupComponent)];
+    public new Base._Object? GroupComponent => (Base._Object)ManagementObject[nameof(GroupComponent)];
     /// <summary>
     /// A Win32_OperatingSystem that describes properties of the operating system running on this computer system.
     /// </summary>
-    public new OperatingSystem? PartComponent => (OperatingSystem)ManagementObject[nameof(PartComponent)];
+    public new Base._Object? PartComponent => (Base._Object)ManagementObject[nameof(PartComponent)];
 }

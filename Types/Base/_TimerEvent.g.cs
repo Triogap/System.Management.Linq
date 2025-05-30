@@ -5,9 +5,10 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.Base;
 
-public partial record class _TimerEvent(ManagementObject ManagementObject) : _Event(ManagementObject)
+public partial record class _TimerEvent(ManagementObject ManagementObject) : _Object(ManagementObject)
 {
     /// <summary>
     /// Number of times the event occurred before a notification was delivered to the consumer.

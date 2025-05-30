@@ -5,16 +5,17 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class LogicalProgramGroupItemDataFile(ManagementObject ManagementObject) : CIM.Dependency(ManagementObject)
+public partial record class LogicalProgramGroupItemDataFile(ManagementObject ManagementObject) : Base._Object(ManagementObject)
 {
     /// <summary>
     /// Reference to the instance representing the program groupings in the Start menu.
     /// </summary>
-    public new LogicalProgramGroupItem? Antecedent => (LogicalProgramGroupItem)ManagementObject[nameof(Antecedent)];
+    public Base._Object? Antecedent => (Base._Object)ManagementObject[nameof(Antecedent)];
     /// <summary>
     /// Reference to the instance representing the class associated with the program group.
     /// </summary>
-    public new CIM.DataFile? Dependent => (CIM.DataFile)ManagementObject[nameof(Dependent)];
+    public Base._Object? Dependent => (Base._Object)ManagementObject[nameof(Dependent)];
 }

@@ -5,16 +5,17 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.CIM;
 
-public partial record class AssociatedMemory(ManagementObject ManagementObject) : Dependency(ManagementObject)
+public partial record class AssociatedMemory(ManagementObject ManagementObject) : Base._Object(ManagementObject)
 {
     /// <summary>
     /// A CIM_LogicalDevice that describes the logical device.
     /// </summary>
-    public new LogicalDevice? Dependent => (LogicalDevice)ManagementObject[nameof(Dependent)];
+    public Base._Object? Dependent => (Base._Object)ManagementObject[nameof(Dependent)];
     /// <summary>
     /// A CIM_Memory that describes the memory installed on or associated with a device.
     /// </summary>
-    public new Memory? Antecedent => (Memory)ManagementObject[nameof(Antecedent)];
+    public Memory? Antecedent => (Memory)ManagementObject[nameof(Antecedent)];
 }

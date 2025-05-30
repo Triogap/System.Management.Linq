@@ -5,6 +5,7 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.Win32;
 
 public partial record class ClientApplicationSetting(ManagementObject ManagementObject) : Base._Object(ManagementObject)
@@ -12,9 +13,9 @@ public partial record class ClientApplicationSetting(ManagementObject Management
     /// <summary>
     /// Reference to the instance that represents the COM application that contains configuration options of the executable file.
     /// </summary>
-    public DCOMApplication? Application => (DCOMApplication)ManagementObject[nameof(Application)];
+    public Base._Object? Application => (Base._Object)ManagementObject[nameof(Application)];
     /// <summary>
     /// Reference to the instance that represents the executable file that uses COM settings.
     /// </summary>
-    public CIM.DataFile? Client => (CIM.DataFile)ManagementObject[nameof(Client)];
+    public Base._Object? Client => (Base._Object)ManagementObject[nameof(Client)];
 }

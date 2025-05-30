@@ -5,16 +5,17 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class AllocatedResource(ManagementObject ManagementObject) : CIM.Dependency(ManagementObject)
+public partial record class AllocatedResource(ManagementObject ManagementObject) : Base._Object(ManagementObject)
 {
     /// <summary>
     /// A CIM_LogicalDevice that represents the properties of the logical device that is using the system resources assigned to it.
     /// </summary>
-    public new CIM.LogicalDevice? Dependent => (CIM.LogicalDevice)ManagementObject[nameof(Dependent)];
+    public Base._Object? Dependent => (Base._Object)ManagementObject[nameof(Dependent)];
     /// <summary>
     /// A CIM_SystemResource that describes the properties of a system resource available to the logical device.
     /// </summary>
-    public new CIM.SystemResource? Antecedent => (CIM.SystemResource)ManagementObject[nameof(Antecedent)];
+    public Base._Object? Antecedent => (Base._Object)ManagementObject[nameof(Antecedent)];
 }

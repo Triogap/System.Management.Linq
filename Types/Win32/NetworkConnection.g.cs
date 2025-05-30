@@ -5,9 +5,10 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class NetworkConnection(ManagementObject ManagementObject) : CIM.LogicalElement(ManagementObject)
+public partial record class NetworkConnection(ManagementObject ManagementObject) : Base._Object(ManagementObject)
 {
     /// <summary>
     /// List of access rights to the given file or directory held by the user or group on whose behalf the instance is returned. On FAT volumes, the FULL_ACCESS value is returned instead, indicating no security has been set on the object.
@@ -36,7 +37,7 @@ public partial record class NetworkConnection(ManagementObject ManagementObject)
     /// <summary>
     /// Name of the current network connection. It is the combination of the values in RemoteName and LocalName.
     /// </summary>
-    public new string? Name => (string)ManagementObject[nameof(Name)];
+    public string? Name => (string)ManagementObject[nameof(Name)];
     /// <summary>
     /// Connection will be reconnected automatically by the operating system on the next logon.
     /// </summary>

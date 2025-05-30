@@ -5,16 +5,17 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class LoggedOnUser(ManagementObject ManagementObject) : CIM.Dependency(ManagementObject)
+public partial record class LoggedOnUser(ManagementObject ManagementObject) : Base._Object(ManagementObject)
 {
     /// <summary>
     /// A Win32_LogonSession that describes the session that the account is currently using.
     /// </summary>
-    public new LogonSession? Dependent => (LogonSession)ManagementObject[nameof(Dependent)];
+    public Base._Object? Dependent => (Base._Object)ManagementObject[nameof(Dependent)];
     /// <summary>
     /// A Win32_Account that describes the account used in the initiation of this session. The account could be either a user account or a system account.
     /// </summary>
-    public new Account? Antecedent => (Account)ManagementObject[nameof(Antecedent)];
+    public Base._Object? Antecedent => (Base._Object)ManagementObject[nameof(Antecedent)];
 }

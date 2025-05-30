@@ -5,9 +5,10 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.Base;
 
-public partial record class _IntervalTimerInstruction(ManagementObject ManagementObject) : _TimerInstruction(ManagementObject)
+public partial record class _IntervalTimerInstruction(ManagementObject ManagementObject) : _Object(ManagementObject)
 {
     /// <summary>
     /// Number of milliseconds between event firings.

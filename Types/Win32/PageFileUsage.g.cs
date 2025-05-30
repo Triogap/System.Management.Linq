@@ -5,9 +5,10 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class PageFileUsage(ManagementObject ManagementObject) : CIM.LogicalElement(ManagementObject)
+public partial record class PageFileUsage(ManagementObject ManagementObject) : Base._Object(ManagementObject)
 {
     /// <summary>
     /// Actual amount of disk space allocated for use with this page file. This value corresponds to the range established in Win32_PageFileSetting under the InitialSize and MaximumSize properties, set at system startup.
@@ -20,7 +21,7 @@ public partial record class PageFileUsage(ManagementObject ManagementObject) : C
     /// <summary>
     /// Name of the page file.
     /// </summary>
-    public new string? Name => (string)ManagementObject[nameof(Name)];
+    public string? Name => (string)ManagementObject[nameof(Name)];
     /// <summary>
     /// Highest use page file.
     /// </summary>

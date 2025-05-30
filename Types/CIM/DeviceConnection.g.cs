@@ -5,6 +5,7 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.CIM;
 
 public partial record class DeviceConnection(ManagementObject ManagementObject) : Dependency(ManagementObject)
@@ -12,11 +13,11 @@ public partial record class DeviceConnection(ManagementObject ManagementObject) 
     /// <summary>
     /// A CIM_LogicalDevice that describes a second logical device connected to the Antecedent device.
     /// </summary>
-    public new LogicalDevice? Dependent => (LogicalDevice)ManagementObject[nameof(Dependent)];
+    public new Base._Object? Dependent => (Base._Object)ManagementObject[nameof(Dependent)];
     /// <summary>
     /// A CIM_LogicalDevice that describes a logical device.
     /// </summary>
-    public new LogicalDevice? Antecedent => (LogicalDevice)ManagementObject[nameof(Antecedent)];
+    public new Base._Object? Antecedent => (Base._Object)ManagementObject[nameof(Antecedent)];
     /// <summary>
     /// When several bus or connection-data widths are possible, this property defines the one in use between the devices. Data width is specified in bits. If data width is not negotiated, or if this information is not available or important to device management, the property should be set to 0 (zero).
     /// </summary>

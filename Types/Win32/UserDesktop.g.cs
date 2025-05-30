@@ -5,16 +5,17 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class UserDesktop(ManagementObject ManagementObject) : CIM.ElementSetting(ManagementObject)
+public partial record class UserDesktop(ManagementObject ManagementObject) : Base._Object(ManagementObject)
 {
     /// <summary>
     /// Reference to the instance representing the user account whose desktop can be customized by the Settings property of this class.
     /// </summary>
-    public new UserAccount? Element => (UserAccount)ManagementObject[nameof(Element)];
+    public Base._Object? Element => (Base._Object)ManagementObject[nameof(Element)];
     /// <summary>
     /// Reference to the instance representing the desktop settings that serve to customize a specific user account desktop.
     /// </summary>
-    public new Desktop? Setting => (Desktop)ManagementObject[nameof(Setting)];
+    public Base._Object? Setting => (Base._Object)ManagementObject[nameof(Setting)];
 }

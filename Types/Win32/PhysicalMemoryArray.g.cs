@@ -5,9 +5,10 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class PhysicalMemoryArray(ManagementObject ManagementObject) : CIM.PhysicalPackage(ManagementObject)
+public partial record class PhysicalMemoryArray(ManagementObject ManagementObject) : Base._Object(ManagementObject)
 {
     /// <summary>
     /// Physical location of the memory array.

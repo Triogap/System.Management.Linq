@@ -5,16 +5,17 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class SubSession(ManagementObject ManagementObject) : CIM.Dependency(ManagementObject)
+public partial record class SubSession(ManagementObject ManagementObject) : Base._Object(ManagementObject)
 {
     /// <summary>
     /// A Win32_Session that describes the session that has a subsession.
     /// </summary>
-    public new Session? Antecedent => (Session)ManagementObject[nameof(Antecedent)];
+    public Base._Object? Antecedent => (Base._Object)ManagementObject[nameof(Antecedent)];
     /// <summary>
     /// A Win32_Session that describes the session that is the subsession.
     /// </summary>
-    public new Session? Dependent => (Session)ManagementObject[nameof(Dependent)];
+    public Base._Object? Dependent => (Base._Object)ManagementObject[nameof(Dependent)];
 }

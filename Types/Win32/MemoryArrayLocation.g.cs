@@ -5,6 +5,7 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.Win32;
 
 public partial record class MemoryArrayLocation(ManagementObject ManagementObject) : CIM.Realizes(ManagementObject)
@@ -12,7 +13,7 @@ public partial record class MemoryArrayLocation(ManagementObject ManagementObjec
     /// <summary>
     /// A Win32_MemoryArray that describes the logical memory array implemented by the physical memory array.
     /// </summary>
-    public new MemoryArray? Dependent => (MemoryArray)ManagementObject[nameof(Dependent)];
+    public new Base._Object? Dependent => (Base._Object)ManagementObject[nameof(Dependent)];
     /// <summary>
     /// A Win32_PhysicalMemoryArray that describes the physical memory array that implements the logical memory array.
     /// </summary>

@@ -5,16 +5,17 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class SubDirectory(ManagementObject ManagementObject) : CIM.Component(ManagementObject)
+public partial record class SubDirectory(ManagementObject ManagementObject) : Base._Object(ManagementObject)
 {
     /// <summary>
     /// Reference to the instance representing the properties of the parent directory (folder) in this association.
     /// </summary>
-    public new Directory? GroupComponent => (Directory)ManagementObject[nameof(GroupComponent)];
+    public Base._Object? GroupComponent => (Base._Object)ManagementObject[nameof(GroupComponent)];
     /// <summary>
     /// Reference to the instance representing the subdirectory (subfolder) part of the association.
     /// </summary>
-    public new Directory? PartComponent => (Directory)ManagementObject[nameof(PartComponent)];
+    public Base._Object? PartComponent => (Base._Object)ManagementObject[nameof(PartComponent)];
 }

@@ -5,9 +5,10 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.Base;
 
-public partial record class _EventFilter(ManagementObject ManagementObject) : _IndicationRelated(ManagementObject)
+public partial record class _EventFilter(ManagementObject ManagementObject) : _Object(ManagementObject)
 {
     /// <summary>
     /// You can configure an event access security descriptor to allow an event to be delivered only when the local system account generates the event. For more information about creating security descriptor and authorizing access, see Access Control.

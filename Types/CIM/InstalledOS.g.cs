@@ -5,18 +5,19 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.CIM;
 
-public partial record class InstalledOS(ManagementObject ManagementObject) : SystemComponent(ManagementObject)
+public partial record class InstalledOS(ManagementObject ManagementObject) : Base._Object(ManagementObject)
 {
     /// <summary>
     /// A CIM_OperatingSystem that describes the operating system installed on the computer system.
     /// </summary>
-    public new OperatingSystem? PartComponent => (OperatingSystem)ManagementObject[nameof(PartComponent)];
+    public Base._Object? PartComponent => (Base._Object)ManagementObject[nameof(PartComponent)];
     /// <summary>
     /// A CIM_ComputerSystem describing the computer system.
     /// </summary>
-    public new ComputerSystem? GroupComponent => (ComputerSystem)ManagementObject[nameof(GroupComponent)];
+    public Base._Object? GroupComponent => (Base._Object)ManagementObject[nameof(GroupComponent)];
     /// <summary>
     /// If TRUE, the installed operating system is the default operating system for the computer system.
     /// </summary>

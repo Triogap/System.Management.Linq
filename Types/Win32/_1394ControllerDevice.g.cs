@@ -5,6 +5,7 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.Win32;
 
 public partial record class _1394ControllerDevice(ManagementObject ManagementObject) : CIM.ControlledBy(ManagementObject)
@@ -12,9 +13,9 @@ public partial record class _1394ControllerDevice(ManagementObject ManagementObj
     /// <summary>
     /// The Win32_1394Controller antecedent reference represents the 1394 controller associated with this device.
     /// </summary>
-    public new _1394Controller? Antecedent => (_1394Controller)ManagementObject[nameof(Antecedent)];
+    public new Base._Object? Antecedent => (Base._Object)ManagementObject[nameof(Antecedent)];
     /// <summary>
     /// The CIM_LogicalDevice dependent reference represents the CIM_LogicalDevice connected to the 1394 controller.
     /// </summary>
-    public new CIM.LogicalDevice? Dependent => (CIM.LogicalDevice)ManagementObject[nameof(Dependent)];
+    public new Base._Object? Dependent => (Base._Object)ManagementObject[nameof(Dependent)];
 }

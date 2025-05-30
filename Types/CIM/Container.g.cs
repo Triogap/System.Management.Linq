@@ -5,18 +5,19 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.CIM;
 
-public partial record class Container(ManagementObject ManagementObject) : Component(ManagementObject)
+public partial record class Container(ManagementObject ManagementObject) : Base._Object(ManagementObject)
 {
     /// <summary>
     /// A CIM_PhysicalElement that describes the physical element which is contained in the package.
     /// </summary>
-    public new PhysicalElement? PartComponent => (PhysicalElement)ManagementObject[nameof(PartComponent)];
+    public Base._Object? PartComponent => (Base._Object)ManagementObject[nameof(PartComponent)];
     /// <summary>
     /// A CIM_PhysicalPackage that represents the physical package that contains other physical elements, including other packages.
     /// </summary>
-    public new PhysicalPackage? GroupComponent => (PhysicalPackage)ManagementObject[nameof(GroupComponent)];
+    public Base._Object? GroupComponent => (Base._Object)ManagementObject[nameof(GroupComponent)];
     /// <summary>
     /// Free-form string that represents the positioning of the physical element within the physical package. Information relative to stationary elements in the container (for example, "second drive bay from the top"), angles, altitudes, and other data can be recorded in this property. This string could supplement or be used in place of instantiating the CIM_Location object.
     /// </summary>

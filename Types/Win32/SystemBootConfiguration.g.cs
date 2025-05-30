@@ -5,6 +5,7 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.Win32;
 
 public partial record class SystemBootConfiguration(ManagementObject ManagementObject) : SystemSetting(ManagementObject)
@@ -12,9 +13,9 @@ public partial record class SystemBootConfiguration(ManagementObject ManagementO
     /// <summary>
     /// Reference to the instance representing the computer system using the boot configuration.
     /// </summary>
-    public new ComputerSystem? Element => (ComputerSystem)ManagementObject[nameof(Element)];
+    public new Base._Object? Element => (Base._Object)ManagementObject[nameof(Element)];
     /// <summary>
     /// Reference to the instance representing the boot configuration for the computer system.
     /// </summary>
-    public new BootConfiguration? Setting => (BootConfiguration)ManagementObject[nameof(Setting)];
+    public new Base._Object? Setting => (Base._Object)ManagementObject[nameof(Setting)];
 }

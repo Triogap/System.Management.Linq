@@ -5,9 +5,10 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class DisplayControllerConfiguration(ManagementObject ManagementObject) : CIM.Setting(ManagementObject)
+public partial record class DisplayControllerConfiguration(ManagementObject ManagementObject) : Base._Object(ManagementObject)
 {
     /// <summary>
     /// Either the number of bits used to represent the color in this configuration, or the bits in each pixel.

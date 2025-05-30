@@ -5,16 +5,17 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class LogicalDiskRootDirectory(ManagementObject ManagementObject) : CIM.Component(ManagementObject)
+public partial record class LogicalDiskRootDirectory(ManagementObject ManagementObject) : Base._Object(ManagementObject)
 {
     /// <summary>
     /// Reference to the instance representing the properties of the logical disk.
     /// </summary>
-    public new LogicalDisk? GroupComponent => (LogicalDisk)ManagementObject[nameof(GroupComponent)];
+    public Base._Object? GroupComponent => (Base._Object)ManagementObject[nameof(GroupComponent)];
     /// <summary>
     /// Reference to the instance representing the properties of the file directory structure.
     /// </summary>
-    public new Directory? PartComponent => (Directory)ManagementObject[nameof(PartComponent)];
+    public Directory? PartComponent => (Directory)ManagementObject[nameof(PartComponent)];
 }

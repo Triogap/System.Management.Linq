@@ -5,6 +5,7 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.CIM;
 
 public partial record class Dependency(ManagementObject ManagementObject) : Base._Object(ManagementObject)
@@ -12,9 +13,9 @@ public partial record class Dependency(ManagementObject ManagementObject) : Base
     /// <summary>
     /// Reference to the independent object in this association.
     /// </summary>
-    public ManagedSystemElement? Antecedent => (ManagedSystemElement)ManagementObject[nameof(Antecedent)];
+    public Base._Object? Antecedent => (Base._Object)ManagementObject[nameof(Antecedent)];
     /// <summary>
     /// Reference to the object that is dependent on the Antecedent property.
     /// </summary>
-    public ManagedSystemElement? Dependent => (ManagedSystemElement)ManagementObject[nameof(Dependent)];
+    public Base._Object? Dependent => (Base._Object)ManagementObject[nameof(Dependent)];
 }

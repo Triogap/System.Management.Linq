@@ -5,6 +5,7 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.Win32;
 
 public partial record class ImplementedCategory(ManagementObject ManagementObject) : Base._Object(ManagementObject)
@@ -12,9 +13,9 @@ public partial record class ImplementedCategory(ManagementObject ManagementObjec
     /// <summary>
     /// Reference to the instance representing the component category being used by the COM class.
     /// </summary>
-    public ComponentCategory? Category => (ComponentCategory)ManagementObject[nameof(Category)];
+    public Base._Object? Category => (Base._Object)ManagementObject[nameof(Category)];
     /// <summary>
     /// Reference to the instance representing the COM class using the associated category.
     /// </summary>
-    public ClassicCOMClass? Component => (ClassicCOMClass)ManagementObject[nameof(Component)];
+    public Base._Object? Component => (Base._Object)ManagementObject[nameof(Component)];
 }

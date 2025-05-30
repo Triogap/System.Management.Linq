@@ -5,18 +5,19 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class CIMLogicalDeviceCIMDataFile(ManagementObject ManagementObject) : CIM.Dependency(ManagementObject)
+public partial record class CIMLogicalDeviceCIMDataFile(ManagementObject ManagementObject) : Base._Object(ManagementObject)
 {
     /// <summary>
     /// A CIM_DataFile that represents the properties of the data file assigned to the logical device.
     /// </summary>
-    public new CIM.DataFile? Dependent => (CIM.DataFile)ManagementObject[nameof(Dependent)];
+    public CIM.DataFile? Dependent => (CIM.DataFile)ManagementObject[nameof(Dependent)];
     /// <summary>
     /// A CIM_LogicalDevice that represents the properties of the logical device that is being used by the data file.
     /// </summary>
-    public new CIM.LogicalDevice? Antecedent => (CIM.LogicalDevice)ManagementObject[nameof(Antecedent)];
+    public Base._Object? Antecedent => (Base._Object)ManagementObject[nameof(Antecedent)];
     /// <summary>
     /// Role that the data file plays with regard to its associated logical device.
     /// </summary>

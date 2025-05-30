@@ -5,9 +5,10 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class IDEController(ManagementObject ManagementObject) : CIM.Controller(ManagementObject)
+public partial record class IDEController(ManagementObject ManagementObject) : Base._Object(ManagementObject)
 {
     /// <summary>
     /// Manufacturer of the IDE controller device.

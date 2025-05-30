@@ -5,16 +5,17 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.CIM;
 
-public partial record class MediaPresent(ManagementObject ManagementObject) : Dependency(ManagementObject)
+public partial record class MediaPresent(ManagementObject ManagementObject) : Base._Object(ManagementObject)
 {
     /// <summary>
     /// A CIM_StorageExtent that describes the storage extent accessed using the media access device.
     /// </summary>
-    public new StorageExtent? Dependent => (StorageExtent)ManagementObject[nameof(Dependent)];
+    public Base._Object? Dependent => (Base._Object)ManagementObject[nameof(Dependent)];
     /// <summary>
     /// A CIM_MediaAccessDevice that describes the media access device.
     /// </summary>
-    public new MediaAccessDevice? Antecedent => (MediaAccessDevice)ManagementObject[nameof(Antecedent)];
+    public Base._Object? Antecedent => (Base._Object)ManagementObject[nameof(Antecedent)];
 }
