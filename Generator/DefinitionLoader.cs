@@ -38,12 +38,23 @@ internal partial class DefinitionLoader(IEnumerable<string> classNames)
 
     private string? CheckClass(string? className)
     {
+        if (className == null)
+        {
+            return null;
+        }
+
         if ("Win32_LogicalElement".Equals(className))
         {
             return CheckClass("CIM_LogicalElement");
         }
-        if (className != null && !_classDefinitions.ContainsKey(className))
+
+        if (!_classDefinitions.ContainsKey(className))
         {
+            if (className.IndexOf('_') == -1)
+            {
+                return CheckClass($"__{className}");
+            }
+
             _classDefinitions.Add(className, default);
             Console.WriteLine($"Met new class {className}.");
         }
