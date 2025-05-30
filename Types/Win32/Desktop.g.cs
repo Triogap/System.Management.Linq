@@ -8,7 +8,7 @@
 #nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class Desktop(ManagementObject ManagementObject) : Base._Object(ManagementObject)
+public partial record class Desktop(ManagementObject ManagementObject) : CIM.Setting(ManagementObject)
 {
     /// <summary>
     /// Width of the borders around all windows with adjustable borders.

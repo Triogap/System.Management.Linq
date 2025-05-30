@@ -8,7 +8,7 @@
 #nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class PrinterConfiguration(ManagementObject ManagementObject) : Base._Object(ManagementObject)
+public partial record class PrinterConfiguration(ManagementObject ManagementObject) : CIM.Setting(ManagementObject)
 {
     /// <summary>
     /// Number of bits used to represent the color in this configuration (the bits per pixel). This property is obsolete. Instead, use properties in the Win32_VideoController, Win32_DesktopMonitor, or CIM_VideoControllerResolution classes to determine how color is represented.

@@ -13,9 +13,9 @@ public partial record class ElementSetting(ManagementObject ManagementObject) : 
     /// <summary>
     /// Reference to the role of the CIM_ManagedSystemElement object of the CIM_ElementSetting association. The associated managed system element provides the element that implements the element setting.
     /// </summary>
-    public Base._Object? Element => (Base._Object)ManagementObject[nameof(Element)];
+    public ManagedSystemElement? Element => (ManagedSystemElement)ManagementObject[nameof(Element)];
     /// <summary>
     /// Reference to the role of the CIM_Setting object of the CIM_ElementSetting association. The associated setting provides the setting that implements the element setting.
     /// </summary>
-    public Base._Object? Setting => (Base._Object)ManagementObject[nameof(Setting)];
+    public Setting? Setting => (Setting)ManagementObject[nameof(Setting)];
 }

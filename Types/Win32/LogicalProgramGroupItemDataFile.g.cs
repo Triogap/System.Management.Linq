@@ -8,14 +8,14 @@
 #nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class LogicalProgramGroupItemDataFile(ManagementObject ManagementObject) : Base._Object(ManagementObject)
+public partial record class LogicalProgramGroupItemDataFile(ManagementObject ManagementObject) : CIM.Dependency(ManagementObject)
 {
     /// <summary>
     /// Reference to the instance representing the program groupings in the Start menu.
     /// </summary>
-    public Base._Object? Antecedent => (Base._Object)ManagementObject[nameof(Antecedent)];
+    public new LogicalProgramGroupItem? Antecedent => (LogicalProgramGroupItem)ManagementObject[nameof(Antecedent)];
     /// <summary>
     /// Reference to the instance representing the class associated with the program group.
     /// </summary>
-    public Base._Object? Dependent => (Base._Object)ManagementObject[nameof(Dependent)];
+    public new CIM.DataFile? Dependent => (CIM.DataFile)ManagementObject[nameof(Dependent)];
 }

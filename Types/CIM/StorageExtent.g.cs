@@ -8,7 +8,7 @@
 #nullable enable
 namespace System.Management.Types.CIM;
 
-public partial record class StorageExtent(ManagementObject ManagementObject) : Base._Object(ManagementObject)
+public partial record class StorageExtent(ManagementObject ManagementObject) : LogicalDevice(ManagementObject)
 {
     /// <summary>
     /// Describes the read/write properties of the media.

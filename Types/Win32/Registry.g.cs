@@ -8,7 +8,7 @@
 #nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class Registry(ManagementObject ManagementObject) : Base._Object(ManagementObject)
+public partial record class Registry(ManagementObject ManagementObject) : CIM.LogicalElement(ManagementObject)
 {
     /// <summary>
     /// Current physical size of the Windows registry.
@@ -21,7 +21,7 @@ public partial record class Registry(ManagementObject ManagementObject) : Base._
     /// <summary>
     /// Name of the Windows registry. The maximum length is 256 characters.
     /// </summary>
-    public string? Name => (string)ManagementObject[nameof(Name)];
+    public new string? Name => (string)ManagementObject[nameof(Name)];
     /// <summary>
     /// Proposed size of the Windows registry. It is the only registry setting that can be modified, and its proposal is attempted the next time the system boots.
     /// </summary>

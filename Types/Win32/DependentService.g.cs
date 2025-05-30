@@ -13,9 +13,9 @@ public partial record class DependentService(ManagementObject ManagementObject) 
     /// <summary>
     /// A Win32_BaseService representing the base service relied upon by the Dependent property of this class.
     /// </summary>
-    public new Base._Object? Antecedent => (Base._Object)ManagementObject[nameof(Antecedent)];
+    public new BaseService? Antecedent => (BaseService)ManagementObject[nameof(Antecedent)];
     /// <summary>
     /// A Win32_BaseService representing the base service that is dependent on the Antecedent property of this class.
     /// </summary>
-    public new Base._Object? Dependent => (Base._Object)ManagementObject[nameof(Dependent)];
+    public new BaseService? Dependent => (BaseService)ManagementObject[nameof(Dependent)];
 }

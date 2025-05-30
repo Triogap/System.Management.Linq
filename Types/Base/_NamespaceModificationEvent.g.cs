@@ -8,10 +8,10 @@
 #nullable enable
 namespace System.Management.Types.Base;
 
-public partial record class _NamespaceModificationEvent(ManagementObject ManagementObject) : _Object(ManagementObject)
+public partial record class _NamespaceModificationEvent(ManagementObject ManagementObject) : _NamespaceOperationEvent(ManagementObject)
 {
     /// <summary>
     /// Copy of the original version of a __Namespace instance. The Name property of this instance identifies the namespace that is modified.
     /// </summary>
-    public _Object? PreviousNamespace => (_Object)ManagementObject[nameof(PreviousNamespace)];
+    public _Namespace? PreviousNamespace => (_Namespace)ManagementObject[nameof(PreviousNamespace)];
 }

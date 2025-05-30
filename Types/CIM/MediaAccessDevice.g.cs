@@ -8,7 +8,7 @@
 #nullable enable
 namespace System.Management.Types.CIM;
 
-public partial record class MediaAccessDevice(ManagementObject ManagementObject) : Base._Object(ManagementObject)
+public partial record class MediaAccessDevice(ManagementObject ManagementObject) : LogicalDevice(ManagementObject)
 {
     /// <summary>
     /// Capabilities of the media access device.

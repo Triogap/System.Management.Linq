@@ -8,7 +8,7 @@
 #nullable enable
 namespace System.Management.Types.CIM;
 
-public partial record class PhysicalElement(ManagementObject ManagementObject) : Base._Object(ManagementObject)
+public partial record class PhysicalElement(ManagementObject ManagementObject) : ManagedSystemElement(ManagementObject)
 {
     /// <summary>
     /// Name of the class or subclass used in the creation of an instance. When used with other key properties of the class, this property allows all instances of the class and its subclasses to be uniquely identified.

@@ -8,7 +8,7 @@
 #nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class Processor(ManagementObject ManagementObject) : Base._Object(ManagementObject)
+public partial record class Processor(ManagementObject ManagementObject) : CIM.Processor(ManagementObject)
 {
     public ushort? Architecture => (ushort?)ManagementObject[nameof(Architecture)];
     public string? AssetTag => (string)ManagementObject[nameof(AssetTag)];

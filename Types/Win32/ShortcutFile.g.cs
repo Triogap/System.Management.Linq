@@ -8,7 +8,7 @@
 #nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class ShortcutFile(ManagementObject ManagementObject) : Base._Object(ManagementObject)
+public partial record class ShortcutFile(ManagementObject ManagementObject) : CIM.DataFile(ManagementObject)
 {
     /// <summary>
     /// Name of the object that this is a shortcut to.

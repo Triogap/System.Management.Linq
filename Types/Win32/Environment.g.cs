@@ -8,12 +8,12 @@
 #nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class Environment(ManagementObject ManagementObject) : Base._Object(ManagementObject)
+public partial record class Environment(ManagementObject ManagementObject) : CIM.SystemResource(ManagementObject)
 {
     /// <summary>
     /// Character string that specifies the name of a Windows-based environment variable. By specifying the name of a variable that does not yet exist, an application creates a new environment variable.
     /// </summary>
-    public string? Name => (string)ManagementObject[nameof(Name)];
+    public new string? Name => (string)ManagementObject[nameof(Name)];
     /// <summary>
     /// Indicates whether the variable is a system variable. A system variable is set by the operating system, and is independent from user environment settings.
     /// </summary>

@@ -13,9 +13,9 @@ public partial record class ShareToDirectory(ManagementObject ManagementObject) 
     /// <summary>
     /// Reference to the instance representing the properties of a shared resource available through the directory.
     /// </summary>
-    public Base._Object? Share => (Base._Object)ManagementObject[nameof(Share)];
+    public Share? Share => (Share)ManagementObject[nameof(Share)];
     /// <summary>
     /// Reference to the instance representing the properties of the directory that has been mapped to a shared resource.
     /// </summary>
-    public Base._Object? SharedElement => (Base._Object)ManagementObject[nameof(SharedElement)];
+    public CIM.Directory? SharedElement => (CIM.Directory)ManagementObject[nameof(SharedElement)];
 }

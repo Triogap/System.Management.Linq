@@ -8,7 +8,7 @@
 #nullable enable
 namespace System.Management.Types.CIM;
 
-public partial record class Battery(ManagementObject ManagementObject) : Base._Object(ManagementObject)
+public partial record class Battery(ManagementObject ManagementObject) : LogicalDevice(ManagementObject)
 {
     /// <summary>
     /// Description of the battery's charge status. The value 10 is not valid in the CIM schema, which represents no battery being installed in Desktop Management Interface (DMI). In this case, the object should not be instantiated.

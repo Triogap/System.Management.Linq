@@ -8,14 +8,14 @@
 #nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class SystemPartitions(ManagementObject ManagementObject) : Base._Object(ManagementObject)
+public partial record class SystemPartitions(ManagementObject ManagementObject) : SystemDevices(ManagementObject)
 {
     /// <summary>
     /// Reference to the instance representing the properties of the computer system where the disk partition is located.
     /// </summary>
-    public Base._Object? GroupComponent => (Base._Object)ManagementObject[nameof(GroupComponent)];
+    public new ComputerSystem? GroupComponent => (ComputerSystem)ManagementObject[nameof(GroupComponent)];
     /// <summary>
     /// Reference to the instance representing the properties of a disk partition that exists on the computer system.
     /// </summary>
-    public Base._Object? PartComponent => (Base._Object)ManagementObject[nameof(PartComponent)];
+    public new DiskPartition? PartComponent => (DiskPartition)ManagementObject[nameof(PartComponent)];
 }

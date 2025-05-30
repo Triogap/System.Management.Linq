@@ -8,7 +8,7 @@
 #nullable enable
 namespace System.Management.Types.Base;
 
-public partial record class _TimerEvent(ManagementObject ManagementObject) : _Object(ManagementObject)
+public partial record class _TimerEvent(ManagementObject ManagementObject) : _Event(ManagementObject)
 {
     /// <summary>
     /// Number of times the event occurred before a notification was delivered to the consumer.

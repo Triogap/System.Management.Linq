@@ -8,7 +8,7 @@
 #nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class MemoryDevice(ManagementObject ManagementObject) : Base._Object(ManagementObject)
+public partial record class MemoryDevice(ManagementObject ManagementObject) : SMBIOSMemory(ManagementObject)
 {
     /// <summary>
     /// Level where the error can be resolved.

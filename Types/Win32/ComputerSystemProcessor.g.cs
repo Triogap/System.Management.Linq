@@ -13,9 +13,9 @@ public partial record class ComputerSystemProcessor(ManagementObject ManagementO
     /// <summary>
     /// A Win32_Processor that describes the properties of a processor which is running the computer system.
     /// </summary>
-    public new Base._Object? PartComponent => (Base._Object)ManagementObject[nameof(PartComponent)];
+    public new Processor? PartComponent => (Processor)ManagementObject[nameof(PartComponent)];
     /// <summary>
     /// A Win32_ComputerSystem that describes the properties of the computer system on which the processor is running.
     /// </summary>
-    public new Base._Object? GroupComponent => (Base._Object)ManagementObject[nameof(GroupComponent)];
+    public new ComputerSystem? GroupComponent => (ComputerSystem)ManagementObject[nameof(GroupComponent)];
 }

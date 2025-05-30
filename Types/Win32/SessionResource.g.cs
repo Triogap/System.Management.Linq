@@ -8,14 +8,14 @@
 #nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class SessionResource(ManagementObject ManagementObject) : Base._Object(ManagementObject)
+public partial record class SessionResource(ManagementObject ManagementObject) : CIM.Dependency(ManagementObject)
 {
     /// <summary>
     /// The Antecedent reference represents resources used by this session.
     /// </summary>
-    public Base._Object? Antecedent => (Base._Object)ManagementObject[nameof(Antecedent)];
+    public new CIM.LogicalElement? Antecedent => (CIM.LogicalElement)ManagementObject[nameof(Antecedent)];
     /// <summary>
     /// The Dependent reference represents the session using the resource.
     /// </summary>
-    public Base._Object? Dependent => (Base._Object)ManagementObject[nameof(Dependent)];
+    public new Session? Dependent => (Session)ManagementObject[nameof(Dependent)];
 }

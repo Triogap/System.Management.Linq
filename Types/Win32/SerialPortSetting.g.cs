@@ -8,14 +8,14 @@
 #nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class SerialPortSetting(ManagementObject ManagementObject) : Base._Object(ManagementObject)
+public partial record class SerialPortSetting(ManagementObject ManagementObject) : DeviceSettings(ManagementObject)
 {
     /// <summary>
     /// A Win32_SerialPortConfiguration that contains the configuration setting for the serial port.
     /// </summary>
-    public Base._Object? Setting => (Base._Object)ManagementObject[nameof(Setting)];
+    public new SerialPortConfiguration? Setting => (SerialPortConfiguration)ManagementObject[nameof(Setting)];
     /// <summary>
     /// A Win32_SerialPort that contains the properties of a serial port on the computer system.
     /// </summary>
-    public Base._Object? Element => (Base._Object)ManagementObject[nameof(Element)];
+    public new SerialPort? Element => (SerialPort)ManagementObject[nameof(Element)];
 }

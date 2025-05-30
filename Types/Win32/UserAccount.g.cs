@@ -8,7 +8,7 @@
 #nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class UserAccount(ManagementObject ManagementObject) : Base._Object(ManagementObject)
+public partial record class UserAccount(ManagementObject ManagementObject) : Account(ManagementObject)
 {
     /// <summary>
     /// Flags that describe the characteristics of a Windows user account.
@@ -18,7 +18,7 @@ public partial record class UserAccount(ManagementObject ManagementObject) : Bas
     /// Windows user account is disabled.
     /// </summary>
     public bool? Disabled => (bool?)ManagementObject[nameof(Disabled)];
-    public string? Domain => (string)ManagementObject[nameof(Domain)];
+    public new string? Domain => (string)ManagementObject[nameof(Domain)];
     public string? FullName => (string)ManagementObject[nameof(FullName)];
     /// <summary>
     /// If true, the user account is locked out of the Windows operating system.

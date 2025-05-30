@@ -8,7 +8,7 @@
 #nullable enable
 namespace System.Management.Types.Base;
 
-public partial record class _EventProviderRegistration(ManagementObject ManagementObject) : _Object(ManagementObject)
+public partial record class _EventProviderRegistration(ManagementObject ManagementObject) : _ProviderRegistration(ManagementObject)
 {
     /// <summary>
     /// One or more Windows Management Instrumentation Query Language (WQL) queries that describe the events that the event provider supports.

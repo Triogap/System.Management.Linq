@@ -8,7 +8,7 @@
 #nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class VolumeChangeEvent(ManagementObject ManagementObject) : Base._Object(ManagementObject)
+public partial record class VolumeChangeEvent(ManagementObject ManagementObject) : DeviceChangeEvent(ManagementObject)
 {
     /// <summary>
     /// Drive name (letter) that has been added or removed from the system.

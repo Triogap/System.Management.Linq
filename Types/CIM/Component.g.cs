@@ -13,9 +13,9 @@ public partial record class Component(ManagementObject ManagementObject) : Base.
     /// <summary>
     /// A CIM_ManagedSystemElement that describes the parent element in the association.
     /// </summary>
-    public Base._Object? GroupComponent => (Base._Object)ManagementObject[nameof(GroupComponent)];
+    public ManagedSystemElement? GroupComponent => (ManagedSystemElement)ManagementObject[nameof(GroupComponent)];
     /// <summary>
     /// A CIM_ManagedSystemElement that describes the child element in the association.
     /// </summary>
-    public Base._Object? PartComponent => (Base._Object)ManagementObject[nameof(PartComponent)];
+    public ManagedSystemElement? PartComponent => (ManagedSystemElement)ManagementObject[nameof(PartComponent)];
 }

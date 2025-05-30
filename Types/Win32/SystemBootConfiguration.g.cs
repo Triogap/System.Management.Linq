@@ -13,9 +13,9 @@ public partial record class SystemBootConfiguration(ManagementObject ManagementO
     /// <summary>
     /// Reference to the instance representing the computer system using the boot configuration.
     /// </summary>
-    public new Base._Object? Element => (Base._Object)ManagementObject[nameof(Element)];
+    public new ComputerSystem? Element => (ComputerSystem)ManagementObject[nameof(Element)];
     /// <summary>
     /// Reference to the instance representing the boot configuration for the computer system.
     /// </summary>
-    public new Base._Object? Setting => (Base._Object)ManagementObject[nameof(Setting)];
+    public new BootConfiguration? Setting => (BootConfiguration)ManagementObject[nameof(Setting)];
 }

@@ -8,7 +8,7 @@
 #nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class PhysicalMemoryArray(ManagementObject ManagementObject) : Base._Object(ManagementObject)
+public partial record class PhysicalMemoryArray(ManagementObject ManagementObject) : CIM.PhysicalPackage(ManagementObject)
 {
     /// <summary>
     /// Physical location of the memory array.

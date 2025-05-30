@@ -8,6 +8,6 @@
 #nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class DriverForDevice(ManagementObject ManagementObject) : Base._Object(ManagementObject)
+public partial record class DriverForDevice(ManagementObject ManagementObject) : CIM.Dependency(ManagementObject)
 {
 }

@@ -8,7 +8,7 @@
 #nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class PrivilegesStatus(ManagementObject ManagementObject) : Base._Object(ManagementObject)
+public partial record class PrivilegesStatus(ManagementObject ManagementObject) : Base._ExtendedStatus(ManagementObject)
 {
     /// <summary>
     /// Listing required access privileges missing to complete an operation. The types of access privileges can be found under the Windows Privileges.

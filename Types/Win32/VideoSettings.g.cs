@@ -13,9 +13,9 @@ public partial record class VideoSettings(ManagementObject ManagementObject) : C
     /// <summary>
     /// A CIM_VideoControllerResolution containing settings that can be applied to the video controller.
     /// </summary>
-    public new Base._Object? Setting => (Base._Object)ManagementObject[nameof(Setting)];
+    public new CIM.VideoControllerResolution? Setting => (CIM.VideoControllerResolution)ManagementObject[nameof(Setting)];
     /// <summary>
     /// A Win32_VideoController containing the properties of the video controller that a video setting can be used on.
     /// </summary>
-    public new Base._Object? Element => (Base._Object)ManagementObject[nameof(Element)];
+    public new VideoController? Element => (VideoController)ManagementObject[nameof(Element)];
 }

@@ -8,7 +8,7 @@
 #nullable enable
 namespace System.Management.Types.CIM;
 
-public partial record class Service(ManagementObject ManagementObject) : Base._Object(ManagementObject)
+public partial record class Service(ManagementObject ManagementObject) : LogicalElement(ManagementObject)
 {
     /// <summary>
     /// Name of the class or subclass used in the creation of an instance. When used with other key properties of the class, this property allows all instances of the class and its subclasses to be uniquely identified.
@@ -17,7 +17,7 @@ public partial record class Service(ManagementObject ManagementObject) : Base._O
     /// <summary>
     /// The Name property uniquely identifies the service and provides an indication of the functionality that is managed. This functionality is described in more detail in the object's Description property.
     /// </summary>
-    public string? Name => (string)ManagementObject[nameof(Name)];
+    public new string? Name => (string)ManagementObject[nameof(Name)];
     /// <summary>
     /// If TRUE, the service has started.
     /// </summary>

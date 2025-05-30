@@ -8,14 +8,14 @@
 #nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class WMIElementSetting(ManagementObject ManagementObject) : Base._Object(ManagementObject)
+public partial record class WMIElementSetting(ManagementObject ManagementObject) : CIM.ElementSetting(ManagementObject)
 {
     /// <summary>
     /// Reference to the instance representing the Windows service using or surfacing WMI properties.
     /// </summary>
-    public Base._Object? Element => (Base._Object)ManagementObject[nameof(Element)];
+    public new Service? Element => (Service)ManagementObject[nameof(Element)];
     /// <summary>
     /// Reference to the instance representing the WMI settings available to the Windows service.
     /// </summary>
-    public WMISetting? Setting => (WMISetting)ManagementObject[nameof(Setting)];
+    public new WMISetting? Setting => (WMISetting)ManagementObject[nameof(Setting)];
 }

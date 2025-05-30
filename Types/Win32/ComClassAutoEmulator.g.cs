@@ -13,9 +13,9 @@ public partial record class ComClassAutoEmulator(ManagementObject ManagementObje
     /// <summary>
     /// Reference to the instance representing the COM component that can automatically emulate the associated COM component. This information is obtained through the AutoTreatAs registry entry.
     /// </summary>
-    public Base._Object? NewVersion => (Base._Object)ManagementObject[nameof(NewVersion)];
+    public ClassicCOMClass? NewVersion => (ClassicCOMClass)ManagementObject[nameof(NewVersion)];
     /// <summary>
     /// Reference to the instance representing the COM component that is automatically emulated by another component.
     /// </summary>
-    public Base._Object? OldVersion => (Base._Object)ManagementObject[nameof(OldVersion)];
+    public ClassicCOMClass? OldVersion => (ClassicCOMClass)ManagementObject[nameof(OldVersion)];
 }

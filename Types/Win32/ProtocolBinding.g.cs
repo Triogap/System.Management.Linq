@@ -13,7 +13,7 @@ public partial record class ProtocolBinding(ManagementObject ManagementObject) :
     /// <summary>
     /// Reference to the instance representing the protocol that is used with the system driver and on the network adapter.
     /// </summary>
-    public Base._Object? Antecedent => (Base._Object)ManagementObject[nameof(Antecedent)];
+    public NetworkProtocol? Antecedent => (NetworkProtocol)ManagementObject[nameof(Antecedent)];
     /// <summary>
     /// Reference to the instance representing the system driver that uses the network adapter through the network protocol of this class.
     /// </summary>
@@ -21,5 +21,5 @@ public partial record class ProtocolBinding(ManagementObject ManagementObject) :
     /// <summary>
     /// Properties of the network adapter being used on the computer system.
     /// </summary>
-    public Base._Object? Device => (Base._Object)ManagementObject[nameof(Device)];
+    public NetworkAdapter? Device => (NetworkAdapter)ManagementObject[nameof(Device)];
 }

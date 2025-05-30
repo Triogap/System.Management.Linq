@@ -8,10 +8,10 @@
 #nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class PnPDevicePropertySecurityDescriptorArray(ManagementObject ManagementObject) : Base._Object(ManagementObject)
+public partial record class PnPDevicePropertySecurityDescriptorArray(ManagementObject ManagementObject) : PnPDeviceProperty(ManagementObject)
 {
     /// <summary>
     /// The property value.
     /// </summary>
-    public Base._Object[]? Data => (Base._Object[])ManagementObject[nameof(Data)];
+    public SecurityDescriptor[]? Data => (SecurityDescriptor[])ManagementObject[nameof(Data)];
 }

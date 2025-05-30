@@ -8,7 +8,7 @@
 #nullable enable
 namespace System.Management.Types.CIM;
 
-public partial record class SoftwareElement(ManagementObject ManagementObject) : Base._Object(ManagementObject)
+public partial record class SoftwareElement(ManagementObject ManagementObject) : LogicalElement(ManagementObject)
 {
     /// <summary>
     /// Internal identifier for the compilation of this software element.

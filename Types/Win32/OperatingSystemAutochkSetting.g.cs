@@ -8,14 +8,14 @@
 #nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class OperatingSystemAutochkSetting(ManagementObject ManagementObject) : Base._Object(ManagementObject)
+public partial record class OperatingSystemAutochkSetting(ManagementObject ManagementObject) : CIM.ElementSetting(ManagementObject)
 {
     /// <summary>
     /// TBD
     /// </summary>
-    public Base._Object? Element => (Base._Object)ManagementObject[nameof(Element)];
+    public new OperatingSystem? Element => (OperatingSystem)ManagementObject[nameof(Element)];
     /// <summary>
     /// TBD
     /// </summary>
-    public Base._Object? Setting => (Base._Object)ManagementObject[nameof(Setting)];
+    public new AutochkSetting? Setting => (AutochkSetting)ManagementObject[nameof(Setting)];
 }

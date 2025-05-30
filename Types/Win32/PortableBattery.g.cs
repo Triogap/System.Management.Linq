@@ -8,7 +8,7 @@
 #nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class PortableBattery(ManagementObject ManagementObject) : Base._Object(ManagementObject)
+public partial record class PortableBattery(ManagementObject ManagementObject) : CIM.Battery(ManagementObject)
 {
     /// <summary>
     /// Multiplication factor of the DesignCapacity value to ensure that the milliwatt hour value does not overflow for Smart Battery Data Specification (SBDS) implementations.

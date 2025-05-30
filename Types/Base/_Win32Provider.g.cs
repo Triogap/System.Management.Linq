@@ -8,7 +8,7 @@
 #nullable enable
 namespace System.Management.Types.Base;
 
-public partial record class _Win32Provider(ManagementObject ManagementObject) : _Object(ManagementObject)
+public partial record class _Win32Provider(ManagementObject ManagementObject) : _Provider(ManagementObject)
 {
     /// <summary>
     /// Class identifier that WMI uses to determine whether or not to load a high performance provider into the client process or the WMI process. If both the provider and client are located on the same computer, WMI loads the provider in-process to the client by using ClientLoadableCLSID as the class identifier. When the provider and client are located on different computers, WMI loads the provider in-process to WMI. WMI also uses ClientLoadableCLSID to support refresh operations.
@@ -53,7 +53,7 @@ public partial record class _Win32Provider(ManagementObject ManagementObject) : 
     /// <summary>
     /// The provider name.
     /// </summary>
-    public string? Name => (string)ManagementObject[nameof(Name)];
+    public new string? Name => (string)ManagementObject[nameof(Name)];
     /// <summary>
     /// Not used.
     /// </summary>

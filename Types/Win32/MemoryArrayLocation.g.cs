@@ -13,7 +13,7 @@ public partial record class MemoryArrayLocation(ManagementObject ManagementObjec
     /// <summary>
     /// A Win32_MemoryArray that describes the logical memory array implemented by the physical memory array.
     /// </summary>
-    public new Base._Object? Dependent => (Base._Object)ManagementObject[nameof(Dependent)];
+    public new MemoryArray? Dependent => (MemoryArray)ManagementObject[nameof(Dependent)];
     /// <summary>
     /// A Win32_PhysicalMemoryArray that describes the physical memory array that implements the logical memory array.
     /// </summary>

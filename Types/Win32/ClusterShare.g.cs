@@ -8,7 +8,7 @@
 #nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class ClusterShare(ManagementObject ManagementObject) : Base._Object(ManagementObject)
+public partial record class ClusterShare(ManagementObject ManagementObject) : Share(ManagementObject)
 {
     /// <summary>
     /// The cluster server on which the share is hosted.

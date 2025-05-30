@@ -8,7 +8,7 @@
 #nullable enable
 namespace System.Management.Types.Base;
 
-public partial record class _EventConsumer(ManagementObject ManagementObject) : _Object(ManagementObject)
+public partial record class _EventConsumer(ManagementObject ManagementObject) : _IndicationRelated(ManagementObject)
 {
     /// <summary>
     /// Security identifier (SID) that uniquely identifies the user who creates a filter. WMI stores the SID of the user who creates an instance of __EventConsumer or the Administrator SID, depending on the operating system. For more information, see Binding an Event Filter with a Logical Consumer and Monitoring and Responding to Events with Standard Consumers.

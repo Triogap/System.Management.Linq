@@ -8,7 +8,7 @@
 #nullable enable
 namespace System.Management.Types.Base;
 
-public partial record class _Event(ManagementObject ManagementObject) : _Object(ManagementObject)
+public partial record class _Event(ManagementObject ManagementObject) : _IndicationRelated(ManagementObject)
 {
     /// <summary>
     /// Descriptor that the event provider uses to determine which users can receive the event. For more information, see WMI Security Constants.

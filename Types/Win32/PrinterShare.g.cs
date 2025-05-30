@@ -8,14 +8,14 @@
 #nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class PrinterShare(ManagementObject ManagementObject) : Base._Object(ManagementObject)
+public partial record class PrinterShare(ManagementObject ManagementObject) : CIM.Dependency(ManagementObject)
 {
     /// <summary>
     /// Reference to the instance representing the local printer shared in this association.
     /// </summary>
-    public Base._Object? Antecedent => (Base._Object)ManagementObject[nameof(Antecedent)];
+    public new Printer? Antecedent => (Printer)ManagementObject[nameof(Antecedent)];
     /// <summary>
     /// Reference to the instance representing the share of the printer in this association.
     /// </summary>
-    public Share? Dependent => (Share)ManagementObject[nameof(Dependent)];
+    public new Share? Dependent => (Share)ManagementObject[nameof(Dependent)];
 }

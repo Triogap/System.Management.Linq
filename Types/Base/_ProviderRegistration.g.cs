@@ -8,7 +8,7 @@
 #nullable enable
 namespace System.Management.Types.Base;
 
-public partial record class _ProviderRegistration(ManagementObject ManagementObject) : _Object(ManagementObject)
+public partial record class _ProviderRegistration(ManagementObject ManagementObject) : _SystemClass(ManagementObject)
 {
     /// <summary>
     /// Reference to an instance of __Provider representing the object path to the provider.

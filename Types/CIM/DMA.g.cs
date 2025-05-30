@@ -8,7 +8,7 @@
 #nullable enable
 namespace System.Management.Types.CIM;
 
-public partial record class DMA(ManagementObject ManagementObject) : Base._Object(ManagementObject)
+public partial record class DMA(ManagementObject ManagementObject) : SystemResource(ManagementObject)
 {
     /// <summary>
     /// DMA channel address size, in bits. Permissible values are 8, 16, 32, and 64. If unknown, enter 0.

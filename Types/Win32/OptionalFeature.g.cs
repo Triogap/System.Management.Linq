@@ -8,15 +8,15 @@
 #nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class OptionalFeature(ManagementObject ManagementObject) : Base._Object(ManagementObject)
+public partial record class OptionalFeature(ManagementObject ManagementObject) : CIM.LogicalElement(ManagementObject)
 {
     /// <summary>
     /// An optional feature display name.
     /// </summary>
-    public string? Caption => (string)ManagementObject[nameof(Caption)];
+    public new string? Caption => (string)ManagementObject[nameof(Caption)];
     /// <summary>
     /// Represents the name of the optional feature.
     /// </summary>
-    public string? Name => (string)ManagementObject[nameof(Name)];
+    public new string? Name => (string)ManagementObject[nameof(Name)];
     public uint? InstallState => (uint?)ManagementObject[nameof(InstallState)];
 }

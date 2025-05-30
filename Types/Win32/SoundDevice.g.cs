@@ -8,7 +8,7 @@
 #nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class SoundDevice(ManagementObject ManagementObject) : Base._Object(ManagementObject)
+public partial record class SoundDevice(ManagementObject ManagementObject) : CIM.LogicalDevice(ManagementObject)
 {
     /// <summary>
     /// Size of the Direct Memory Access buffer.

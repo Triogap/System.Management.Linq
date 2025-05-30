@@ -13,9 +13,9 @@ public partial record class SystemDevice(ManagementObject ManagementObject) : Sy
     /// <summary>
     /// A CIM_LogicalDevice that describes the logical device that is a component of a system.
     /// </summary>
-    public new Base._Object? PartComponent => (Base._Object)ManagementObject[nameof(PartComponent)];
+    public new LogicalDevice? PartComponent => (LogicalDevice)ManagementObject[nameof(PartComponent)];
     /// <summary>
     /// A CIM_System that describes the parent system in the association.
     /// </summary>
-    public new Base._Object? GroupComponent => (Base._Object)ManagementObject[nameof(GroupComponent)];
+    public new System? GroupComponent => (System)ManagementObject[nameof(GroupComponent)];
 }

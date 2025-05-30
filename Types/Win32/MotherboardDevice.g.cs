@@ -8,7 +8,7 @@
 #nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class MotherboardDevice(ManagementObject ManagementObject) : Base._Object(ManagementObject)
+public partial record class MotherboardDevice(ManagementObject ManagementObject) : CIM.LogicalDevice(ManagementObject)
 {
     /// <summary>
     /// Primary bus type of the motherboard.

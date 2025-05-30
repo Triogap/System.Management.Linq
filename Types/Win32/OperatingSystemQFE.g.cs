@@ -8,14 +8,14 @@
 #nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class OperatingSystemQFE(ManagementObject ManagementObject) : Base._Object(ManagementObject)
+public partial record class OperatingSystemQFE(ManagementObject ManagementObject) : CIM.Dependency(ManagementObject)
 {
     /// <summary>
     /// Reference to the instance representing the system affected by the product update in this association.
     /// </summary>
-    public Base._Object? Antecedent => (Base._Object)ManagementObject[nameof(Antecedent)];
+    public new OperatingSystem? Antecedent => (OperatingSystem)ManagementObject[nameof(Antecedent)];
     /// <summary>
     /// Reference to the instance representing the object instance applied to the operating system in this association.
     /// </summary>
-    public QuickFixEngineering? Dependent => (QuickFixEngineering)ManagementObject[nameof(Dependent)];
+    public new QuickFixEngineering? Dependent => (QuickFixEngineering)ManagementObject[nameof(Dependent)];
 }

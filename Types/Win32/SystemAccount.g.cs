@@ -8,14 +8,14 @@
 #nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class SystemAccount(ManagementObject ManagementObject) : Base._Object(ManagementObject)
+public partial record class SystemAccount(ManagementObject ManagementObject) : Account(ManagementObject)
 {
     /// <summary>
     /// Name of the Windows domain to which the system account belongs.
     /// </summary>
-    public string? Domain => (string)ManagementObject[nameof(Domain)];
+    public new string? Domain => (string)ManagementObject[nameof(Domain)];
     /// <summary>
     /// Name of the Windows system account on the domain specified by the Domain property of this class.
     /// </summary>
-    public string? Name => (string)ManagementObject[nameof(Name)];
+    public new string? Name => (string)ManagementObject[nameof(Name)];
 }

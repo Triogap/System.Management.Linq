@@ -8,7 +8,7 @@
 #nullable enable
 namespace System.Management.Types.CIM;
 
-public partial record class PhysicalConnector(ManagementObject ManagementObject) : Base._Object(ManagementObject)
+public partial record class PhysicalConnector(ManagementObject ManagementObject) : PhysicalElement(ManagementObject)
 {
     /// <summary>
     /// Free-form string that describes the pin configuration and signal use of a physical connector.

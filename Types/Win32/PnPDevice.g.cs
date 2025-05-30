@@ -13,9 +13,9 @@ public partial record class PnPDevice(ManagementObject ManagementObject) : Base.
     /// <summary>
     /// Reference to the CIM_LogicalDevice instance representing the logical device properties associated with the Plug and Play device.
     /// </summary>
-    public Base._Object? SameElement => (Base._Object)ManagementObject[nameof(SameElement)];
+    public CIM.LogicalDevice? SameElement => (CIM.LogicalDevice)ManagementObject[nameof(SameElement)];
     /// <summary>
     /// Reference to the Win32_PnPEntity instance representing the Plug and Play device associated with the logical device.
     /// </summary>
-    public Base._Object? SystemElement => (Base._Object)ManagementObject[nameof(SystemElement)];
+    public PnPEntity? SystemElement => (PnPEntity)ManagementObject[nameof(SystemElement)];
 }

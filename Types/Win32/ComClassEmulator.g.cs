@@ -13,9 +13,9 @@ public partial record class ComClassEmulator(ManagementObject ManagementObject) 
     /// <summary>
     /// Reference to the instance representing the COM component that contains interfaces emulating the older version of the component.
     /// </summary>
-    public Base._Object? NewVersion => (Base._Object)ManagementObject[nameof(NewVersion)];
+    public ClassicCOMClass? NewVersion => (ClassicCOMClass)ManagementObject[nameof(NewVersion)];
     /// <summary>
     /// Reference to the instance representing the COM component with interfaces that can be emulated by the new version of the component.
     /// </summary>
-    public Base._Object? OldVersion => (Base._Object)ManagementObject[nameof(OldVersion)];
+    public ClassicCOMClass? OldVersion => (ClassicCOMClass)ManagementObject[nameof(OldVersion)];
 }

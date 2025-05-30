@@ -8,7 +8,7 @@
 #nullable enable
 namespace System.Management.Types.CIM;
 
-public partial record class Job(ManagementObject ManagementObject) : Base._Object(ManagementObject)
+public partial record class Job(ManagementObject ManagementObject) : LogicalElement(ManagementObject)
 {
     /// <summary>
     /// Length of time the job has been executing.

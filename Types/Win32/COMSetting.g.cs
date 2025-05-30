@@ -8,6 +8,6 @@
 #nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class COMSetting(ManagementObject ManagementObject) : Base._Object(ManagementObject)
+public partial record class COMSetting(ManagementObject ManagementObject) : CIM.Setting(ManagementObject)
 {
 }
