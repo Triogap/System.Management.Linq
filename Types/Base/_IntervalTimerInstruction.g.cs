@@ -8,7 +8,7 @@
 #nullable enable
 namespace System.Management.Types.Base;
 
-public partial record class _IntervalTimerInstruction(ManagementObject ManagementObject) : _Object(ManagementObject)
+public partial record class _IntervalTimerInstruction(ManagementObject ManagementObject) : _TimerInstruction(ManagementObject)
 {
     /// <summary>
     /// Number of milliseconds between event firings.

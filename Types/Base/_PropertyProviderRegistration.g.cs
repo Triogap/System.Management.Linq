@@ -8,7 +8,7 @@
 #nullable enable
 namespace System.Management.Types.Base;
 
-public partial record class _PropertyProviderRegistration(ManagementObject ManagementObject) : _Object(ManagementObject)
+public partial record class _PropertyProviderRegistration(ManagementObject ManagementObject) : _ProviderRegistration(ManagementObject)
 {
     /// <summary>
     /// Describes whether the class or instance provider supports data modification.

@@ -8,7 +8,7 @@
 #nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class NetworkProtocol(ManagementObject ManagementObject) : Base._Object(ManagementObject)
+public partial record class NetworkProtocol(ManagementObject ManagementObject) : CIM.LogicalElement(ManagementObject)
 {
     /// <summary>
     /// Protocol supports connectionless service. A connectionless (datagram) service describes a communications protocol or transport in which data packets are routed independently of each other and may follow different routes and arrive in a different order from that in which they were sent. Conversely, a connection-oriented service provides a virtual circuit through which data packets are received in the same order they were transmitted. If the connection between computers fails, the application is notified.
@@ -41,7 +41,7 @@ public partial record class NetworkProtocol(ManagementObject ManagementObject) :
     /// <summary>
     /// Name for the protocol.
     /// </summary>
-    public string? Name => (string)ManagementObject[nameof(Name)];
+    public new string? Name => (string)ManagementObject[nameof(Name)];
     /// <summary>
     /// Protocol is a message-oriented protocol that can receive variable-length data packets or streamed data for all receive operations. This optional ability is useful when an application does not want the protocol to frame messages, and requires stream-oriented characteristics. If TRUE, the protocol is pseudo stream-oriented.
     /// </summary>

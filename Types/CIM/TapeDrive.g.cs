@@ -8,7 +8,7 @@
 #nullable enable
 namespace System.Management.Types.CIM;
 
-public partial record class TapeDrive(ManagementObject ManagementObject) : Base._Object(ManagementObject)
+public partial record class TapeDrive(ManagementObject ManagementObject) : MediaAccessDevice(ManagementObject)
 {
     /// <summary>
     /// Size, in bytes, of the area designated as end-of-tape. Access in this area generates an end-of-tape warning.

@@ -8,10 +8,10 @@
 #nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class LogicalProgramGroupItem(ManagementObject ManagementObject) : Base._Object(ManagementObject)
+public partial record class LogicalProgramGroupItem(ManagementObject ManagementObject) : ProgramGroupOrItem(ManagementObject)
 {
     /// <summary>
     /// Instance within a computer system. Program groups are implemented as file folders in Win32. Full path names should be provided.
     /// </summary>
-    public string? Name => (string)ManagementObject[nameof(Name)];
+    public new string? Name => (string)ManagementObject[nameof(Name)];
 }

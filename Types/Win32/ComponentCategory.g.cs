@@ -8,7 +8,7 @@
 #nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class ComponentCategory(ManagementObject ManagementObject) : Base._Object(ManagementObject)
+public partial record class ComponentCategory(ManagementObject ManagementObject) : CIM.LogicalElement(ManagementObject)
 {
     /// <summary>
     /// GUID for this component category.
@@ -17,5 +17,5 @@ public partial record class ComponentCategory(ManagementObject ManagementObject)
     /// <summary>
     /// The Name property indicates a descriptive name of this component category.
     /// </summary>
-    public string? Name => (string)ManagementObject[nameof(Name)];
+    public new string? Name => (string)ManagementObject[nameof(Name)];
 }

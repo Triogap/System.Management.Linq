@@ -8,14 +8,14 @@
 #nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class SystemDriverPNPEntity(ManagementObject ManagementObject) : Base._Object(ManagementObject)
+public partial record class SystemDriverPNPEntity(ManagementObject ManagementObject) : CIM.Dependency(ManagementObject)
 {
     /// <summary>
     /// Represents the Plug and Play device controlled by the driver.
     /// </summary>
-    public Base._Object? Antecedent => (Base._Object)ManagementObject[nameof(Antecedent)];
+    public new PnPEntity? Antecedent => (PnPEntity)ManagementObject[nameof(Antecedent)];
     /// <summary>
     /// A Win32_SystemDriver that represents the driver that supports the Plug and Play device.
     /// </summary>
-    public Base._Object? Dependent => (Base._Object)ManagementObject[nameof(Dependent)];
+    public new SystemDriver? Dependent => (SystemDriver)ManagementObject[nameof(Dependent)];
 }

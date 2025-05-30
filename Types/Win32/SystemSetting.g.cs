@@ -8,14 +8,14 @@
 #nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class SystemSetting(ManagementObject ManagementObject) : Base._Object(ManagementObject)
+public partial record class SystemSetting(ManagementObject ManagementObject) : CIM.ElementSetting(ManagementObject)
 {
     /// <summary>
     /// Reference to the instance representing the properties of a computer system where this setting can be applied.
     /// </summary>
-    public Base._Object? Element => (Base._Object)ManagementObject[nameof(Element)];
+    public new ComputerSystem? Element => (ComputerSystem)ManagementObject[nameof(Element)];
     /// <summary>
     /// Reference to the instance representing the properties of the setting that can be applied to the computer system.
     /// </summary>
-    public Base._Object? Setting => (Base._Object)ManagementObject[nameof(Setting)];
+    public new CIM.Setting? Setting => (CIM.Setting)ManagementObject[nameof(Setting)];
 }

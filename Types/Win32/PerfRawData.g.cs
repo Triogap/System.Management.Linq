@@ -8,6 +8,6 @@
 #nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class PerfRawData(ManagementObject ManagementObject) : Base._Object(ManagementObject)
+public partial record class PerfRawData(ManagementObject ManagementObject) : Perf(ManagementObject)
 {
 }

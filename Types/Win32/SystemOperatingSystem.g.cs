@@ -13,9 +13,9 @@ public partial record class SystemOperatingSystem(ManagementObject ManagementObj
     /// <summary>
     /// A Win32_ComputerSystem that describes the properties of the computer system upon which the operating system is installed.
     /// </summary>
-    public new Base._Object? GroupComponent => (Base._Object)ManagementObject[nameof(GroupComponent)];
+    public new ComputerSystem? GroupComponent => (ComputerSystem)ManagementObject[nameof(GroupComponent)];
     /// <summary>
     /// A Win32_OperatingSystem that describes properties of the operating system running on this computer system.
     /// </summary>
-    public new Base._Object? PartComponent => (Base._Object)ManagementObject[nameof(PartComponent)];
+    public new OperatingSystem? PartComponent => (OperatingSystem)ManagementObject[nameof(PartComponent)];
 }

@@ -8,7 +8,7 @@
 #nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class PnPEntity(ManagementObject ManagementObject) : Base._Object(ManagementObject)
+public partial record class PnPEntity(ManagementObject ManagementObject) : CIM.LogicalDevice(ManagementObject)
 {
     /// <summary>
     /// Globally unique identifier (GUID) of this Plug and Play device.

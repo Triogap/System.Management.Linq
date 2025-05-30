@@ -8,7 +8,7 @@
 #nullable enable
 namespace System.Management.Types.Base;
 
-public partial record class _EventQueueOverflowEvent(ManagementObject ManagementObject) : _Object(ManagementObject)
+public partial record class _EventQueueOverflowEvent(ManagementObject ManagementObject) : _EventDroppedEvent(ManagementObject)
 {
     /// <summary>
     /// Current queue size, in bytes. This property defaults to 10 MB for all queues combined.

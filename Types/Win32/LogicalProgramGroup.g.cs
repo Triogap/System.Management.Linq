@@ -17,7 +17,7 @@ public partial record class LogicalProgramGroup(ManagementObject ManagementObjec
     /// <summary>
     /// User-assigned name followed by the group name. Program groups are implemented as file folders in Win32.
     /// </summary>
-    public string? Name => (string)ManagementObject[nameof(Name)];
+    public new string? Name => (string)ManagementObject[nameof(Name)];
     /// <summary>
     /// Users who can access the Windows program group. Program groups are implemented as file folders in Win32.
     /// </summary>

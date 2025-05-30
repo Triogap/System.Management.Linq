@@ -13,5 +13,5 @@ public partial record class PCMCIAController(ManagementObject ManagementObject) 
     /// <summary>
     /// Unique identifier of this device with other peripherals using the Plug and Play BIOS. This property is derived from CIM_LogicalDevice.
     /// </summary>
-    public string? DeviceID => (string)ManagementObject[nameof(DeviceID)];
+    public new string? DeviceID => (string)ManagementObject[nameof(DeviceID)];
 }

@@ -8,10 +8,10 @@
 #nullable enable
 namespace System.Management.Types.CIM;
 
-public partial record class CurrentSensor(ManagementObject ManagementObject) : Base._Object(ManagementObject)
+public partial record class CurrentSensor(ManagementObject ManagementObject) : NumericSensor(ManagementObject)
 {
     /// <summary>
     /// Tolerance of the sensor for the measured property. This property, and the Resolution and Accuracy properties, are used to calculate the actual value of the measured physical property. Tolerance can vary depending on whether the device is linear over its dynamic range.
     /// </summary>
-    public int? Tolerance => (int?)ManagementObject[nameof(Tolerance)];
+    public new int? Tolerance => (int?)ManagementObject[nameof(Tolerance)];
 }

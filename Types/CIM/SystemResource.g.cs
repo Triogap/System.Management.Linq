@@ -8,6 +8,6 @@
 #nullable enable
 namespace System.Management.Types.CIM;
 
-public partial record class SystemResource(ManagementObject ManagementObject) : Base._Object(ManagementObject)
+public partial record class SystemResource(ManagementObject ManagementObject) : LogicalElement(ManagementObject)
 {
 }

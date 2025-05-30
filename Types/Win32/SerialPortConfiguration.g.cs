@@ -8,7 +8,7 @@
 #nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class SerialPortConfiguration(ManagementObject ManagementObject) : Base._Object(ManagementObject)
+public partial record class SerialPortConfiguration(ManagementObject ManagementObject) : CIM.Setting(ManagementObject)
 {
     /// <summary>
     /// If TRUE, read and write operations are terminated if an error occurs. If TRUE, the driver terminates all read and write operations with an error status if an error occurs. The driver will not accept any further communications operations until the application acknowledges the error.

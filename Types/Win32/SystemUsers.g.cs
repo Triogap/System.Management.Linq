@@ -8,14 +8,14 @@
 #nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class SystemUsers(ManagementObject ManagementObject) : Base._Object(ManagementObject)
+public partial record class SystemUsers(ManagementObject ManagementObject) : CIM.SystemComponent(ManagementObject)
 {
     /// <summary>
     /// Reference to the instance representing the computer system containing the user account.
     /// </summary>
-    public Base._Object? GroupComponent => (Base._Object)ManagementObject[nameof(GroupComponent)];
+    public new ComputerSystem? GroupComponent => (ComputerSystem)ManagementObject[nameof(GroupComponent)];
     /// <summary>
     /// Reference to the instance representing the user account on the computer system.
     /// </summary>
-    public UserAccount? PartComponent => (UserAccount)ManagementObject[nameof(PartComponent)];
+    public new UserAccount? PartComponent => (UserAccount)ManagementObject[nameof(PartComponent)];
 }

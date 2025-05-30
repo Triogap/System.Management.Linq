@@ -8,14 +8,14 @@
 #nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class SystemDesktop(ManagementObject ManagementObject) : Base._Object(ManagementObject)
+public partial record class SystemDesktop(ManagementObject ManagementObject) : SystemSetting(ManagementObject)
 {
     /// <summary>
     /// Reference to the instance representing the computer system where the desktop configuration exists.
     /// </summary>
-    public Base._Object? Element => (Base._Object)ManagementObject[nameof(Element)];
+    public new ComputerSystem? Element => (ComputerSystem)ManagementObject[nameof(Element)];
     /// <summary>
     /// Reference to the instance representing the configuration existing on the computer system.
     /// </summary>
-    public Base._Object? Setting => (Base._Object)ManagementObject[nameof(Setting)];
+    public new Desktop? Setting => (Desktop)ManagementObject[nameof(Setting)];
 }

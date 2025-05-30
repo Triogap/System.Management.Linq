@@ -8,6 +8,6 @@
 #nullable enable
 namespace System.Management.Types.Base;
 
-public partial record class _ExtrinsicEvent(ManagementObject ManagementObject) : _Object(ManagementObject)
+public partial record class _ExtrinsicEvent(ManagementObject ManagementObject) : _Event(ManagementObject)
 {
 }

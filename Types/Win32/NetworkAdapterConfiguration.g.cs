@@ -8,7 +8,7 @@
 #nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class NetworkAdapterConfiguration(ManagementObject ManagementObject) : Base._Object(ManagementObject)
+public partial record class NetworkAdapterConfiguration(ManagementObject ManagementObject) : CIM.Setting(ManagementObject)
 {
     /// <summary>
     /// If TRUE, TCP/IP transmits Address Resolution Protocol (ARP) queries with source routing enabled on Token Ring networks. By default (FALSE), ARP first queries without source routing, and then retries with source routing enabled if no reply is received. Source routing allows the routing of network packets across different types of networks.

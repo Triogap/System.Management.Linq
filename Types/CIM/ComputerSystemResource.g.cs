@@ -8,14 +8,14 @@
 #nullable enable
 namespace System.Management.Types.CIM;
 
-public partial record class ComputerSystemResource(ManagementObject ManagementObject) : Base._Object(ManagementObject)
+public partial record class ComputerSystemResource(ManagementObject ManagementObject) : SystemComponent(ManagementObject)
 {
     /// <summary>
     /// A CIM_SystemResource that describes a system resource of the computer system.
     /// </summary>
-    public Base._Object? PartComponent => (Base._Object)ManagementObject[nameof(PartComponent)];
+    public new SystemResource? PartComponent => (SystemResource)ManagementObject[nameof(PartComponent)];
     /// <summary>
     /// A CIM_ComputerSystem that describes the computer system.
     /// </summary>
-    public Base._Object? GroupComponent => (Base._Object)ManagementObject[nameof(GroupComponent)];
+    public new ComputerSystem? GroupComponent => (ComputerSystem)ManagementObject[nameof(GroupComponent)];
 }

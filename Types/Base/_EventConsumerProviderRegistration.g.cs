@@ -8,7 +8,7 @@
 #nullable enable
 namespace System.Management.Types.Base;
 
-public partial record class _EventConsumerProviderRegistration(ManagementObject ManagementObject) : _Object(ManagementObject)
+public partial record class _EventConsumerProviderRegistration(ManagementObject ManagementObject) : _ProviderRegistration(ManagementObject)
 {
     /// <summary>
     /// Array of names of the logical consumer classes that the event consumer provider supports.

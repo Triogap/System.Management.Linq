@@ -8,14 +8,14 @@
 #nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class LoadOrderGroupServiceDependencies(ManagementObject ManagementObject) : Base._Object(ManagementObject)
+public partial record class LoadOrderGroupServiceDependencies(ManagementObject ManagementObject) : CIM.Dependency(ManagementObject)
 {
     /// <summary>
     /// Reference to the instance representing the properties of the load order group that must start before the dependent base service of this class can start.
     /// </summary>
-    public Base._Object? Antecedent => (Base._Object)ManagementObject[nameof(Antecedent)];
+    public new LoadOrderGroup? Antecedent => (LoadOrderGroup)ManagementObject[nameof(Antecedent)];
     /// <summary>
     /// Reference to the instance representing the properties of the base service that is dependent upon the load order group to start running.
     /// </summary>
-    public Base._Object? Dependent => (Base._Object)ManagementObject[nameof(Dependent)];
+    public new BaseService? Dependent => (BaseService)ManagementObject[nameof(Dependent)];
 }

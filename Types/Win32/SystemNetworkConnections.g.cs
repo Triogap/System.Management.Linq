@@ -8,14 +8,14 @@
 #nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class SystemNetworkConnections(ManagementObject ManagementObject) : Base._Object(ManagementObject)
+public partial record class SystemNetworkConnections(ManagementObject ManagementObject) : CIM.SystemComponent(ManagementObject)
 {
     /// <summary>
     /// Reference to the instance representing the computer system connected to the network.
     /// </summary>
-    public Base._Object? GroupComponent => (Base._Object)ManagementObject[nameof(GroupComponent)];
+    public new ComputerSystem? GroupComponent => (ComputerSystem)ManagementObject[nameof(GroupComponent)];
     /// <summary>
     /// Reference to the instance representing the network connection to this computer system.
     /// </summary>
-    public Base._Object? PartComponent => (Base._Object)ManagementObject[nameof(PartComponent)];
+    public new NetworkConnection? PartComponent => (NetworkConnection)ManagementObject[nameof(PartComponent)];
 }

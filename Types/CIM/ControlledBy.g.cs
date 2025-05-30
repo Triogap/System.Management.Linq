@@ -13,11 +13,11 @@ public partial record class ControlledBy(ManagementObject ManagementObject) : De
     /// <summary>
     /// A CIM_LogicalDevice that represents the controlled device.
     /// </summary>
-    public new Base._Object? Dependent => (Base._Object)ManagementObject[nameof(Dependent)];
+    public new LogicalDevice? Dependent => (LogicalDevice)ManagementObject[nameof(Dependent)];
     /// <summary>
     /// A CIM_Controller that represents the controller.
     /// </summary>
-    public new Base._Object? Antecedent => (Base._Object)ManagementObject[nameof(Antecedent)];
+    public new Controller? Antecedent => (Controller)ManagementObject[nameof(Antecedent)];
     /// <summary>
     /// Indicates whether the controller is actively commanding or accessing the device. This information is necessary when a logical device can be commanded by, or accessed through, multiple controllers.
     /// </summary>

@@ -8,14 +8,14 @@
 #nullable enable
 namespace System.Management.Types.CIM;
 
-public partial record class AssociatedMemory(ManagementObject ManagementObject) : Base._Object(ManagementObject)
+public partial record class AssociatedMemory(ManagementObject ManagementObject) : Dependency(ManagementObject)
 {
     /// <summary>
     /// A CIM_LogicalDevice that describes the logical device.
     /// </summary>
-    public Base._Object? Dependent => (Base._Object)ManagementObject[nameof(Dependent)];
+    public new LogicalDevice? Dependent => (LogicalDevice)ManagementObject[nameof(Dependent)];
     /// <summary>
     /// A CIM_Memory that describes the memory installed on or associated with a device.
     /// </summary>
-    public Memory? Antecedent => (Memory)ManagementObject[nameof(Antecedent)];
+    public new Memory? Antecedent => (Memory)ManagementObject[nameof(Antecedent)];
 }

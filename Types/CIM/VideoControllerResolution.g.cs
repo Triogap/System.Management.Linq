@@ -8,12 +8,12 @@
 #nullable enable
 namespace System.Management.Types.CIM;
 
-public partial record class VideoControllerResolution(ManagementObject ManagementObject) : Base._Object(ManagementObject)
+public partial record class VideoControllerResolution(ManagementObject ManagementObject) : Setting(ManagementObject)
 {
     /// <summary>
     /// An ID that serves as part of the key for the current instance.
     /// </summary>
-    public string? SettingID => (string)ManagementObject[nameof(SettingID)];
+    public new string? SettingID => (string)ManagementObject[nameof(SettingID)];
     /// <summary>
     /// Horizontal resolution, in pixels.
     /// </summary>

@@ -8,7 +8,7 @@
 #nullable enable
 namespace System.Management.Types.CIM;
 
-public partial record class PhysicalComponent(ManagementObject ManagementObject) : Base._Object(ManagementObject)
+public partial record class PhysicalComponent(ManagementObject ManagementObject) : PhysicalElement(ManagementObject)
 {
     /// <summary>
     /// If TRUE, the package can be hot-swapped. A physical package can be hot-swapped if the element can be replaced by a physically different (but equivalent) one while the containing package is turned on. For example, a fan component may be designed to be hot-swapped. All components that can be hot-swapped are inherently removable and replaceable.

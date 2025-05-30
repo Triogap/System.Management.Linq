@@ -13,9 +13,9 @@ public partial record class DiskDriveToDiskPartition(ManagementObject Management
     /// <summary>
     /// Reference to the instance representing the properties of the disk drive where the partition exists.
     /// </summary>
-    public new Base._Object? Antecedent => (Base._Object)ManagementObject[nameof(Antecedent)];
+    public new DiskDrive? Antecedent => (DiskDrive)ManagementObject[nameof(Antecedent)];
     /// <summary>
     /// Reference to the instance representing the disk partition residing on the disk drive.
     /// </summary>
-    public new Base._Object? Dependent => (Base._Object)ManagementObject[nameof(Dependent)];
+    public new DiskPartition? Dependent => (DiskPartition)ManagementObject[nameof(Dependent)];
 }

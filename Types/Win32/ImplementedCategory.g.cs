@@ -13,9 +13,9 @@ public partial record class ImplementedCategory(ManagementObject ManagementObjec
     /// <summary>
     /// Reference to the instance representing the component category being used by the COM class.
     /// </summary>
-    public Base._Object? Category => (Base._Object)ManagementObject[nameof(Category)];
+    public ComponentCategory? Category => (ComponentCategory)ManagementObject[nameof(Category)];
     /// <summary>
     /// Reference to the instance representing the COM class using the associated category.
     /// </summary>
-    public Base._Object? Component => (Base._Object)ManagementObject[nameof(Component)];
+    public ClassicCOMClass? Component => (ClassicCOMClass)ManagementObject[nameof(Component)];
 }

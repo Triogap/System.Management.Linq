@@ -8,16 +8,16 @@
 #nullable enable
 namespace System.Management.Types.CIM;
 
-public partial record class BasedOn(ManagementObject ManagementObject) : Base._Object(ManagementObject)
+public partial record class BasedOn(ManagementObject ManagementObject) : Dependency(ManagementObject)
 {
     /// <summary>
     /// A CIM_StorageExtent that describes the higher level storage extent.
     /// </summary>
-    public Base._Object? Dependent => (Base._Object)ManagementObject[nameof(Dependent)];
+    public new StorageExtent? Dependent => (StorageExtent)ManagementObject[nameof(Dependent)];
     /// <summary>
     /// A CIM_StorageExtent that describes the lower level storage extent.
     /// </summary>
-    public Base._Object? Antecedent => (Base._Object)ManagementObject[nameof(Antecedent)];
+    public new StorageExtent? Antecedent => (StorageExtent)ManagementObject[nameof(Antecedent)];
     /// <summary>
     /// Indicates the end of the high-level extent in lower-level storage. This property is useful when mapping non-contiguous extents into a higher-level grouping.
     /// </summary>

@@ -8,7 +8,7 @@
 #nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class DeviceChangeEvent(ManagementObject ManagementObject) : Base._Object(ManagementObject)
+public partial record class DeviceChangeEvent(ManagementObject ManagementObject) : Base._ExtrinsicEvent(ManagementObject)
 {
     /// <summary>
     /// Type of event change notification that has occurred.

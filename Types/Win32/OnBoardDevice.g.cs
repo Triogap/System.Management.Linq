@@ -8,7 +8,7 @@
 #nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class OnBoardDevice(ManagementObject ManagementObject) : Base._Object(ManagementObject)
+public partial record class OnBoardDevice(ManagementObject ManagementObject) : CIM.PhysicalComponent(ManagementObject)
 {
     /// <summary>
     /// Type of device being represented.

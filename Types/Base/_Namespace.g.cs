@@ -8,7 +8,7 @@
 #nullable enable
 namespace System.Management.Types.Base;
 
-public partial record class _Namespace(ManagementObject ManagementObject) : _Object(ManagementObject)
+public partial record class _Namespace(ManagementObject ManagementObject) : _SystemClass(ManagementObject)
 {
     /// <summary>
     /// Namespace name.

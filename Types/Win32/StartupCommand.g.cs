@@ -8,7 +8,7 @@
 #nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class StartupCommand(ManagementObject ManagementObject) : Base._Object(ManagementObject)
+public partial record class StartupCommand(ManagementObject ManagementObject) : CIM.Setting(ManagementObject)
 {
     /// <summary>
     /// Command run by the startup command.

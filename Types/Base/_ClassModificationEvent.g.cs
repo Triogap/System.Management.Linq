@@ -8,7 +8,7 @@
 #nullable enable
 namespace System.Management.Types.Base;
 
-public partial record class _ClassModificationEvent(ManagementObject ManagementObject) : _Object(ManagementObject)
+public partial record class _ClassModificationEvent(ManagementObject ManagementObject) : _ClassOperationEvent(ManagementObject)
 {
     /// <summary>
     /// Copy of the original version of the class.

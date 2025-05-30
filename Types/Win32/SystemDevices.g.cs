@@ -17,5 +17,5 @@ public partial record class SystemDevices(ManagementObject ManagementObject) : C
     /// <summary>
     /// Reference to the instance representing the properties of a logical device that exists on the computer system.
     /// </summary>
-    public new Base._Object? PartComponent => (Base._Object)ManagementObject[nameof(PartComponent)];
+    public new CIM.LogicalDevice? PartComponent => (CIM.LogicalDevice)ManagementObject[nameof(PartComponent)];
 }

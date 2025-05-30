@@ -8,7 +8,7 @@
 #nullable enable
 namespace System.Management.Types.CIM;
 
-public partial record class LogicalDisk(ManagementObject ManagementObject) : Base._Object(ManagementObject)
+public partial record class LogicalDisk(ManagementObject ManagementObject) : StorageExtent(ManagementObject)
 {
     /// <summary>
     /// Available free space, in bytes, on the logical disk.

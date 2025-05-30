@@ -8,14 +8,14 @@
 #nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class MemoryDeviceArray(ManagementObject ManagementObject) : Base._Object(ManagementObject)
+public partial record class MemoryDeviceArray(ManagementObject ManagementObject) : CIM.Component(ManagementObject)
 {
     /// <summary>
     /// A Win32_MemoryArray that represents the memory array part of the Win32_MemoryDeviceArray association.
     /// </summary>
-    public Base._Object? GroupComponent => (Base._Object)ManagementObject[nameof(GroupComponent)];
+    public new MemoryArray? GroupComponent => (MemoryArray)ManagementObject[nameof(GroupComponent)];
     /// <summary>
     /// A Win32_MemoryDevice that represents a memory device part of the Win32_MemoryDeviceArray association.
     /// </summary>
-    public Base._Object? PartComponent => (Base._Object)ManagementObject[nameof(PartComponent)];
+    public new MemoryDevice? PartComponent => (MemoryDevice)ManagementObject[nameof(PartComponent)];
 }

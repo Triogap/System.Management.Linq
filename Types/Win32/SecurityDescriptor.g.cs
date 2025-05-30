@@ -8,26 +8,26 @@
 #nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class SecurityDescriptor(ManagementObject ManagementObject) : Base._Object(ManagementObject)
+public partial record class SecurityDescriptor(ManagementObject ManagementObject) : Base._SecurityDescriptor(ManagementObject)
 {
     /// <summary>
     /// Control bits that qualify the meaning of a security descriptor (SD) or its individual members. See the Remarks section of this topic for information about setting the ControlFlags value. The following list lists the flags in ControlFlags. For more information, see SECURITY_DESCRIPTOR_CONTROL.
     /// </summary>
-    public uint? ControlFlags => (uint?)ManagementObject[nameof(ControlFlags)];
+    public new uint? ControlFlags => (uint?)ManagementObject[nameof(ControlFlags)];
     /// <summary>
     /// Each array entry defines the type of object access that the system grants to a specific user or group. For more information about security for access control lists (ACL), see Access Control Lists and Creating a DACL.
     /// </summary>
-    public ACE[]? DACL => (ACE[])ManagementObject[nameof(DACL)];
+    public new ACE[]? DACL => (ACE[])ManagementObject[nameof(DACL)];
     /// <summary>
     /// Group that owns this object.
     /// </summary>
-    public Base._Object? Group => (Base._Object)ManagementObject[nameof(Group)];
+    public new Trustee? Group => (Trustee)ManagementObject[nameof(Group)];
     /// <summary>
     /// Owner of an object.
     /// </summary>
-    public Base._Object? Owner => (Base._Object)ManagementObject[nameof(Owner)];
+    public new Trustee? Owner => (Trustee)ManagementObject[nameof(Owner)];
     /// <summary>
     /// Each array entry defines the type of access attempts that generate audit records for a specific user or group.
     /// </summary>
-    public Base._Object[]? SACL => (Base._Object[])ManagementObject[nameof(SACL)];
+    public new ACE[]? SACL => (ACE[])ManagementObject[nameof(SACL)];
 }

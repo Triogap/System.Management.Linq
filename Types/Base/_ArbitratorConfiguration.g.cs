@@ -8,7 +8,7 @@
 #nullable enable
 namespace System.Management.Types.Base;
 
-public partial record class _ArbitratorConfiguration(ManagementObject ManagementObject) : _Object(ManagementObject)
+public partial record class _ArbitratorConfiguration(ManagementObject ManagementObject) : _SystemClass(ManagementObject)
 {
     /// <summary>
     /// Unused. Total number of outstanding tasks at any time.

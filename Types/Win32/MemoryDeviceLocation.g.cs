@@ -8,14 +8,14 @@
 #nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class MemoryDeviceLocation(ManagementObject ManagementObject) : Base._Object(ManagementObject)
+public partial record class MemoryDeviceLocation(ManagementObject ManagementObject) : CIM.Realizes(ManagementObject)
 {
     /// <summary>
     /// A Win32_MemoryDeviceLocation that represents the memory device existing in the physical memory.
     /// </summary>
-    public Base._Object? Dependent => (Base._Object)ManagementObject[nameof(Dependent)];
+    public new MemoryDevice? Dependent => (MemoryDevice)ManagementObject[nameof(Dependent)];
     /// <summary>
     /// A Win32_PhysicalMemory that represents the physical memory containing the memory device.
     /// </summary>
-    public PhysicalMemory? Antecedent => (PhysicalMemory)ManagementObject[nameof(Antecedent)];
+    public new PhysicalMemory? Antecedent => (PhysicalMemory)ManagementObject[nameof(Antecedent)];
 }

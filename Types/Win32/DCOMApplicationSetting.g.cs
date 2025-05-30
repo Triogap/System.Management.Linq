@@ -8,7 +8,7 @@
 #nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class DCOMApplicationSetting(ManagementObject ManagementObject) : Base._Object(ManagementObject)
+public partial record class DCOMApplicationSetting(ManagementObject ManagementObject) : COMSetting(ManagementObject)
 {
     /// <summary>
     /// Globally unique identifier (GUID) for this DCOM application.

@@ -8,7 +8,7 @@
 #nullable enable
 namespace System.Management.Types.Base;
 
-public partial record class _ObjectProviderCacheControl(ManagementObject ManagementObject) : _Object(ManagementObject)
+public partial record class _ObjectProviderCacheControl(ManagementObject ManagementObject) : _CacheControl(ManagementObject)
 {
     /// <summary>
     /// Time interval after which WMI releases an instance, class, or method provider. The time is in interval format.

@@ -8,7 +8,7 @@
 #nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class CodecFile(ManagementObject ManagementObject) : Base._Object(ManagementObject)
+public partial record class CodecFile(ManagementObject ManagementObject) : CIM.DataFile(ManagementObject)
 {
     /// <summary>
     /// Codec represented by this class.

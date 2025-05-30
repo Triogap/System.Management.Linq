@@ -8,7 +8,7 @@
 #nullable enable
 namespace System.Management.Types.CIM;
 
-public partial record class PointingDevice(ManagementObject ManagementObject) : Base._Object(ManagementObject)
+public partial record class PointingDevice(ManagementObject ManagementObject) : UserDevice(ManagementObject)
 {
     /// <summary>
     /// Configuration of the pointing device for right-hand or left-hand operation.

@@ -8,14 +8,14 @@
 #nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class ProgramGroupContents(ManagementObject ManagementObject) : Base._Object(ManagementObject)
+public partial record class ProgramGroupContents(ManagementObject ManagementObject) : CIM.Component(ManagementObject)
 {
     /// <summary>
     /// Reference to the instance representing the logical program group for this association.
     /// </summary>
-    public Base._Object? GroupComponent => (Base._Object)ManagementObject[nameof(GroupComponent)];
+    public new LogicalProgramGroup? GroupComponent => (LogicalProgramGroup)ManagementObject[nameof(GroupComponent)];
     /// <summary>
     /// Reference to the instance representing the Start menu group or item for this association.
     /// </summary>
-    public Base._Object? PartComponent => (Base._Object)ManagementObject[nameof(PartComponent)];
+    public new ProgramGroupOrItem? PartComponent => (ProgramGroupOrItem)ManagementObject[nameof(PartComponent)];
 }

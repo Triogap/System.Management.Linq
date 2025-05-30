@@ -8,6 +8,6 @@
 #nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class SystemDriver(ManagementObject ManagementObject) : Base._Object(ManagementObject)
+public partial record class SystemDriver(ManagementObject ManagementObject) : BaseService(ManagementObject)
 {
 }

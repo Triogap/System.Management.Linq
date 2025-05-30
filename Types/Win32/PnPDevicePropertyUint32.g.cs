@@ -8,7 +8,7 @@
 #nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class PnPDevicePropertyUint32(ManagementObject ManagementObject) : Base._Object(ManagementObject)
+public partial record class PnPDevicePropertyUint32(ManagementObject ManagementObject) : PnPDeviceProperty(ManagementObject)
 {
     /// <summary>
     /// The property value.

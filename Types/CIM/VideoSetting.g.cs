@@ -8,14 +8,14 @@
 #nullable enable
 namespace System.Management.Types.CIM;
 
-public partial record class VideoSetting(ManagementObject ManagementObject) : Base._Object(ManagementObject)
+public partial record class VideoSetting(ManagementObject ManagementObject) : ElementSetting(ManagementObject)
 {
     /// <summary>
     /// A CIM_VideoControllerResolution that describes the resolutions, refresh rates, scan mode and number of colors that can be set for the Controller.
     /// </summary>
-    public VideoControllerResolution? Setting => (VideoControllerResolution)ManagementObject[nameof(Setting)];
+    public new VideoControllerResolution? Setting => (VideoControllerResolution)ManagementObject[nameof(Setting)];
     /// <summary>
     /// A CIM_VideoController that describes the video controller.
     /// </summary>
-    public Base._Object? Element => (Base._Object)ManagementObject[nameof(Element)];
+    public new VideoController? Element => (VideoController)ManagementObject[nameof(Element)];
 }

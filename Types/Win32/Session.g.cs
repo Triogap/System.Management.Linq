@@ -8,7 +8,7 @@
 #nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class Session(ManagementObject ManagementObject) : Base._Object(ManagementObject)
+public partial record class Session(ManagementObject ManagementObject) : CIM.LogicalElement(ManagementObject)
 {
     /// <summary>
     /// Time at which the session started.

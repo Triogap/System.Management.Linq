@@ -17,7 +17,7 @@ public partial record class DiskPartition(ManagementObject ManagementObject) : C
     /// <summary>
     /// Unique identifier of the disk drive and partition, from the rest of the system.
     /// </summary>
-    public string? DeviceID => (string)ManagementObject[nameof(DeviceID)];
+    public new string? DeviceID => (string)ManagementObject[nameof(DeviceID)];
     /// <summary>
     /// Index number of the disk containing this partition.
     /// </summary>

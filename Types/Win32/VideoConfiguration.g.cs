@@ -8,7 +8,7 @@
 #nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class VideoConfiguration(ManagementObject ManagementObject) : Base._Object(ManagementObject)
+public partial record class VideoConfiguration(ManagementObject ManagementObject) : CIM.Setting(ManagementObject)
 {
     /// <summary>
     /// Indicates the current color depth of the video display.

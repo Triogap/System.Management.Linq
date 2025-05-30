@@ -8,14 +8,14 @@
 #nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class POTSModemToSerialPort(ManagementObject ManagementObject) : Base._Object(ManagementObject)
+public partial record class POTSModemToSerialPort(ManagementObject ManagementObject) : CIM.ControlledBy(ManagementObject)
 {
     /// <summary>
     /// A Win32_POTSModem that represents the POTS modem using the serial port.
     /// </summary>
-    public Base._Object? Dependent => (Base._Object)ManagementObject[nameof(Dependent)];
+    public new POTSModem? Dependent => (POTSModem)ManagementObject[nameof(Dependent)];
     /// <summary>
     /// A Win32_SerialPort that represents the serial port used by the modem.
     /// </summary>
-    public SerialPort? Antecedent => (SerialPort)ManagementObject[nameof(Antecedent)];
+    public new SerialPort? Antecedent => (SerialPort)ManagementObject[nameof(Antecedent)];
 }

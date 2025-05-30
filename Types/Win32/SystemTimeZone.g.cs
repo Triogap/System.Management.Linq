@@ -8,14 +8,14 @@
 #nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class SystemTimeZone(ManagementObject ManagementObject) : Base._Object(ManagementObject)
+public partial record class SystemTimeZone(ManagementObject ManagementObject) : SystemSetting(ManagementObject)
 {
     /// <summary>
     /// Reference to the instance representing the computer system keeping track of the system time zone.
     /// </summary>
-    public Base._Object? Element => (Base._Object)ManagementObject[nameof(Element)];
+    public new ComputerSystem? Element => (ComputerSystem)ManagementObject[nameof(Element)];
     /// <summary>
     /// Reference to the instance representing the time zone properties tracked by the computer system.
     /// </summary>
-    public TimeZone? Setting => (TimeZone)ManagementObject[nameof(Setting)];
+    public new TimeZone? Setting => (TimeZone)ManagementObject[nameof(Setting)];
 }

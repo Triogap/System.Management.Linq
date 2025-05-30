@@ -8,14 +8,14 @@
 #nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class IDEControllerDevice(ManagementObject ManagementObject) : Base._Object(ManagementObject)
+public partial record class IDEControllerDevice(ManagementObject ManagementObject) : CIM.ControlledBy(ManagementObject)
 {
     /// <summary>
     /// A Win32_IDEController that represents the IDE controller associated with this device.
     /// </summary>
-    public Base._Object? Antecedent => (Base._Object)ManagementObject[nameof(Antecedent)];
+    public new IDEController? Antecedent => (IDEController)ManagementObject[nameof(Antecedent)];
     /// <summary>
     /// A CIM_LogicalDevice that represents the logical device connected to the IDE controller.
     /// </summary>
-    public Base._Object? Dependent => (Base._Object)ManagementObject[nameof(Dependent)];
+    public new CIM.LogicalDevice? Dependent => (CIM.LogicalDevice)ManagementObject[nameof(Dependent)];
 }

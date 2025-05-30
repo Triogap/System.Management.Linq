@@ -8,14 +8,14 @@
 #nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class LogicalDiskRootDirectory(ManagementObject ManagementObject) : Base._Object(ManagementObject)
+public partial record class LogicalDiskRootDirectory(ManagementObject ManagementObject) : CIM.Component(ManagementObject)
 {
     /// <summary>
     /// Reference to the instance representing the properties of the logical disk.
     /// </summary>
-    public Base._Object? GroupComponent => (Base._Object)ManagementObject[nameof(GroupComponent)];
+    public new LogicalDisk? GroupComponent => (LogicalDisk)ManagementObject[nameof(GroupComponent)];
     /// <summary>
     /// Reference to the instance representing the properties of the file directory structure.
     /// </summary>
-    public Directory? PartComponent => (Directory)ManagementObject[nameof(PartComponent)];
+    public new Directory? PartComponent => (Directory)ManagementObject[nameof(PartComponent)];
 }

@@ -8,14 +8,14 @@
 #nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class ClassicCOMClassSettings(ManagementObject ManagementObject) : Base._Object(ManagementObject)
+public partial record class ClassicCOMClassSettings(ManagementObject ManagementObject) : CIM.ElementSetting(ManagementObject)
 {
     /// <summary>
     /// A Win32_ClassicCOMClassSetting that represents configuration settings associated with the COM class.
     /// </summary>
-    public Base._Object? Setting => (Base._Object)ManagementObject[nameof(Setting)];
+    public new ClassicCOMClassSetting? Setting => (ClassicCOMClassSetting)ManagementObject[nameof(Setting)];
     /// <summary>
     /// A Win32_ClassicCOMClass that represents the COM class where the settings are applied.
     /// </summary>
-    public Base._Object? Element => (Base._Object)ManagementObject[nameof(Element)];
+    public new ClassicCOMClass? Element => (ClassicCOMClass)ManagementObject[nameof(Element)];
 }

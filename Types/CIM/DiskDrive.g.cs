@@ -8,6 +8,6 @@
 #nullable enable
 namespace System.Management.Types.CIM;
 
-public partial record class DiskDrive(ManagementObject ManagementObject) : Base._Object(ManagementObject)
+public partial record class DiskDrive(ManagementObject ManagementObject) : MediaAccessDevice(ManagementObject)
 {
 }

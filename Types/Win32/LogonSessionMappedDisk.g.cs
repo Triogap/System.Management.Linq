@@ -8,14 +8,14 @@
 #nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class LogonSessionMappedDisk(ManagementObject ManagementObject) : Base._Object(ManagementObject)
+public partial record class LogonSessionMappedDisk(ManagementObject ManagementObject) : CIM.Dependency(ManagementObject)
 {
     /// <summary>
     /// The Antecedent property references a logon session.
     /// </summary>
-    public LogonSession? Antecedent => (LogonSession)ManagementObject[nameof(Antecedent)];
+    public new LogonSession? Antecedent => (LogonSession)ManagementObject[nameof(Antecedent)];
     /// <summary>
     /// The Dependent property references a mapped logical disk defined within the session referenced by the Antecedent property.
     /// </summary>
-    public Base._Object? Dependent => (Base._Object)ManagementObject[nameof(Dependent)];
+    public new MappedLogicalDisk? Dependent => (MappedLogicalDisk)ManagementObject[nameof(Dependent)];
 }

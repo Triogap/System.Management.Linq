@@ -8,7 +8,7 @@
 #nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class Service(ManagementObject ManagementObject) : Base._Object(ManagementObject)
+public partial record class Service(ManagementObject ManagementObject) : BaseService(ManagementObject)
 {
     /// <summary>
     /// Value that the service increments periodically to report its progress during a long start, stop, pause, or continue operation. For example, the service increments this value as it completes each step of its initialization when it is starting up. The user interface program that invokes the operation on the service uses this value to track the progress of the service during a lengthy operation. This value is not valid and should be zero when the service does not have a start, stop, pause, or continue operation pending.
@@ -21,7 +21,7 @@ public partial record class Service(ManagementObject ManagementObject) : Base._O
     /// <summary>
     /// Severity of the error if this service fails to start during startup. The value indicates the action taken by the startup program if failure occurs. All errors are logged by the computer system.
     /// </summary>
-    public string? ErrorControl => (string)ManagementObject[nameof(ErrorControl)];
+    public new string? ErrorControl => (string)ManagementObject[nameof(ErrorControl)];
     /// <summary>
     /// Process identifier of the service.
     /// </summary>
@@ -29,15 +29,15 @@ public partial record class Service(ManagementObject ManagementObject) : Base._O
     /// <summary>
     /// Type of service provided to calling processes.
     /// </summary>
-    public string? ServiceType => (string)ManagementObject[nameof(ServiceType)];
+    public new string? ServiceType => (string)ManagementObject[nameof(ServiceType)];
     /// <summary>
     /// Start mode of the Windows base service.
     /// </summary>
-    public string? StartMode => (string)ManagementObject[nameof(StartMode)];
+    public new string? StartMode => (string)ManagementObject[nameof(StartMode)];
     /// <summary>
     /// Current state of the base service.
     /// </summary>
-    public string? State => (string)ManagementObject[nameof(State)];
+    public new string? State => (string)ManagementObject[nameof(State)];
     /// <summary>
     /// Estimated time required, in milliseconds, for a pending start, stop, pause, or continue operation. After the specified time has elapsed, the service makes its next call to the SetServiceStatus method with either an incremented CheckPoint value or a change in CurrentState. If the amount of time specified by WaitHint passes, and CheckPoint has not been incremented, or CurrentState has not changed, the service control manager or service control program assumes that an error has occurred.
     /// </summary>

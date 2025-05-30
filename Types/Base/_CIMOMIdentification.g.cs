@@ -8,7 +8,7 @@
 #nullable enable
 namespace System.Management.Types.Base;
 
-public partial record class _CIMOMIdentification(ManagementObject ManagementObject) : _Object(ManagementObject)
+public partial record class _CIMOMIdentification(ManagementObject ManagementObject) : _SystemClass(ManagementObject)
 {
     /// <summary>
     /// Date and time of installation. This property is empty after the operating system is installed for the first time.

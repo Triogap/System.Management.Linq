@@ -13,9 +13,9 @@ public partial record class ClientApplicationSetting(ManagementObject Management
     /// <summary>
     /// Reference to the instance that represents the COM application that contains configuration options of the executable file.
     /// </summary>
-    public Base._Object? Application => (Base._Object)ManagementObject[nameof(Application)];
+    public DCOMApplication? Application => (DCOMApplication)ManagementObject[nameof(Application)];
     /// <summary>
     /// Reference to the instance that represents the executable file that uses COM settings.
     /// </summary>
-    public Base._Object? Client => (Base._Object)ManagementObject[nameof(Client)];
+    public CIM.DataFile? Client => (CIM.DataFile)ManagementObject[nameof(Client)];
 }

@@ -8,7 +8,7 @@
 #nullable enable
 namespace System.Management.Types.CIM;
 
-public partial record class PotsModem(ManagementObject ManagementObject) : Base._Object(ManagementObject)
+public partial record class PotsModem(ManagementObject ManagementObject) : LogicalDevice(ManagementObject)
 {
     /// <summary>
     /// Current auto-answer or call-back setting for the modem.

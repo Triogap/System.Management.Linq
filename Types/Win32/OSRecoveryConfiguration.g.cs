@@ -8,7 +8,7 @@
 #nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class OSRecoveryConfiguration(ManagementObject ManagementObject) : Base._Object(ManagementObject)
+public partial record class OSRecoveryConfiguration(ManagementObject ManagementObject) : CIM.Setting(ManagementObject)
 {
     /// <summary>
     /// System will automatically reboot during a recovery operation.

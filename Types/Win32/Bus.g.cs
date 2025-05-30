@@ -8,7 +8,7 @@
 #nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class Bus(ManagementObject ManagementObject) : Base._Object(ManagementObject)
+public partial record class Bus(ManagementObject ManagementObject) : CIM.LogicalDevice(ManagementObject)
 {
     /// <summary>
     /// Logical number assigned to the physical bus.

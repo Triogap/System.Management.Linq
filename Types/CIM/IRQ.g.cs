@@ -8,7 +8,7 @@
 #nullable enable
 namespace System.Management.Types.CIM;
 
-public partial record class IRQ(ManagementObject ManagementObject) : Base._Object(ManagementObject)
+public partial record class IRQ(ManagementObject ManagementObject) : SystemResource(ManagementObject)
 {
     /// <summary>
     /// Availability of the IRQ.

@@ -8,14 +8,14 @@
 #nullable enable
 namespace System.Management.Types.CIM;
 
-public partial record class Realizes(ManagementObject ManagementObject) : Base._Object(ManagementObject)
+public partial record class Realizes(ManagementObject ManagementObject) : Dependency(ManagementObject)
 {
     /// <summary>
     /// A CIM_LogicalDevice that describes the logical device.
     /// </summary>
-    public Base._Object? Dependent => (Base._Object)ManagementObject[nameof(Dependent)];
+    public new LogicalDevice? Dependent => (LogicalDevice)ManagementObject[nameof(Dependent)];
     /// <summary>
     /// A CIM_PhysicalElement that describes the physical component that implements the device.
     /// </summary>
-    public Base._Object? Antecedent => (Base._Object)ManagementObject[nameof(Antecedent)];
+    public new PhysicalElement? Antecedent => (PhysicalElement)ManagementObject[nameof(Antecedent)];
 }

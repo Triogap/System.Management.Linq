@@ -8,12 +8,12 @@
 #nullable enable
 namespace System.Management.Types.Base;
 
-public partial record class _FilterToConsumerBinding(ManagementObject ManagementObject) : _Object(ManagementObject)
+public partial record class _FilterToConsumerBinding(ManagementObject ManagementObject) : _IndicationRelated(ManagementObject)
 {
     /// <summary>
     /// Reference to an instance of __EventConsumer that represents the object path to a logical consumer, the recipient of an event. A logical consumer is an instance of a class derived from __EventConsumer.
     /// </summary>
-    public _Object? Consumer => (_Object)ManagementObject[nameof(Consumer)];
+    public _EventConsumer? Consumer => (_EventConsumer)ManagementObject[nameof(Consumer)];
     /// <summary>
     /// Security identifier (SID) that uniquely identifies the user who created the binding. Depending on the operating system, WMI stores the Administrator SID or the SID of the user that creates an instance of __FilterToConsumerBinding. For more information, see Binding an Event Filter with a Logical Consumer and Monitoring and Responding to Events with Standard Consumers.
     /// </summary>
@@ -29,7 +29,7 @@ public partial record class _FilterToConsumerBinding(ManagementObject Management
     /// <summary>
     /// Reference to an instance of __EventFilter that represents the object path to an event filter which is a query that specifies the type of event to be received.
     /// </summary>
-    public _Object? Filter => (_Object)ManagementObject[nameof(Filter)];
+    public _EventFilter? Filter => (_EventFilter)ManagementObject[nameof(Filter)];
     /// <summary>
     /// If True, the events are delivered in the same security context that the provider was in when it provided them.
     /// </summary>

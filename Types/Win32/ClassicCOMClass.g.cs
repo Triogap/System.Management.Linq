@@ -8,7 +8,7 @@
 #nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class ClassicCOMClass(ManagementObject ManagementObject) : Base._Object(ManagementObject)
+public partial record class ClassicCOMClass(ManagementObject ManagementObject) : COMClass(ManagementObject)
 {
     /// <summary>
     /// Globally unique identifier (GUID) of this COM class.
@@ -17,5 +17,5 @@ public partial record class ClassicCOMClass(ManagementObject ManagementObject) :
     /// <summary>
     /// The Name property contains the human-readable name for the COM class.
     /// </summary>
-    public string? Name => (string)ManagementObject[nameof(Name)];
+    public new string? Name => (string)ManagementObject[nameof(Name)];
 }

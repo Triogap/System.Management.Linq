@@ -8,7 +8,7 @@
 #nullable enable
 namespace System.Management.Types.CIM;
 
-public partial record class PCMCIAController(ManagementObject ManagementObject) : Base._Object(ManagementObject)
+public partial record class PCMCIAController(ManagementObject ManagementObject) : Controller(ManagementObject)
 {
     /// <summary>
     /// Name of the PCMCIA controller manufacturer.

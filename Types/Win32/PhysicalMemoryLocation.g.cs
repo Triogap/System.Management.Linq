@@ -13,9 +13,9 @@ public partial record class PhysicalMemoryLocation(ManagementObject ManagementOb
     /// <summary>
     /// A Win32_PhysicalMemory that represents the physical memory contained in the physical memory array.
     /// </summary>
-    public new Base._Object? PartComponent => (Base._Object)ManagementObject[nameof(PartComponent)];
+    public new PhysicalMemory? PartComponent => (PhysicalMemory)ManagementObject[nameof(PartComponent)];
     /// <summary>
     /// A Win32_PhysicalMemoryArray that represents the physical memory array that contains the physical memory.
     /// </summary>
-    public new Base._Object? GroupComponent => (Base._Object)ManagementObject[nameof(GroupComponent)];
+    public new PhysicalMemoryArray? GroupComponent => (PhysicalMemoryArray)ManagementObject[nameof(GroupComponent)];
 }

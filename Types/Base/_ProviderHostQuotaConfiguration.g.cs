@@ -8,7 +8,7 @@
 #nullable enable
 namespace System.Management.Types.Base;
 
-public partial record class _ProviderHostQuotaConfiguration(ManagementObject ManagementObject) : _Object(ManagementObject)
+public partial record class _ProviderHostQuotaConfiguration(ManagementObject ManagementObject) : _SystemClass(ManagementObject)
 {
     /// <summary>
     /// Number of threads owned by any one host.

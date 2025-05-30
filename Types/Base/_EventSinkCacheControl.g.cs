@@ -8,7 +8,7 @@
 #nullable enable
 namespace System.Management.Types.Base;
 
-public partial record class _EventSinkCacheControl(ManagementObject ManagementObject) : _Object(ManagementObject)
+public partial record class _EventSinkCacheControl(ManagementObject ManagementObject) : _CacheControl(ManagementObject)
 {
     /// <summary>
     /// Time interval after which WMI releases an event provider. It can take up to twice the interval specified to unload the provider. The time is in interval format.

@@ -13,9 +13,9 @@ public partial record class SessionProcess(ManagementObject ManagementObject) : 
     /// <summary>
     /// A Win32_LogonSession that represents the session which is related to the process.
     /// </summary>
-    public new Base._Object? Antecedent => (Base._Object)ManagementObject[nameof(Antecedent)];
+    public new LogonSession? Antecedent => (LogonSession)ManagementObject[nameof(Antecedent)];
     /// <summary>
     /// A Win32_Process that represents the process associated with the session.
     /// </summary>
-    public new Base._Object? Dependent => (Base._Object)ManagementObject[nameof(Dependent)];
+    public new Process? Dependent => (Process)ManagementObject[nameof(Dependent)];
 }

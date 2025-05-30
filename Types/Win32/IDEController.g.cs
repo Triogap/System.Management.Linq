@@ -8,7 +8,7 @@
 #nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class IDEController(ManagementObject ManagementObject) : Base._Object(ManagementObject)
+public partial record class IDEController(ManagementObject ManagementObject) : CIM.Controller(ManagementObject)
 {
     /// <summary>
     /// Manufacturer of the IDE controller device.

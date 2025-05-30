@@ -57,7 +57,7 @@ public partial record class OperatingSystem(ManagementObject ManagementObject) :
     /// <summary>
     /// Description of the Windows operating system. Some user interfaces for example, those that allow editing of this description, limit its length to 48 characters.
     /// </summary>
-    public string? Description => (string)ManagementObject[nameof(Description)];
+    public new string? Description => (string)ManagementObject[nameof(Description)];
     public uint? EncryptionLevel => (uint?)ManagementObject[nameof(EncryptionLevel)];
     /// <summary>
     /// Increase in priority is given to the foreground application. Application boost is implemented by giving an application more execution time slices (quantum lengths).

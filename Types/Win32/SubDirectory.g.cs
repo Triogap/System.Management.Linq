@@ -8,14 +8,14 @@
 #nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class SubDirectory(ManagementObject ManagementObject) : Base._Object(ManagementObject)
+public partial record class SubDirectory(ManagementObject ManagementObject) : CIM.Component(ManagementObject)
 {
     /// <summary>
     /// Reference to the instance representing the properties of the parent directory (folder) in this association.
     /// </summary>
-    public Base._Object? GroupComponent => (Base._Object)ManagementObject[nameof(GroupComponent)];
+    public new Directory? GroupComponent => (Directory)ManagementObject[nameof(GroupComponent)];
     /// <summary>
     /// Reference to the instance representing the subdirectory (subfolder) part of the association.
     /// </summary>
-    public Base._Object? PartComponent => (Base._Object)ManagementObject[nameof(PartComponent)];
+    public new Directory? PartComponent => (Directory)ManagementObject[nameof(PartComponent)];
 }

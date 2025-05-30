@@ -8,14 +8,14 @@
 #nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class SystemBIOS(ManagementObject ManagementObject) : Base._Object(ManagementObject)
+public partial record class SystemBIOS(ManagementObject ManagementObject) : CIM.SystemComponent(ManagementObject)
 {
     /// <summary>
     /// A Win32_BIOS contained in the computer system of this association.
     /// </summary>
-    public Base._Object? PartComponent => (Base._Object)ManagementObject[nameof(PartComponent)];
+    public new BIOS? PartComponent => (BIOS)ManagementObject[nameof(PartComponent)];
     /// <summary>
     /// The Win32_ComputerSystem containing the BIOS of the association.
     /// </summary>
-    public Base._Object? GroupComponent => (Base._Object)ManagementObject[nameof(GroupComponent)];
+    public new ComputerSystem? GroupComponent => (ComputerSystem)ManagementObject[nameof(GroupComponent)];
 }

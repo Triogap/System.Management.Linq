@@ -8,7 +8,7 @@
 #nullable enable
 namespace System.Management.Types.CIM;
 
-public partial record class UserDevice(ManagementObject ManagementObject) : Base._Object(ManagementObject)
+public partial record class UserDevice(ManagementObject ManagementObject) : LogicalDevice(ManagementObject)
 {
     /// <summary>
     /// If TRUE, the device is locked, preventing user input or output.

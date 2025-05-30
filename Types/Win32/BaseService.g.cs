@@ -8,7 +8,7 @@
 #nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class BaseService(ManagementObject ManagementObject) : Base._Object(ManagementObject)
+public partial record class BaseService(ManagementObject ManagementObject) : CIM.Service(ManagementObject)
 {
     /// <summary>
     /// Service can be paused.

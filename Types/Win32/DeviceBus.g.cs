@@ -8,14 +8,14 @@
 #nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class DeviceBus(ManagementObject ManagementObject) : Base._Object(ManagementObject)
+public partial record class DeviceBus(ManagementObject ManagementObject) : CIM.Dependency(ManagementObject)
 {
     /// <summary>
     /// A CIM_LogicalDevice that describes the properties of the logical device that is using the system bus.
     /// </summary>
-    public Base._Object? Dependent => (Base._Object)ManagementObject[nameof(Dependent)];
+    public new CIM.LogicalDevice? Dependent => (CIM.LogicalDevice)ManagementObject[nameof(Dependent)];
     /// <summary>
     /// A Win32_Bus that describes the properties of the system bus that is used by the logical device.
     /// </summary>
-    public Base._Object? Antecedent => (Base._Object)ManagementObject[nameof(Antecedent)];
+    public new Bus? Antecedent => (Bus)ManagementObject[nameof(Antecedent)];
 }

@@ -13,9 +13,9 @@ public partial record class SystemResources(ManagementObject ManagementObject) :
     /// <summary>
     /// Reference to the instance representing the computer system where the resource is located.
     /// </summary>
-    public new Base._Object? GroupComponent => (Base._Object)ManagementObject[nameof(GroupComponent)];
+    public new ComputerSystem? GroupComponent => (ComputerSystem)ManagementObject[nameof(GroupComponent)];
     /// <summary>
     /// Reference to the instance representing the resource (such as I/O services and memory resources) available on the computer system.
     /// </summary>
-    public new Base._Object? PartComponent => (Base._Object)ManagementObject[nameof(PartComponent)];
+    public new CIM.SystemResource? PartComponent => (CIM.SystemResource)ManagementObject[nameof(PartComponent)];
 }

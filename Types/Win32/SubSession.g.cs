@@ -8,14 +8,14 @@
 #nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class SubSession(ManagementObject ManagementObject) : Base._Object(ManagementObject)
+public partial record class SubSession(ManagementObject ManagementObject) : CIM.Dependency(ManagementObject)
 {
     /// <summary>
     /// A Win32_Session that describes the session that has a subsession.
     /// </summary>
-    public Base._Object? Antecedent => (Base._Object)ManagementObject[nameof(Antecedent)];
+    public new Session? Antecedent => (Session)ManagementObject[nameof(Antecedent)];
     /// <summary>
     /// A Win32_Session that describes the session that is the subsession.
     /// </summary>
-    public Base._Object? Dependent => (Base._Object)ManagementObject[nameof(Dependent)];
+    public new Session? Dependent => (Session)ManagementObject[nameof(Dependent)];
 }

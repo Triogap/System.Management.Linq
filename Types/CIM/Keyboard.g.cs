@@ -8,7 +8,7 @@
 #nullable enable
 namespace System.Management.Types.CIM;
 
-public partial record class Keyboard(ManagementObject ManagementObject) : Base._Object(ManagementObject)
+public partial record class Keyboard(ManagementObject ManagementObject) : UserDevice(ManagementObject)
 {
     /// <summary>
     /// Free-form string that indicates the format and layout of the keyboard.

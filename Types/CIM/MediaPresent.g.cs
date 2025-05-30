@@ -8,14 +8,14 @@
 #nullable enable
 namespace System.Management.Types.CIM;
 
-public partial record class MediaPresent(ManagementObject ManagementObject) : Base._Object(ManagementObject)
+public partial record class MediaPresent(ManagementObject ManagementObject) : Dependency(ManagementObject)
 {
     /// <summary>
     /// A CIM_StorageExtent that describes the storage extent accessed using the media access device.
     /// </summary>
-    public Base._Object? Dependent => (Base._Object)ManagementObject[nameof(Dependent)];
+    public new StorageExtent? Dependent => (StorageExtent)ManagementObject[nameof(Dependent)];
     /// <summary>
     /// A CIM_MediaAccessDevice that describes the media access device.
     /// </summary>
-    public Base._Object? Antecedent => (Base._Object)ManagementObject[nameof(Antecedent)];
+    public new MediaAccessDevice? Antecedent => (MediaAccessDevice)ManagementObject[nameof(Antecedent)];
 }

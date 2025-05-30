@@ -8,7 +8,7 @@
 #nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class PageFileSetting(ManagementObject ManagementObject) : Base._Object(ManagementObject)
+public partial record class PageFileSetting(ManagementObject ManagementObject) : CIM.Setting(ManagementObject)
 {
     /// <summary>
     /// Initial size of the page file.

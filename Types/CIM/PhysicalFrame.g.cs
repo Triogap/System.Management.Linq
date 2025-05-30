@@ -8,7 +8,7 @@
 #nullable enable
 namespace System.Management.Types.CIM;
 
-public partial record class PhysicalFrame(ManagementObject ManagementObject) : Base._Object(ManagementObject)
+public partial record class PhysicalFrame(ManagementObject ManagementObject) : PhysicalPackage(ManagementObject)
 {
     /// <summary>
     /// If TRUE, the frame is equipped with an audible alarm.

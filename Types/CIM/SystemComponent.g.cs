@@ -13,7 +13,7 @@ public partial record class SystemComponent(ManagementObject ManagementObject) :
     /// <summary>
     /// A CIM_ManagedSystemElement that describes the child element that is a component of a system.
     /// </summary>
-    public new Base._Object? PartComponent => (Base._Object)ManagementObject[nameof(PartComponent)];
+    public new ManagedSystemElement? PartComponent => (ManagedSystemElement)ManagementObject[nameof(PartComponent)];
     /// <summary>
     /// A CIM_System that describes the parent system in the association.
     /// </summary>

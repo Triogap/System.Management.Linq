@@ -8,7 +8,7 @@
 #nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class LoadOrderGroup(ManagementObject ManagementObject) : Base._Object(ManagementObject)
+public partial record class LoadOrderGroup(ManagementObject ManagementObject) : CIM.LogicalElement(ManagementObject)
 {
     /// <summary>
     /// Indicates whether this load order group can include drivers along with system services.
@@ -21,5 +21,5 @@ public partial record class LoadOrderGroup(ManagementObject ManagementObject) : 
     /// <summary>
     /// Name of the load order group.
     /// </summary>
-    public string? Name => (string)ManagementObject[nameof(Name)];
+    public new string? Name => (string)ManagementObject[nameof(Name)];
 }

@@ -8,6 +8,6 @@
 #nullable enable
 namespace System.Management.Types.Base;
 
-public partial record class _CacheControl(ManagementObject ManagementObject) : _Object(ManagementObject)
+public partial record class _CacheControl(ManagementObject ManagementObject) : _SystemClass(ManagementObject)
 {
 }

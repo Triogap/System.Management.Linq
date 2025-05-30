@@ -8,7 +8,7 @@
 #nullable enable
 namespace System.Management.Types.CIM;
 
-public partial record class SerialController(ManagementObject ManagementObject) : Base._Object(ManagementObject)
+public partial record class SerialController(ManagementObject ManagementObject) : Controller(ManagementObject)
 {
     /// <summary>
     /// Chip-level compatibility for the serial controller. This property describes buffering and other capabilities of the serial controller, that may be inherent in the chip hardware. This property is an enumerated integer.

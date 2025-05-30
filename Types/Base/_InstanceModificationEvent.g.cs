@@ -8,7 +8,7 @@
 #nullable enable
 namespace System.Management.Types.Base;
 
-public partial record class _InstanceModificationEvent(ManagementObject ManagementObject) : _Object(ManagementObject)
+public partial record class _InstanceModificationEvent(ManagementObject ManagementObject) : _InstanceOperationEvent(ManagementObject)
 {
     /// <summary>
     /// Copy of the instance prior to modification.
