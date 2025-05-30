@@ -5,9 +5,10 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class Desktop(ManagementObject ManagementObject) : CIM.Setting(ManagementObject)
+public partial record class Desktop(ManagementObject ManagementObject) : Base._Object(ManagementObject)
 {
     /// <summary>
     /// Width of the borders around all windows with adjustable borders.

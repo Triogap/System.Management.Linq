@@ -5,9 +5,10 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class WMISetting(ManagementObject ManagementObject) : CIM.Setting(ManagementObject)
+public partial record class WMISetting(ManagementObject ManagementObject) : Base._Object(ManagementObject)
 {
     /// <summary>
     /// Default script namespace. This property contains the namespace used by calls from the Scripting API for WMI if none is specified by the caller.

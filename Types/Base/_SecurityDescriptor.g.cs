@@ -5,6 +5,7 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.Base;
 
 public partial record class _SecurityDescriptor(ManagementObject ManagementObject) : _Object(ManagementObject)
@@ -16,19 +17,19 @@ public partial record class _SecurityDescriptor(ManagementObject ManagementObjec
     /// <summary>
     /// An array of __ACE entries that specify access to the object.
     /// </summary>
-    public _ACE[]? DACL => (_ACE[])ManagementObject[nameof(DACL)];
+    public _Object[]? DACL => (_Object[])ManagementObject[nameof(DACL)];
     /// <summary>
     /// ACE that identifies the trustee representing the group of the object.
     /// </summary>
-    public _ACE? Group => (_ACE)ManagementObject[nameof(Group)];
+    public _Object? Group => (_Object)ManagementObject[nameof(Group)];
     /// <summary>
     /// ACE that identifies the trustee representing the owner of the object.
     /// </summary>
-    public _ACE? Owner => (_ACE)ManagementObject[nameof(Owner)];
+    public _Object? Owner => (_Object)ManagementObject[nameof(Owner)];
     /// <summary>
     /// An array of __ACE entries that identifies users and groups for which auditing information is gathered.
     /// </summary>
-    public _ACE? SACL => (_ACE)ManagementObject[nameof(SACL)];
+    public _Object? SACL => (_Object)ManagementObject[nameof(SACL)];
     /// <summary>
     /// Time in the CIM_DATETIME format when the security descriptor was created.
     /// </summary>

@@ -5,16 +5,17 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class SystemUsers(ManagementObject ManagementObject) : CIM.SystemComponent(ManagementObject)
+public partial record class SystemUsers(ManagementObject ManagementObject) : Base._Object(ManagementObject)
 {
     /// <summary>
     /// Reference to the instance representing the computer system containing the user account.
     /// </summary>
-    public new ComputerSystem? GroupComponent => (ComputerSystem)ManagementObject[nameof(GroupComponent)];
+    public Base._Object? GroupComponent => (Base._Object)ManagementObject[nameof(GroupComponent)];
     /// <summary>
     /// Reference to the instance representing the user account on the computer system.
     /// </summary>
-    public new UserAccount? PartComponent => (UserAccount)ManagementObject[nameof(PartComponent)];
+    public UserAccount? PartComponent => (UserAccount)ManagementObject[nameof(PartComponent)];
 }

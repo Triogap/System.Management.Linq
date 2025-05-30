@@ -5,9 +5,10 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class NetworkClient(ManagementObject ManagementObject) : CIM.LogicalElement(ManagementObject)
+public partial record class NetworkClient(ManagementObject ManagementObject) : Base._Object(ManagementObject)
 {
     /// <summary>
     /// Name of the manufacturer of the network client running on the computer system running Windows.
@@ -16,5 +17,5 @@ public partial record class NetworkClient(ManagementObject ManagementObject) : C
     /// <summary>
     /// Network name of the network client running on the computer system running Windows.
     /// </summary>
-    public new string? Name => (string)ManagementObject[nameof(Name)];
+    public string? Name => (string)ManagementObject[nameof(Name)];
 }

@@ -5,16 +5,17 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class PageFileElementSetting(ManagementObject ManagementObject) : CIM.ElementSetting(ManagementObject)
+public partial record class PageFileElementSetting(ManagementObject ManagementObject) : Base._Object(ManagementObject)
 {
     /// <summary>
     /// Reference to the instance representing the properties of a page file while the Win32 system is in use.
     /// </summary>
-    public new PageFileUsage? Element => (PageFileUsage)ManagementObject[nameof(Element)];
+    public PageFileUsage? Element => (PageFileUsage)ManagementObject[nameof(Element)];
     /// <summary>
     /// Reference to the instance representing the initial settings of a page file when the Win32 system is starting up.
     /// </summary>
-    public new PageFileSetting? Setting => (PageFileSetting)ManagementObject[nameof(Setting)];
+    public PageFileSetting? Setting => (PageFileSetting)ManagementObject[nameof(Setting)];
 }

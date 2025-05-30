@@ -5,8 +5,9 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.CIM;
 
-public partial record class DisketteDrive(ManagementObject ManagementObject) : MediaAccessDevice(ManagementObject)
+public partial record class DisketteDrive(ManagementObject ManagementObject) : Base._Object(ManagementObject)
 {
 }

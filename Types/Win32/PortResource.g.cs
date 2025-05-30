@@ -5,9 +5,10 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class PortResource(ManagementObject ManagementObject) : SystemMemoryResource(ManagementObject)
+public partial record class PortResource(ManagementObject ManagementObject) : Base._Object(ManagementObject)
 {
     /// <summary>
     /// If TRUE, this instance represents one of the ranges with an alias. If FALSE, the instance represents a base port address. A base port address is a predetermined port address dedicated to a specific service or device. A port alias address is one that a device responds to as if it were the actual address of an I/O port.

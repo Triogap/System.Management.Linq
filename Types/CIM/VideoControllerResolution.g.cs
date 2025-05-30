@@ -5,14 +5,15 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.CIM;
 
-public partial record class VideoControllerResolution(ManagementObject ManagementObject) : Setting(ManagementObject)
+public partial record class VideoControllerResolution(ManagementObject ManagementObject) : Base._Object(ManagementObject)
 {
     /// <summary>
     /// An ID that serves as part of the key for the current instance.
     /// </summary>
-    public new string? SettingID => (string)ManagementObject[nameof(SettingID)];
+    public string? SettingID => (string)ManagementObject[nameof(SettingID)];
     /// <summary>
     /// Horizontal resolution, in pixels.
     /// </summary>

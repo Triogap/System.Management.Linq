@@ -5,6 +5,7 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.Base;
 
 public partial record class _EventDroppedEvent(ManagementObject ManagementObject) : _SystemEvent(ManagementObject)
@@ -12,7 +13,7 @@ public partial record class _EventDroppedEvent(ManagementObject ManagementObject
     /// <summary>
     /// Event that is dropped.
     /// </summary>
-    public _Event? Event => (_Event)ManagementObject[nameof(Event)];
+    public _Object? Event => (_Object)ManagementObject[nameof(Event)];
     /// <summary>
     /// Reference to an instance of __EventConsumer that represents the permanent consumer you identify to receive an event. Different permanent consumers that subscribe to an event can continue to receive the event.
     /// </summary>

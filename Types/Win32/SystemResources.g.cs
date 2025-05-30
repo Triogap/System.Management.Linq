@@ -5,6 +5,7 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.Win32;
 
 public partial record class SystemResources(ManagementObject ManagementObject) : CIM.ComputerSystemResource(ManagementObject)
@@ -12,9 +13,9 @@ public partial record class SystemResources(ManagementObject ManagementObject) :
     /// <summary>
     /// Reference to the instance representing the computer system where the resource is located.
     /// </summary>
-    public new ComputerSystem? GroupComponent => (ComputerSystem)ManagementObject[nameof(GroupComponent)];
+    public new Base._Object? GroupComponent => (Base._Object)ManagementObject[nameof(GroupComponent)];
     /// <summary>
     /// Reference to the instance representing the resource (such as I/O services and memory resources) available on the computer system.
     /// </summary>
-    public new CIM.SystemResource? PartComponent => (CIM.SystemResource)ManagementObject[nameof(PartComponent)];
+    public new Base._Object? PartComponent => (Base._Object)ManagementObject[nameof(PartComponent)];
 }

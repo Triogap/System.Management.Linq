@@ -5,8 +5,9 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class PerfFormattedData(ManagementObject ManagementObject) : Perf(ManagementObject)
+public partial record class PerfFormattedData(ManagementObject ManagementObject) : Base._Object(ManagementObject)
 {
 }

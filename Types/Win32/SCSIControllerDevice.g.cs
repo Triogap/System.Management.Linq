@@ -5,16 +5,17 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class SCSIControllerDevice(ManagementObject ManagementObject) : CIM.ControlledBy(ManagementObject)
+public partial record class SCSIControllerDevice(ManagementObject ManagementObject) : Base._Object(ManagementObject)
 {
     /// <summary>
     /// The Win32_SCSIController antecedent reference represents the SCSI controller associated with this device.
     /// </summary>
-    public new SCSIController? Antecedent => (SCSIController)ManagementObject[nameof(Antecedent)];
+    public Base._Object? Antecedent => (Base._Object)ManagementObject[nameof(Antecedent)];
     /// <summary>
     /// The CIM_LogicalDevice dependent reference represents the logical device connected to the SCSI controller.
     /// </summary>
-    public new CIM.LogicalDevice? Dependent => (CIM.LogicalDevice)ManagementObject[nameof(Dependent)];
+    public Base._Object? Dependent => (Base._Object)ManagementObject[nameof(Dependent)];
 }

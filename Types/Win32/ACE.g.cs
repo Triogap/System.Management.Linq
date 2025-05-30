@@ -5,9 +5,10 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class ACE(ManagementObject ManagementObject) : Base._ACE(ManagementObject)
+public partial record class ACE(ManagementObject ManagementObject) : Base._Object(ManagementObject)
 {
     /// <summary>
     /// Bit flags that indicate rights granted or denied to the trustee. For more information, see the Remarks section of this topic.
@@ -32,5 +33,5 @@ public partial record class ACE(ManagementObject ManagementObject) : Base._ACE(M
     /// <summary>
     /// Object representing the user account, group account, or logon session to which an ACE applies.
     /// </summary>
-    public new Trustee? Trustee => (Trustee)ManagementObject[nameof(Trustee)];
+    public Trustee? Trustee => (Trustee)ManagementObject[nameof(Trustee)];
 }

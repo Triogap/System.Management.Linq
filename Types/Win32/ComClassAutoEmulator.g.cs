@@ -5,6 +5,7 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.Win32;
 
 public partial record class ComClassAutoEmulator(ManagementObject ManagementObject) : Base._Object(ManagementObject)
@@ -12,9 +13,9 @@ public partial record class ComClassAutoEmulator(ManagementObject ManagementObje
     /// <summary>
     /// Reference to the instance representing the COM component that can automatically emulate the associated COM component. This information is obtained through the AutoTreatAs registry entry.
     /// </summary>
-    public ClassicCOMClass? NewVersion => (ClassicCOMClass)ManagementObject[nameof(NewVersion)];
+    public Base._Object? NewVersion => (Base._Object)ManagementObject[nameof(NewVersion)];
     /// <summary>
     /// Reference to the instance representing the COM component that is automatically emulated by another component.
     /// </summary>
-    public ClassicCOMClass? OldVersion => (ClassicCOMClass)ManagementObject[nameof(OldVersion)];
+    public Base._Object? OldVersion => (Base._Object)ManagementObject[nameof(OldVersion)];
 }

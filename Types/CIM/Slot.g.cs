@@ -5,9 +5,10 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.CIM;
 
-public partial record class Slot(ManagementObject ManagementObject) : PhysicalConnector(ManagementObject)
+public partial record class Slot(ManagementObject ManagementObject) : Base._Object(ManagementObject)
 {
     /// <summary>
     /// Maximum height, in inches, of an adapter card that can be inserted into the slot.

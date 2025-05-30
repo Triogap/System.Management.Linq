@@ -5,9 +5,10 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.Base;
 
-public partial record class _PropertyProviderRegistration(ManagementObject ManagementObject) : _ProviderRegistration(ManagementObject)
+public partial record class _PropertyProviderRegistration(ManagementObject ManagementObject) : _Object(ManagementObject)
 {
     /// <summary>
     /// Describes whether the class or instance provider supports data modification.

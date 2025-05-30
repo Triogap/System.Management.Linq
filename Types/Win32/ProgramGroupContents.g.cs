@@ -5,16 +5,17 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class ProgramGroupContents(ManagementObject ManagementObject) : CIM.Component(ManagementObject)
+public partial record class ProgramGroupContents(ManagementObject ManagementObject) : Base._Object(ManagementObject)
 {
     /// <summary>
     /// Reference to the instance representing the logical program group for this association.
     /// </summary>
-    public new LogicalProgramGroup? GroupComponent => (LogicalProgramGroup)ManagementObject[nameof(GroupComponent)];
+    public Base._Object? GroupComponent => (Base._Object)ManagementObject[nameof(GroupComponent)];
     /// <summary>
     /// Reference to the instance representing the Start menu group or item for this association.
     /// </summary>
-    public new ProgramGroupOrItem? PartComponent => (ProgramGroupOrItem)ManagementObject[nameof(PartComponent)];
+    public Base._Object? PartComponent => (Base._Object)ManagementObject[nameof(PartComponent)];
 }

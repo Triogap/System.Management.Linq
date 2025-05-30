@@ -5,16 +5,17 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class LogicalProgramGroupDirectory(ManagementObject ManagementObject) : CIM.Dependency(ManagementObject)
+public partial record class LogicalProgramGroupDirectory(ManagementObject ManagementObject) : Base._Object(ManagementObject)
 {
     /// <summary>
     /// Reference to the instance representing the logical program group.
     /// </summary>
-    public new LogicalProgramGroup? Antecedent => (LogicalProgramGroup)ManagementObject[nameof(Antecedent)];
+    public Base._Object? Antecedent => (Base._Object)ManagementObject[nameof(Antecedent)];
     /// <summary>
     /// Reference to the instance representing the file directory for the logical program group.
     /// </summary>
-    public new Directory? Dependent => (Directory)ManagementObject[nameof(Dependent)];
+    public Base._Object? Dependent => (Base._Object)ManagementObject[nameof(Dependent)];
 }

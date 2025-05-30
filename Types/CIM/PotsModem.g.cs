@@ -5,9 +5,10 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.CIM;
 
-public partial record class PotsModem(ManagementObject ManagementObject) : LogicalDevice(ManagementObject)
+public partial record class PotsModem(ManagementObject ManagementObject) : Base._Object(ManagementObject)
 {
     /// <summary>
     /// Current auto-answer or call-back setting for the modem.

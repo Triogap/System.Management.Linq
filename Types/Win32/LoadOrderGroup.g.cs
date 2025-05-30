@@ -5,9 +5,10 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class LoadOrderGroup(ManagementObject ManagementObject) : CIM.LogicalElement(ManagementObject)
+public partial record class LoadOrderGroup(ManagementObject ManagementObject) : Base._Object(ManagementObject)
 {
     /// <summary>
     /// Indicates whether this load order group can include drivers along with system services.
@@ -20,5 +21,5 @@ public partial record class LoadOrderGroup(ManagementObject ManagementObject) : 
     /// <summary>
     /// Name of the load order group.
     /// </summary>
-    public new string? Name => (string)ManagementObject[nameof(Name)];
+    public string? Name => (string)ManagementObject[nameof(Name)];
 }

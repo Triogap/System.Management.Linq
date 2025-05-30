@@ -5,6 +5,7 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.Win32;
 
 public partial record class ShareToDirectory(ManagementObject ManagementObject) : Base._Object(ManagementObject)
@@ -12,9 +13,9 @@ public partial record class ShareToDirectory(ManagementObject ManagementObject) 
     /// <summary>
     /// Reference to the instance representing the properties of a shared resource available through the directory.
     /// </summary>
-    public Share? Share => (Share)ManagementObject[nameof(Share)];
+    public Base._Object? Share => (Base._Object)ManagementObject[nameof(Share)];
     /// <summary>
     /// Reference to the instance representing the properties of the directory that has been mapped to a shared resource.
     /// </summary>
-    public CIM.Directory? SharedElement => (CIM.Directory)ManagementObject[nameof(SharedElement)];
+    public Base._Object? SharedElement => (Base._Object)ManagementObject[nameof(SharedElement)];
 }

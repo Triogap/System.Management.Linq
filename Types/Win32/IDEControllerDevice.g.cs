@@ -5,16 +5,17 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class IDEControllerDevice(ManagementObject ManagementObject) : CIM.ControlledBy(ManagementObject)
+public partial record class IDEControllerDevice(ManagementObject ManagementObject) : Base._Object(ManagementObject)
 {
     /// <summary>
     /// A Win32_IDEController that represents the IDE controller associated with this device.
     /// </summary>
-    public new IDEController? Antecedent => (IDEController)ManagementObject[nameof(Antecedent)];
+    public Base._Object? Antecedent => (Base._Object)ManagementObject[nameof(Antecedent)];
     /// <summary>
     /// A CIM_LogicalDevice that represents the logical device connected to the IDE controller.
     /// </summary>
-    public new CIM.LogicalDevice? Dependent => (CIM.LogicalDevice)ManagementObject[nameof(Dependent)];
+    public Base._Object? Dependent => (Base._Object)ManagementObject[nameof(Dependent)];
 }

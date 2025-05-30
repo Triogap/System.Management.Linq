@@ -5,12 +5,13 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class LogicalProgramGroupItem(ManagementObject ManagementObject) : ProgramGroupOrItem(ManagementObject)
+public partial record class LogicalProgramGroupItem(ManagementObject ManagementObject) : Base._Object(ManagementObject)
 {
     /// <summary>
     /// Instance within a computer system. Program groups are implemented as file folders in Win32. Full path names should be provided.
     /// </summary>
-    public new string? Name => (string)ManagementObject[nameof(Name)];
+    public string? Name => (string)ManagementObject[nameof(Name)];
 }

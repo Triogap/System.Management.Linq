@@ -5,9 +5,10 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.Base;
 
-public partial record class _EventProviderCacheControl(ManagementObject ManagementObject) : _CacheControl(ManagementObject)
+public partial record class _EventProviderCacheControl(ManagementObject ManagementObject) : _Object(ManagementObject)
 {
     /// <summary>
     /// Time interval after Windows Management Instrumentation (WMI) releases an event provider. The time is in interval format. It may take up to twice the interval specified to unload the provider.

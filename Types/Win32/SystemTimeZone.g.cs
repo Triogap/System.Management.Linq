@@ -5,16 +5,17 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class SystemTimeZone(ManagementObject ManagementObject) : SystemSetting(ManagementObject)
+public partial record class SystemTimeZone(ManagementObject ManagementObject) : Base._Object(ManagementObject)
 {
     /// <summary>
     /// Reference to the instance representing the computer system keeping track of the system time zone.
     /// </summary>
-    public new ComputerSystem? Element => (ComputerSystem)ManagementObject[nameof(Element)];
+    public Base._Object? Element => (Base._Object)ManagementObject[nameof(Element)];
     /// <summary>
     /// Reference to the instance representing the time zone properties tracked by the computer system.
     /// </summary>
-    public new TimeZone? Setting => (TimeZone)ManagementObject[nameof(Setting)];
+    public TimeZone? Setting => (TimeZone)ManagementObject[nameof(Setting)];
 }

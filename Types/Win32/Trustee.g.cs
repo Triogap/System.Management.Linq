@@ -5,25 +5,26 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class Trustee(ManagementObject ManagementObject) : Base._Trustee(ManagementObject)
+public partial record class Trustee(ManagementObject ManagementObject) : Base._Object(ManagementObject)
 {
     /// <summary>
     /// Domain to which a trustee belongs.
     /// </summary>
-    public new string? Domain => (string)ManagementObject[nameof(Domain)];
+    public string? Domain => (string)ManagementObject[nameof(Domain)];
     /// <summary>
     /// A trustee can be a user account, group account, or logon session.
     /// </summary>
-    public new string? Name => (string)ManagementObject[nameof(Name)];
+    public string? Name => (string)ManagementObject[nameof(Name)];
     /// <summary>
     /// SID that uniquely identifies a user or group.
     /// </summary>
-    public new byte[]? SID => (byte[])ManagementObject[nameof(SID)];
+    public byte[]? SID => (byte[])ManagementObject[nameof(SID)];
     /// <summary>
     /// Length of a SID in bytes.
     /// </summary>
-    public new uint? SidLength => (uint?)ManagementObject[nameof(SidLength)];
+    public uint? SidLength => (uint?)ManagementObject[nameof(SidLength)];
     public string? SIDString => (string)ManagementObject[nameof(SIDString)];
 }

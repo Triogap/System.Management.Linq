@@ -5,9 +5,10 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.Base;
 
-public partial record class _EventConsumerProviderRegistration(ManagementObject ManagementObject) : _ProviderRegistration(ManagementObject)
+public partial record class _EventConsumerProviderRegistration(ManagementObject ManagementObject) : _Object(ManagementObject)
 {
     /// <summary>
     /// Array of names of the logical consumer classes that the event consumer provider supports.

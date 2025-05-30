@@ -5,9 +5,10 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class DeviceChangeEvent(ManagementObject ManagementObject) : Base._ExtrinsicEvent(ManagementObject)
+public partial record class DeviceChangeEvent(ManagementObject ManagementObject) : Base._Object(ManagementObject)
 {
     /// <summary>
     /// Type of event change notification that has occurred.

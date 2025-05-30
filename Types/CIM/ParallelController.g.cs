@@ -5,9 +5,10 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.CIM;
 
-public partial record class ParallelController(ManagementObject ManagementObject) : Controller(ManagementObject)
+public partial record class ParallelController(ManagementObject ManagementObject) : Base._Object(ManagementObject)
 {
     /// <summary>
     /// Capabilities of the parallel controller.

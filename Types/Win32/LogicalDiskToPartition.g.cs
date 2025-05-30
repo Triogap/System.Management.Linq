@@ -5,6 +5,7 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.Win32;
 
 public partial record class LogicalDiskToPartition(ManagementObject ManagementObject) : CIM.LogicalDiskBasedOnPartition(ManagementObject)
@@ -12,9 +13,9 @@ public partial record class LogicalDiskToPartition(ManagementObject ManagementOb
     /// <summary>
     /// Reference to the instance representing the properties of a disk partition where the logical disk resides.
     /// </summary>
-    public new DiskPartition? Antecedent => (DiskPartition)ManagementObject[nameof(Antecedent)];
+    public new Base._Object? Antecedent => (Base._Object)ManagementObject[nameof(Antecedent)];
     /// <summary>
     /// Reference to the instance representing the properties of a logical disk that resides on a physical disk partition.
     /// </summary>
-    public new LogicalDisk? Dependent => (LogicalDisk)ManagementObject[nameof(Dependent)];
+    public new Base._Object? Dependent => (Base._Object)ManagementObject[nameof(Dependent)];
 }

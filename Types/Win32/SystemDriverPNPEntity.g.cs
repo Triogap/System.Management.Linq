@@ -5,16 +5,17 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class SystemDriverPNPEntity(ManagementObject ManagementObject) : CIM.Dependency(ManagementObject)
+public partial record class SystemDriverPNPEntity(ManagementObject ManagementObject) : Base._Object(ManagementObject)
 {
     /// <summary>
     /// Represents the Plug and Play device controlled by the driver.
     /// </summary>
-    public new PnPEntity? Antecedent => (PnPEntity)ManagementObject[nameof(Antecedent)];
+    public Base._Object? Antecedent => (Base._Object)ManagementObject[nameof(Antecedent)];
     /// <summary>
     /// A Win32_SystemDriver that represents the driver that supports the Plug and Play device.
     /// </summary>
-    public new SystemDriver? Dependent => (SystemDriver)ManagementObject[nameof(Dependent)];
+    public Base._Object? Dependent => (Base._Object)ManagementObject[nameof(Dependent)];
 }

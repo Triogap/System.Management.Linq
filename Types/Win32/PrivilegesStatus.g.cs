@@ -5,9 +5,10 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class PrivilegesStatus(ManagementObject ManagementObject) : Base._ExtendedStatus(ManagementObject)
+public partial record class PrivilegesStatus(ManagementObject ManagementObject) : Base._Object(ManagementObject)
 {
     /// <summary>
     /// Listing required access privileges missing to complete an operation. The types of access privileges can be found under the Windows Privileges.

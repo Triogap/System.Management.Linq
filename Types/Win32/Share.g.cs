@@ -5,9 +5,10 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class Share(ManagementObject ManagementObject) : CIM.LogicalElement(ManagementObject)
+public partial record class Share(ManagementObject ManagementObject) : Base._Object(ManagementObject)
 {
     /// <summary>
     /// This property is obsolete and is no longer used. Use the Win32_Share.GetAccessMask method instead. The value of the AccessMask property is set to null by WMI. For more information about setting access when a share is created, see the Create method.
@@ -24,7 +25,7 @@ public partial record class Share(ManagementObject ManagementObject) : CIM.Logic
     /// <summary>
     /// Alias given to a path set up as a share on a computer system running Windows.
     /// </summary>
-    public new string? Name => (string)ManagementObject[nameof(Name)];
+    public string? Name => (string)ManagementObject[nameof(Name)];
     /// <summary>
     /// Local path of the Windows share.
     /// </summary>

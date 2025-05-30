@@ -5,9 +5,10 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class Processor(ManagementObject ManagementObject) : CIM.Processor(ManagementObject)
+public partial record class Processor(ManagementObject ManagementObject) : Base._Object(ManagementObject)
 {
     public ushort? Architecture => (ushort?)ManagementObject[nameof(Architecture)];
     public string? AssetTag => (string)ManagementObject[nameof(AssetTag)];

@@ -5,9 +5,10 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.Base;
 
-public partial record class _MethodInvocationEvent(ManagementObject ManagementObject) : _InstanceOperationEvent(ManagementObject)
+public partial record class _MethodInvocationEvent(ManagementObject ManagementObject) : _Object(ManagementObject)
 {
     /// <summary>
     /// Method invoked to trigger the event.
@@ -16,7 +17,7 @@ public partial record class _MethodInvocationEvent(ManagementObject ManagementOb
     /// <summary>
     /// Reference to an instance that represents the input and output parameters of the method call.
     /// </summary>
-    public _PARAMETERS? Parameters => (_PARAMETERS)ManagementObject[nameof(Parameters)];
+    public _Parameters? Parameters => (_Parameters)ManagementObject[nameof(Parameters)];
     /// <summary>
     /// If TRUE, the event is raised before the method is called.
     /// </summary>

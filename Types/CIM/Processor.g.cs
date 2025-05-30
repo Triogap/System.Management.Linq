@@ -5,9 +5,10 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.CIM;
 
-public partial record class Processor(ManagementObject ManagementObject) : LogicalDevice(ManagementObject)
+public partial record class Processor(ManagementObject ManagementObject) : Base._Object(ManagementObject)
 {
     /// <summary>
     /// Processor address width, in bits.

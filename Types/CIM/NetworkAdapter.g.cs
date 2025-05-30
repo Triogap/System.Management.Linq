@@ -5,9 +5,10 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.CIM;
 
-public partial record class NetworkAdapter(ManagementObject ManagementObject) : LogicalDevice(ManagementObject)
+public partial record class NetworkAdapter(ManagementObject ManagementObject) : Base._Object(ManagementObject)
 {
     /// <summary>
     /// If TRUE, the network adapter can automatically determine the speed or other communications characteristics of the attached network media.

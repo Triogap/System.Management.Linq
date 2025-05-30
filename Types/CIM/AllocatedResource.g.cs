@@ -5,16 +5,17 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.CIM;
 
-public partial record class AllocatedResource(ManagementObject ManagementObject) : Dependency(ManagementObject)
+public partial record class AllocatedResource(ManagementObject ManagementObject) : Base._Object(ManagementObject)
 {
     /// <summary>
     /// A CIM_LogicalDevice that contains the logical device to which the resource is assigned.
     /// </summary>
-    public new LogicalDevice? Dependent => (LogicalDevice)ManagementObject[nameof(Dependent)];
+    public Base._Object? Dependent => (Base._Object)ManagementObject[nameof(Dependent)];
     /// <summary>
     /// A CIM_SystemResource that describes the resource.
     /// </summary>
-    public new SystemResource? Antecedent => (SystemResource)ManagementObject[nameof(Antecedent)];
+    public Base._Object? Antecedent => (Base._Object)ManagementObject[nameof(Antecedent)];
 }

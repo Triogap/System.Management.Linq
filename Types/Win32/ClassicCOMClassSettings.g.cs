@@ -5,16 +5,17 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class ClassicCOMClassSettings(ManagementObject ManagementObject) : CIM.ElementSetting(ManagementObject)
+public partial record class ClassicCOMClassSettings(ManagementObject ManagementObject) : Base._Object(ManagementObject)
 {
     /// <summary>
     /// A Win32_ClassicCOMClassSetting that represents configuration settings associated with the COM class.
     /// </summary>
-    public new ClassicCOMClassSetting? Setting => (ClassicCOMClassSetting)ManagementObject[nameof(Setting)];
+    public Base._Object? Setting => (Base._Object)ManagementObject[nameof(Setting)];
     /// <summary>
     /// A Win32_ClassicCOMClass that represents the COM class where the settings are applied.
     /// </summary>
-    public new ClassicCOMClass? Element => (ClassicCOMClass)ManagementObject[nameof(Element)];
+    public Base._Object? Element => (Base._Object)ManagementObject[nameof(Element)];
 }

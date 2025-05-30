@@ -5,9 +5,10 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class ShortcutFile(ManagementObject ManagementObject) : CIM.DataFile(ManagementObject)
+public partial record class ShortcutFile(ManagementObject ManagementObject) : Base._Object(ManagementObject)
 {
     /// <summary>
     /// Name of the object that this is a shortcut to.

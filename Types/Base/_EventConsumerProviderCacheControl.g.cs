@@ -5,9 +5,10 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.Base;
 
-public partial record class _EventConsumerProviderCacheControl(ManagementObject ManagementObject) : _CacheControl(ManagementObject)
+public partial record class _EventConsumerProviderCacheControl(ManagementObject ManagementObject) : _Object(ManagementObject)
 {
     /// <summary>
     /// Time interval after which WMI releases an event consumer provider. It may take up to twice the interval specified to unload the provider. The time is in interval format.

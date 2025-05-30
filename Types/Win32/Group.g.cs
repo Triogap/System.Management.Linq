@@ -5,16 +5,17 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class Group(ManagementObject ManagementObject) : Account(ManagementObject)
+public partial record class Group(ManagementObject ManagementObject) : Base._Object(ManagementObject)
 {
     /// <summary>
     /// Name of the Windows domain to which the group account belongs.
     /// </summary>
-    public new string? Domain => (string)ManagementObject[nameof(Domain)];
+    public string? Domain => (string)ManagementObject[nameof(Domain)];
     /// <summary>
     /// Name of the Windows group account on the domain specified by the Domain property of this class.
     /// </summary>
-    public new string? Name => (string)ManagementObject[nameof(Name)];
+    public string? Name => (string)ManagementObject[nameof(Name)];
 }

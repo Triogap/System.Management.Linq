@@ -5,6 +5,7 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.Win32;
 
 public partial record class PnPDevice(ManagementObject ManagementObject) : Base._Object(ManagementObject)
@@ -12,9 +13,9 @@ public partial record class PnPDevice(ManagementObject ManagementObject) : Base.
     /// <summary>
     /// Reference to the CIM_LogicalDevice instance representing the logical device properties associated with the Plug and Play device.
     /// </summary>
-    public CIM.LogicalDevice? SameElement => (CIM.LogicalDevice)ManagementObject[nameof(SameElement)];
+    public Base._Object? SameElement => (Base._Object)ManagementObject[nameof(SameElement)];
     /// <summary>
     /// Reference to the Win32_PnPEntity instance representing the Plug and Play device associated with the logical device.
     /// </summary>
-    public PnPEntity? SystemElement => (PnPEntity)ManagementObject[nameof(SystemElement)];
+    public Base._Object? SystemElement => (Base._Object)ManagementObject[nameof(SystemElement)];
 }

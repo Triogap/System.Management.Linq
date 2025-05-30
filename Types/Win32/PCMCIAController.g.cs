@@ -5,6 +5,7 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.Win32;
 
 public partial record class PCMCIAController(ManagementObject ManagementObject) : CIM.PCMCIAController(ManagementObject)
@@ -12,5 +13,5 @@ public partial record class PCMCIAController(ManagementObject ManagementObject) 
     /// <summary>
     /// Unique identifier of this device with other peripherals using the Plug and Play BIOS. This property is derived from CIM_LogicalDevice.
     /// </summary>
-    public new string? DeviceID => (string)ManagementObject[nameof(DeviceID)];
+    public string? DeviceID => (string)ManagementObject[nameof(DeviceID)];
 }

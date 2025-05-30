@@ -6,12 +6,8 @@
  *                                                            *
  **************************************************************/
 #nullable enable
-namespace System.Management.Types.Win32;
+namespace System.Management.Types.Base;
 
-public partial record class PnPDevicePropertyString(ManagementObject ManagementObject) : Base._Object(ManagementObject)
+public partial record class _Parameters(ManagementObject ManagementObject) : _Object(ManagementObject)
 {
-    /// <summary>
-    /// The property value.
-    /// </summary>
-    public string? Data => (string)ManagementObject[nameof(Data)];
 }

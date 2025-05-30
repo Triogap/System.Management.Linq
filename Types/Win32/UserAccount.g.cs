@@ -5,9 +5,10 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class UserAccount(ManagementObject ManagementObject) : Account(ManagementObject)
+public partial record class UserAccount(ManagementObject ManagementObject) : Base._Object(ManagementObject)
 {
     /// <summary>
     /// Flags that describe the characteristics of a Windows user account.
@@ -17,7 +18,7 @@ public partial record class UserAccount(ManagementObject ManagementObject) : Acc
     /// Windows user account is disabled.
     /// </summary>
     public bool? Disabled => (bool?)ManagementObject[nameof(Disabled)];
-    public new string? Domain => (string)ManagementObject[nameof(Domain)];
+    public string? Domain => (string)ManagementObject[nameof(Domain)];
     public string? FullName => (string)ManagementObject[nameof(FullName)];
     /// <summary>
     /// If true, the user account is locked out of the Windows operating system.

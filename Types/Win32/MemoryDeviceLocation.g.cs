@@ -5,16 +5,17 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.Win32;
 
-public partial record class MemoryDeviceLocation(ManagementObject ManagementObject) : CIM.Realizes(ManagementObject)
+public partial record class MemoryDeviceLocation(ManagementObject ManagementObject) : Base._Object(ManagementObject)
 {
     /// <summary>
     /// A Win32_MemoryDeviceLocation that represents the memory device existing in the physical memory.
     /// </summary>
-    public new MemoryDevice? Dependent => (MemoryDevice)ManagementObject[nameof(Dependent)];
+    public Base._Object? Dependent => (Base._Object)ManagementObject[nameof(Dependent)];
     /// <summary>
     /// A Win32_PhysicalMemory that represents the physical memory containing the memory device.
     /// </summary>
-    public new PhysicalMemory? Antecedent => (PhysicalMemory)ManagementObject[nameof(Antecedent)];
+    public PhysicalMemory? Antecedent => (PhysicalMemory)ManagementObject[nameof(Antecedent)];
 }

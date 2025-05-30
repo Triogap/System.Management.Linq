@@ -5,9 +5,10 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.CIM;
 
-public partial record class Job(ManagementObject ManagementObject) : LogicalElement(ManagementObject)
+public partial record class Job(ManagementObject ManagementObject) : Base._Object(ManagementObject)
 {
     /// <summary>
     /// Length of time the job has been executing.

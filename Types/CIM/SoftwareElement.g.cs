@@ -5,9 +5,10 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.CIM;
 
-public partial record class SoftwareElement(ManagementObject ManagementObject) : LogicalElement(ManagementObject)
+public partial record class SoftwareElement(ManagementObject ManagementObject) : Base._Object(ManagementObject)
 {
     /// <summary>
     /// Internal identifier for the compilation of this software element.

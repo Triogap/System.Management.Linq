@@ -5,9 +5,10 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.CIM;
 
-public partial record class Keyboard(ManagementObject ManagementObject) : UserDevice(ManagementObject)
+public partial record class Keyboard(ManagementObject ManagementObject) : Base._Object(ManagementObject)
 {
     /// <summary>
     /// Free-form string that indicates the format and layout of the keyboard.

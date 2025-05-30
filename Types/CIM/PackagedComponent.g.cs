@@ -5,6 +5,7 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.CIM;
 
 public partial record class PackagedComponent(ManagementObject ManagementObject) : Container(ManagementObject)
@@ -12,9 +13,9 @@ public partial record class PackagedComponent(ManagementObject ManagementObject)
     /// <summary>
     /// A CIM_PhysicalComponent describing the physical component which is contained in the package.
     /// </summary>
-    public new PhysicalComponent? PartComponent => (PhysicalComponent)ManagementObject[nameof(PartComponent)];
+    public new Base._Object? PartComponent => (Base._Object)ManagementObject[nameof(PartComponent)];
     /// <summary>
     /// A CIM_PhysicalPackage that describes the physical package that contains component(s).
     /// </summary>
-    public new PhysicalPackage? GroupComponent => (PhysicalPackage)ManagementObject[nameof(GroupComponent)];
+    public new Base._Object? GroupComponent => (Base._Object)ManagementObject[nameof(GroupComponent)];
 }

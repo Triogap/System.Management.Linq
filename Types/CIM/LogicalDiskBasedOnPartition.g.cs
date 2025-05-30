@@ -5,6 +5,7 @@
  *   Any changes made to this file will be overwritten.       *
  *                                                            *
  **************************************************************/
+#nullable enable
 namespace System.Management.Types.CIM;
 
 public partial record class LogicalDiskBasedOnPartition(ManagementObject ManagementObject) : BasedOn(ManagementObject)
@@ -12,9 +13,9 @@ public partial record class LogicalDiskBasedOnPartition(ManagementObject Managem
     /// <summary>
     /// A CIM_LogicalDisk that describes the logical disk which is built on the partition.
     /// </summary>
-    public new LogicalDisk? Dependent => (LogicalDisk)ManagementObject[nameof(Dependent)];
+    public new Base._Object? Dependent => (Base._Object)ManagementObject[nameof(Dependent)];
     /// <summary>
     /// A CIM_DiskPartition that describes the disk partition.
     /// </summary>
-    public new DiskPartition? Antecedent => (DiskPartition)ManagementObject[nameof(Antecedent)];
+    public new Base._Object? Antecedent => (Base._Object)ManagementObject[nameof(Antecedent)];
 }
