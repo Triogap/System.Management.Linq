@@ -105,6 +105,7 @@ public class CodeGenerator(ChannelReader<ClassDefinition> channel)
              *   Any changes made to this file will be overwritten.       *
              *                                                            *
              **************************************************************/
+            #nullable enable
             """);
         sb.AppendLine($"namespace System.Management.Types.{namespaceName};");
         sb.AppendLine();
