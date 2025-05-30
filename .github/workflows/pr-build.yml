@@ -3,6 +3,10 @@ name: Build (PR)
 on:
   pull_request:
     branches: [ master ]
+    paths-ignore:
+      - 'Generator/*.*'
+      - 'Types/**/*.g.cs'
+      - '.github/workflows/pr-generator.yml'
 
 jobs:
   build:
