@@ -59,20 +59,22 @@ internal partial class DefinitionLoader(ChannelWriter<ClassDefinition> channel)
             return await TryLoadClass(correctClassName);
         }
 
-        if (_loadedClassDefinitions.Add(className))
+        if (!_loadedClassDefinitions.Add(className))
         {
-            if (await LoadClassDefinition(className) is ClassDefinition classDefinition)
-            {
-                Console.WriteLine($"Loaded info for {className}:");
-                await channel.WriteAsync(classDefinition);
-                return className;
-            }
-            else if (className.IndexOf('_') == -1)
-            {
-                var prefixedClassName = $"__{className}";
-                _typeMismatches[className] = prefixedClassName;
-                return await TryLoadClass(prefixedClassName);
-            }
+            return className;
+        }
+
+        if (await LoadClassDefinition(className) is ClassDefinition classDefinition)
+        {
+            Console.WriteLine($"Loaded info for {className}:");
+            await channel.WriteAsync(classDefinition);
+            return className;
+        }
+        else if (className.IndexOf('_') == -1)
+        {
+            var prefixedClassName = $"__{className}";
+            _typeMismatches[className] = prefixedClassName;
+            return await TryLoadClass(prefixedClassName);
         }
 
         return null;
