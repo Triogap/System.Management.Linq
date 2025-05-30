@@ -5,7 +5,7 @@ on:
     paths:
       - 'Generator/*.*'
       - 'Types/**/*.g.cs'
-      - '.github/workflows/generate-types-pr.yml'
+      - '.github/workflows/pr-generator.yml'
 
 jobs:
   generate-and-commit:
