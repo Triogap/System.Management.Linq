@@ -359,9 +359,10 @@ internal partial class DefinitionLoader(IEnumerable<string> classNames)
     /// <param name="classUri">Specifies the list of drives to schedule for Autochk at the next reboot. The string syntax consists of the drive letter followed by a colon for the logical disk, for example: "C:"</param>
     /// <param name="methodBlock"></param>
     /// <returns>Returns a value of 0 (zero) if successful, and some other value if any other error occurs. Values are listed in the following list.</returns>
-    private static async Task<List<MethodDefinition>> ParseMethods(Uri classUri, string methodBlock)
+    private static Task<List<MethodDefinition>> ParseMethods(Uri classUri, string methodBlock)
     {
         List<MethodDefinition> result = [];
+        // TODO: Implement method parsing logic
         //var tBodyIndex = methodBlock.IndexOf("<tbody");
         //foreach (Match methodRow in TableRowRegex.Matches(methodBlock[tBodyIndex..]))
         //{
@@ -383,6 +384,6 @@ internal partial class DefinitionLoader(IEnumerable<string> classNames)
         //    var methodPageContent = await GetPageContentsAsync(new Uri(classUri, linkMatch.Groups[1].Value));
         //}
 
-        return result;
+        return Task.FromResult(result);
     }
 }

@@ -3,15 +3,10 @@ name: Build and Publish NuGet Packages
 on:
   push:
     branches: [ master ]
-  pull_request:
-    branches: [ master ]
 
 jobs:
-  build:
+  build-and-publish:
     runs-on: ubuntu-latest
-    # Only depend on generate-and-commit if this is a PR event
-    needs: ${{ github.event_name == 'pull_request' && 'generate-and-commit' || '' }}
-    if: ${{ github.event_name != 'pull_request' || always() }}
     steps:
       - uses: actions/checkout@v4
 
@@ -33,7 +28,6 @@ jobs:
         run: dotnet pack Linq/System.Management.Linq.csproj --configuration Release --output ./nupkgs
 
       - name: Publish to NuGet
-        if: github.event_name == 'push'
         run: |
           set -e
           for pkg in ./nupkgs/*.nupkg; do
