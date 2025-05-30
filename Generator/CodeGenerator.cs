@@ -4,19 +4,27 @@ namespace System.Management.Generator;
 public class CodeGenerator
 {
     private static readonly HashSet<string> _excludedFolders = new(StringComparer.OrdinalIgnoreCase) { "bin", "obj" };
-    public const string DefaultTargetDirectory = "..\\..\\..\\..\\Types\\";
+
+    private static DirectoryInfo FindTypesDirectory()
+    {
+        var dir = new DirectoryInfo(Environment.CurrentDirectory);
+        while (dir != null)
+        {
+            var typesDir = new DirectoryInfo(Path.Combine(dir.FullName, "Types"));
+            if (typesDir.Exists)
+                return typesDir;
+            dir = dir.Parent;
+        }
+        throw new DirectoryNotFoundException("Could not find 'Types' directory in any parent directory.");
+    }
+
     private readonly Dictionary<string, ClassDefinition> _classDefinitions;
     private readonly DirectoryInfo _targetDirectory;
 
-    public CodeGenerator(IEnumerable<ClassDefinition> classDefinitions, string targetDirectory = DefaultTargetDirectory)
+    public CodeGenerator(IEnumerable<ClassDefinition> classDefinitions)
     {
         _classDefinitions = classDefinitions.ToDictionary(t => t.ClassName, t => t, StringComparer.InvariantCultureIgnoreCase);
-        _targetDirectory = new DirectoryInfo(targetDirectory);
-
-        if (!_targetDirectory.Exists)
-        {
-            _targetDirectory.Create();
-        }
+        _targetDirectory = FindTypesDirectory();
     }
 
     public void GenerateCode()
