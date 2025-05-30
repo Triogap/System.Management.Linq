@@ -1,37 +1,20 @@
 ﻿using System.Text;
+using System.Threading.Channels;
 namespace System.Management.Generator;
 
-public class CodeGenerator
+public class CodeGenerator(ChannelReader<ClassDefinition> channel)
 {
     private static readonly HashSet<string> _excludedFolders = new(StringComparer.OrdinalIgnoreCase) { "bin", "obj" };
 
-    private static DirectoryInfo FindTypesDirectory()
-    {
-        var dir = new DirectoryInfo(Environment.CurrentDirectory);
-        while (dir != null)
-        {
-            var typesDir = new DirectoryInfo(Path.Combine(dir.FullName, "Types"));
-            if (typesDir.Exists)
-                return typesDir;
-            dir = dir.Parent;
-        }
-        throw new DirectoryNotFoundException("Could not find 'Types' directory in any parent directory.");
-    }
+    private readonly DirectoryInfo _targetDirectory = FindTypesDirectory();
+    private readonly Dictionary<string, ClassDefinition> _classDefinitions = new(StringComparer.OrdinalIgnoreCase);
 
-    private readonly Dictionary<string, ClassDefinition> _classDefinitions;
-    private readonly DirectoryInfo _targetDirectory;
-
-    public CodeGenerator(IEnumerable<ClassDefinition> classDefinitions)
-    {
-        _classDefinitions = classDefinitions.ToDictionary(t => t.ClassName, t => t, StringComparer.InvariantCultureIgnoreCase);
-        _targetDirectory = FindTypesDirectory();
-    }
-
-    public void GenerateCode()
+    public async Task GenerateCode()
     {
         var existingFiles = _targetDirectory.GetDirectories().Where(d => !_excludedFolders.Contains(d.Name)).SelectMany(d => d.GetFiles("*.g.cs", SearchOption.AllDirectories)).Select(fi => fi.FullName).ToHashSet(StringComparer.OrdinalIgnoreCase);
-        foreach (var typeDefinition in _classDefinitions.Values)
+        await foreach (var typeDefinition in channel.ReadAllAsync())
         {
+            _classDefinitions[typeDefinition.ClassName] = typeDefinition;
             Console.WriteLine($"Generating class for {typeDefinition.ClassName}.");
             (var namespaceName, var className) = ParseClassName(typeDefinition.ClassName);
 
@@ -90,6 +73,19 @@ public class CodeGenerator
                 }
             }
         }
+    }
+
+    private static DirectoryInfo FindTypesDirectory()
+    {
+        var dir = new DirectoryInfo(Environment.CurrentDirectory);
+        while (dir != null)
+        {
+            var typesDir = new DirectoryInfo(Path.Combine(dir.FullName, "Types"));
+            if (typesDir.Exists)
+                return typesDir;
+            dir = dir.Parent;
+        }
+        throw new DirectoryNotFoundException("Could not find 'Types' directory in any parent directory.");
     }
 
     private IEnumerable<PropertyDefinition> GetInheritedPropertiesFrom(string? superClass)
